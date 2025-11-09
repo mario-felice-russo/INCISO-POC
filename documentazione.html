@@ -100,7 +100,7 @@
                         <div class="col-md-3 mb-3">
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <h3 class="text-primary">5</h3>
+                                    <h3 class="text-primary">6</h3>
                                     <small>Pagine HTML</small>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                         <div class="col-md-3 mb-3">
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <h3 class="text-success">7</h3>
+                                    <h3 class="text-success">8</h3>
                                     <small>Moduli JavaScript</small>
                                 </div>
                             </div>
@@ -124,11 +124,17 @@
                         <div class="col-md-3 mb-3">
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <h3 class="text-warning">~4.700</h3>
+                                    <h3 class="text-warning">~4.875</h3>
                                     <small>Righe di Codice</small>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="alert alert-light border mt-3">
+                        <small>
+                            <strong>Totale file:</strong> 6 HTML + 2 Componenti + 8 JS + 2 CSS + 8 JSON = <strong>26 file</strong><br>
+                            <strong>Novità:</strong> Sistema header/footer dinamico con 3 nuovi file (header.html, footer.html, layout.js)
+                        </small>
                     </div>
                 </section>
 
@@ -576,10 +582,14 @@
 ├── documenti.html          (Documenti protocollati)
 ├── editor.html             (Configurazione)
 ├── documentazione.html     (Questa pagina)
+├── includes/
+│   ├── header.html         (52 righe - navbar riutilizzabile)
+│   └── footer.html         (42 righe - footer riutilizzabile)
 ├── css/
 │   ├── style.css           (307 righe - stili globali)
 │   └── components.css      (447 righe - componenti)
 ├── js/
+│   ├── layout.js           (80 righe - caricamento header/footer)
 │   ├── utils.js            (356 righe - utility functions)
 │   ├── evidenze.js         (334 righe - gestione evidenze)
 │   ├── app.js              (485 righe - dashboard logic)
@@ -600,10 +610,28 @@
                     <h4 class="mt-4">Pattern Architetturali</h4>
                     <ul>
                         <li><strong>Module Pattern:</strong> Ogni pagina ha un oggetto principale (App, RicercaApp, DettaglioApp, ecc.)</li>
+                        <li><strong>Component-Based Layout:</strong> Header e footer centralizzati in <code>includes/</code> e caricati dinamicamente</li>
                         <li><strong>Lazy Loading:</strong> Tab caricati on-demand con flag <code>tabsLoaded</code></li>
                         <li><strong>Separation of Concerns:</strong> utils.js per funzioni generiche, moduli specializzati per logica specifica</li>
                         <li><strong>Event-Driven:</strong> Event listeners centralizzati in <code>setupEventListeners()</code></li>
                         <li><strong>Data-First:</strong> Fetch JSON → Elaborazione → Rendering</li>
+                    </ul>
+
+                    <h4 class="mt-4">Sistema Header/Footer Dinamico</h4>
+                    <div class="alert alert-info">
+                        <strong>Vantaggi:</strong> Manutenzione centralizzata di navbar e footer. Una modifica si riflette su tutte le 6 pagine.
+                    </div>
+                    <ul>
+                        <li><strong>includes/header.html:</strong> Navbar Bootstrap con 5 voci menu + dropdown utente</li>
+                        <li><strong>includes/footer.html:</strong> Footer a 3 colonne con info progetto, tecnologie e copyright</li>
+                        <li><strong>js/layout.js:</strong> LayoutManager che:
+                            <ul>
+                                <li>Carica dinamicamente header.html e footer.html via fetch()</li>
+                                <li>Inietta contenuto in <code>#header-container</code> e <code>#footer-container</code></li>
+                                <li>Imposta automaticamente il link attivo basandosi sul nome file corrente</li>
+                                <li>Gestisce errori di caricamento con console.error</li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <h4 class="mt-4">Funzionalità Comuni (utils.js)</h4>
