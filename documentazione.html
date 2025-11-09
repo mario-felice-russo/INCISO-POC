@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentazione POC - ASSE InCiSo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <style>
+        .toc {
+            position: sticky;
+            top: 20px;
+        }
+        .feature-card {
+            transition: transform 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+        }
+        .tech-badge {
+            font-size: 0.85rem;
+            padding: 0.35em 0.65em;
+            margin: 0.2rem;
+        }
+        pre code {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            display: block;
+        }
+        .section-header {
+            border-bottom: 3px solid #0d6efd;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-hospital"></i> ASSE InCiSo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ricerca.html">
+                            <i class="bi bi-search"></i> Ricerca Assistiti
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="documenti.html">
+                            <i class="bi bi-file-earmark-text"></i> Documenti
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="editor.html">
+                            <i class="bi bi-gear"></i> Configurazione
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="documentazione.html">
+                            <i class="bi bi-book"></i> Documentazione
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-primary text-white py-5">
+        <div class="container">
+            <h1 class="display-4"><i class="bi bi-book"></i> Documentazione POC</h1>
+            <p class="lead">ASSE InCiSo - Sistema di gestione assistiti e prestazioni assistenziali</p>
+            <p class="mb-0">Versione 1.0.0 - Proof of Concept</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Table of Contents -->
+            <div class="col-lg-3">
+                <div class="toc">
+                    <h5 class="mb-3">Indice</h5>
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="#overview">Panoramica</a>
+                        <a class="nav-link" href="#dashboard">1. Dashboard</a>
+                        <a class="nav-link" href="#ricerca">2. Ricerca Assistiti</a>
+                        <a class="nav-link" href="#dettaglio">3. Fascicolo Personale</a>
+                        <a class="nav-link" href="#documenti">4. Documenti</a>
+                        <a class="nav-link" href="#editor">5. Configurazione</a>
+                        <a class="nav-link" href="#architettura">Architettura</a>
+                        <a class="nav-link" href="#dati">Modello Dati</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="col-lg-9">
+                <!-- Panoramica -->
+                <section id="overview" class="mb-5">
+                    <h2 class="section-header">📋 Panoramica Generale</h2>
+                    <div class="alert alert-info">
+                        <strong>Obiettivo:</strong> Proof of Concept per il sistema ASSE InCiSo di gestione 
+                        assistiti, evidenze/promemoria, prestazioni assistenziali e comunicazioni protocollate.
+                    </div>
+
+                    <h4 class="mt-4">Stack Tecnologico</h4>
+                    <div>
+                        <span class="badge tech-badge bg-primary">HTML5</span>
+                        <span class="badge tech-badge bg-primary">CSS3</span>
+                        <span class="badge tech-badge bg-warning text-dark">JavaScript ES6+</span>
+                        <span class="badge tech-badge bg-info">Bootstrap 5.3</span>
+                        <span class="badge tech-badge bg-success">Bootstrap Icons 1.11</span>
+                        <span class="badge tech-badge bg-secondary">JSON Data</span>
+                    </div>
+
+                    <h4 class="mt-4">Statistiche Progetto</h4>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h3 class="text-primary">5</h3>
+                                    <small>Pagine HTML</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h3 class="text-success">7</h3>
+                                    <small>Moduli JavaScript</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h3 class="text-info">8</h3>
+                                    <small>File Dati JSON</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h3 class="text-warning">~4.700</h3>
+                                    <small>Righe di Codice</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dashboard -->
+                <section id="dashboard" class="mb-5">
+                    <h2 class="section-header">1. 📊 Dashboard</h2>
+                    <p class="lead">Pagina principale con vista evidenze/promemoria e note operative</p>
+
+                    <div class="card feature-card mb-3">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0"><i class="bi bi-exclamation-triangle"></i> Evidenze / Promemoria</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Funzionalità:</h6>
+                            <ul>
+                                <li><strong>Layout a 2 colonne</strong> (70% evidenze / 30% note)</li>
+                                <li><strong>3 Tab dinamici:</strong>
+                                    <ul>
+                                        <li>Scadute (data scadenza < oggi)</li>
+                                        <li>Correnti (scadenza entro 30 giorni)</li>
+                                        <li>Future (scadenza oltre 30 giorni)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Filtri multipli:</strong>
+                                    <ul>
+                                        <li>Ricerca testuale (nome/CF assistito)</li>
+                                        <li>Filtro per categoria (ID numerico)</li>
+                                        <li>Filtro per tipo evidenza (descrizione)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Badge contatori</strong> per ogni tab (aggiornati in tempo reale)</li>
+                                <li><strong>Card evidenza</strong> con:
+                                    <ul>
+                                        <li>Bordo colorato per priorità</li>
+                                        <li>Badge categoria e giorni rimanenti</li>
+                                        <li>Pulsante dettagli (modal)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Esportazione CSV</strong> delle evidenze filtrate</li>
+                            </ul>
+                            
+                            <h6 class="mt-3">File coinvolti:</h6>
+                            <code>index.html, js/app.js, js/evidenze.js, js/utils.js, data/evidenze.json, data/tipo_evidenze.json</code>
+                        </div>
+                    </div>
+
+                    <div class="card feature-card mb-3">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0"><i class="bi bi-sticky"></i> Note Operative</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Funzionalità:</h6>
+                            <ul>
+                                <li><strong>Filtro per categoria:</strong> Residenza, Pagamenti, Degenze, Amministrazione Sostegno, Generiche</li>
+                                <li><strong>Ricerca testuale</strong> su titolo, testo, assistito, operatore</li>
+                                <li><strong>Card nota</strong> con:
+                                    <ul>
+                                        <li>Badge categoria colorato</li>
+                                        <li>Icona stella per note principali</li>
+                                        <li>Data/ora creazione</li>
+                                        <li>Operatore</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Modal creazione nuova nota</strong> con form completo</li>
+                                <li><strong>Modal dettagli nota</strong> per visualizzazione completa</li>
+                                <li><strong>Ordinamento</strong> per data creazione (più recenti prime)</li>
+                            </ul>
+                            
+                            <h6 class="mt-3">File coinvolti:</h6>
+                            <code>index.html, js/app.js, data/note.json</code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Ricerca -->
+                <section id="ricerca" class="mb-5">
+                    <h2 class="section-header">2. 🔍 Ricerca Assistiti</h2>
+                    <p class="lead">Form ricerca multi-criterio con risultati paginati</p>
+
+                    <div class="card feature-card mb-3">
+                        <div class="card-body">
+                            <h6>Funzionalità:</h6>
+                            <ul>
+                                <li><strong>Form ricerca con 7 criteri:</strong>
+                                    <ul>
+                                        <li>Codice Fiscale (16 caratteri)</li>
+                                        <li>Cognome (ricerca parziale)</li>
+                                        <li>Nome (ricerca parziale)</li>
+                                        <li>Data Nascita (esatta)</li>
+                                        <li>Comune (ricerca parziale)</li>
+                                        <li>Stato (Attivo/Sospeso/Cessato)</li>
+                                        <li>Operatore riferimento</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Vista doppia:</strong>
+                                    <ul>
+                                        <li>Tabella (8 colonne) - default</li>
+                                        <li>Griglia (card responsive)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Paginazione:</strong> 10 elementi per pagina con navigazione completa</li>
+                                <li><strong>Esportazione CSV</strong> risultati completi</li>
+                                <li><strong>Normalizzazione ricerca:</strong> rimozione accenti, lowercase</li>
+                                <li><strong>Badge contatore</strong> risultati trovati</li>
+                                <li><strong>Link diretto</strong> al fascicolo personale da ogni risultato</li>
+                                <li><strong>Reset filtri</strong> completo</li>
+                            </ul>
+
+                            <h6 class="mt-3">Algoritmo ricerca:</h6>
+                            <pre><code>risultati = assistiti.filter(assistito => {
+    // Applicazione filtri AND su tutti i criteri compilati
+    // Ricerca parziale con normalizzazione stringhe
+    // Case-insensitive e senza accenti
+});</code></pre>
+                            
+                            <h6 class="mt-3">File coinvolti:</h6>
+                            <code>ricerca.html, js/ricerca.js, data/assistiti.json</code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dettaglio -->
+                <section id="dettaglio" class="mb-5">
+                    <h2 class="section-header">3. 📁 Fascicolo Personale</h2>
+                    <p class="lead">Vista completa assistito con 7 tab specializzati</p>
+
+                    <div class="alert alert-warning">
+                        <strong>Accesso:</strong> Parametro URL <code>?cf=RSSMRA80A01H501U</code>
+                    </div>
+
+                    <div class="card feature-card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Header Assistito</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li><strong>Design:</strong> Gradient viola con testo bianco</li>
+                                <li><strong>Dati visualizzati:</strong>
+                                    <ul>
+                                        <li>Cognome Nome (h2)</li>
+                                        <li>Codice Fiscale</li>
+                                        <li>Data e luogo nascita</li>
+                                        <li>Indirizzo residenza completo</li>
+                                        <li>Badge stato (Attivo/Sospeso)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion" id="tabsAccordion">
+                        <!-- Tab 1: Riepilogo -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tab1">
+                                    Tab 1: Riepilogo
+                                </button>
+                            </h2>
+                            <div id="tab1" class="accordion-collapse collapse show" data-bs-parent="#tabsAccordion">
+                                <div class="accordion-body">
+                                    <strong>Contenuto:</strong>
+                                    <ul>
+                                        <li><strong>Dati Anagrafici (card):</strong> tutti i campi anagrafica completi</li>
+                                        <li><strong>Statistiche (4 card):</strong>
+                                            <ul>
+                                                <li>Prestazioni Attive (verde)</li>
+                                                <li>Evidenze Scadute (rosso)</li>
+                                                <li>Evidenze Correnti (giallo)</li>
+                                                <li>Verbali Attivi (info)</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Evidenze Recenti:</strong> ultime 5 evidenze inserite</li>
+                                    </ul>
+                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabRiepilogo()</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Prestazioni -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab2">
+                                    Tab 2: Prestazioni
+                                </button>
+                            </h2>
+                            <div id="tab2" class="accordion-collapse collapse" data-bs-parent="#tabsAccordion">
+                                <div class="accordion-body">
+                                    <strong>Contenuto:</strong>
+                                    <ul>
+                                        <li><strong>Card prestazione</strong> con bordo colorato per stato</li>
+                                        <li><strong>Dati visualizzati:</strong> tipo, codice, decorrenza, scadenza, importo mensile</li>
+                                        <li><strong>Griglia mensilità:</strong> visualizzazione mesi con stati
+                                            <ul>
+                                                <li>Pagato (verde)</li>
+                                                <li>Sospeso (giallo)</li>
+                                                <li>Negato/Revocato (rosso)</li>
+                                                <li>Non dovuto (grigio)</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Responsive:</strong> griglia adattiva mobile (3 colonne)</li>
+                                    </ul>
+                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabPrestazioni(), data/prestazioni.json</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Verbali -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab3">
+                                    Tab 3: Verbali
+                                </button>
+                            </h2>
+                            <div id="tab3" class="accordion-collapse collapse" data-bs-parent="#tabsAccordion">
+                                <div class="accordion-body">
+                                    <strong>Contenuto:</strong>
+                                    <ul>
+                                        <li><strong>Timeline verticale</strong> con linea connettore</li>
+                                        <li><strong>Pallino colorato:</strong>
+                                            <ul>
+                                                <li>Verde = Attivo</li>
+                                                <li>Grigio = Superato</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Tipi verbale:</strong> Invalidità Civile, Handicap L.104</li>
+                                        <li><strong>Dati:</strong> numero, data emissione, scadenza, percentuale, commissione, esito</li>
+                                        <li><strong>Ordinamento:</strong> più recenti primi</li>
+                                        <li><strong>Opacità ridotta</strong> per verbali superati</li>
+                                    </ul>
+                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabVerbali(), data/verbali.json</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Comunicazioni -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab4">
+                                    Tab 4: Comunicazioni
+                                </button>
+                            </h2>
+                            <div id="tab4" class="accordion-collapse collapse" data-bs-parent="#tabsAccordion">
+                                <div class="accordion-body">
+                                    <strong>Contenuto:</strong>
+                                    <ul>
+                                        <li><strong>Tabella 8 colonne:</strong> Tipo, Oggetto, Data Gen., Data Invio, Protocollo, Canale, Stato, Azioni</li>
+                                        <li><strong>Badge stati:</strong>
+                                            <ul>
+                                                <li>Generata (grigio)</li>
+                                                <li>Caricata (blu)</li>
+                                                <li>Protocollata (verde)</li>
+                                                <li>Errore (rosso)</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Pulsante visualizza</strong> con dettagli completi</li>
+                                        <li><strong>Ordinamento:</strong> data generazione DESC</li>
+                                    </ul>
+                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabComunicazioni(), data/comunicazioni.json</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 5: Evidenze -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab5">
+                                    Tab 5: Evidenze
+                                </button>
+                            </h2>
+                            <div id="tab5" class="accordion-collapse collapse" data-bs-parent="#tabsAccordion">
+                                <div class="accordion-body">
+                                    <strong>Contenuto:</strong>
+                                    <ul>
+                                        <li><strong>Card evidenza</strong> con bordo colorato per priorità</li>
+                                        <li><strong>Calcolo giorni rimanenti dinamico:</strong>
+                                            <ul>
+                                                <li>"Scaduta da X giorni" (rosso)</li>
+                                                <li>"Scade oggi" (rosso)</li>
+                                                <li>"Scade tra X giorni" (giallo se ≤7, info se >7)</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Badge:</strong> categoria, priorità, giorni</li>
+                                        <li><strong>Ordinamento:</strong> data scadenza ASC (prima le più urgenti)</li>
+                                    </ul>
+                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabEvidenze()</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 6: Note -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab6">
+                                    Tab 6: Note
+                                </button>
+                            </h2>
+                            <div id="tab6" class="accordion-collapse collapse" data-bs-parent="#tabsAccordion">
+                                <div class="accordion-body">
+                                    <strong>Contenuto:</strong>
+                                    <ul>
+                                        <li><strong>Card nota</strong> con badge categoria colorato</li>
+                                        <li><strong>Highlight note principali:</strong> bordo giallo e stella</li>
+                                        <li><strong>Data/ora formattata</strong> DD/MM/YYYY HH:MM</li>
+                                        <li><strong>Operatore</strong> con icona persona</li>
+                                        <li><strong>Ordinamento:</strong> data creazione DESC</li>
+                                    </ul>
+                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabNote()</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 7: Log -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab7">
+                                    Tab 7: Log Attività
+                                </button>
+                            </h2>
+                            <div id="tab7" class="accordion-collapse collapse" data-bs-parent="#tabsAccordion">
+                                <div class="accordion-body">
+                                    <strong>Contenuto:</strong>
+                                    <ul>
+                                        <li><strong>Tabella log</strong> con 4 colonne: Data/Ora, Operatore, Operazione, Descrizione</li>
+                                        <li><strong>Operazione:</strong> in formato monospace (MODIFICA_ANAGRAFICA, INSERIMENTO_NOTA, ecc.)</li>
+                                        <li><strong>Dati:</strong> mock simulati per demo</li>
+                                        <li><strong>Ordinamento:</strong> cronologico inverso</li>
+                                    </ul>
+                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabLog()</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success mt-3">
+                        <strong>Caricamento Lazy:</strong> Ogni tab viene caricato solo quando viene selezionato 
+                        per la prima volta (flag <code>tabsLoaded</code>)
+                    </div>
+
+                    <h6 class="mt-3">File coinvolti:</h6>
+                    <code>dettaglio.html, js/dettaglio.js (566 righe), 6 file JSON</code>
+                </section>
+
+                <!-- Documenti -->
+                <section id="documenti" class="mb-5">
+                    <h2 class="section-header">4. 📄 Documenti Protocollati</h2>
+                    <p class="lead">Ricerca comunicazioni protocollate con dashboard statistiche</p>
+
+                    <div class="card feature-card mb-3">
+                        <div class="card-body">
+                            <h6>Dashboard Statistiche (4 card):</h6>
+                            <ul>
+                                <li><strong>Totale Documenti</strong> (info)</li>
+                                <li><strong>Protocollate</strong> (verde)</li>
+                                <li><strong>In Lavorazione</strong> (giallo) - somma Generata + Caricata</li>
+                                <li><strong>Con Errori</strong> (rosso)</li>
+                            </ul>
+
+                            <h6 class="mt-3">Form Ricerca (8 criteri):</h6>
+                            <ul>
+                                <li>Numero Protocollo</li>
+                                <li>Codice Fiscale</li>
+                                <li>Tipo Comunicazione (select dinamico)</li>
+                                <li>Stato (Generata/Caricata/Protocollata/Errore)</li>
+                                <li>Data Generazione Da/A (range)</li>
+                                <li>Canale (PEC/Email/Raccomandata)</li>
+                                <li>Operatore</li>
+                            </ul>
+
+                            <h6 class="mt-3">Risultati:</h6>
+                            <ul>
+                                <li><strong>Tabella 10 colonne</strong> con ordinamento data generazione DESC</li>
+                                <li><strong>Paginazione:</strong> 15 elementi per pagina</li>
+                                <li><strong>Badge stati colorati</strong> (protocollata/caricata/errore/generata)</li>
+                                <li><strong>Modal dettaglio documento</strong> con tutti i dati</li>
+                                <li><strong>Pulsanti azioni:</strong> Visualizza, Scarica (se protocollata)</li>
+                                <li><strong>Esportazione CSV completa</strong></li>
+                            </ul>
+
+                            <h6 class="mt-3">File coinvolti:</h6>
+                            <code>documenti.html, js/documenti.js (449 righe), data/comunicazioni.json, data/tipo_comunicazioni.json</code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Editor -->
+                <section id="editor" class="mb-5">
+                    <h2 class="section-header">5. ⚙️ Configurazione / Editor</h2>
+                    <p class="lead">Gestione template, regole evidenze, categorie e parametri sistema</p>
+
+                    <div class="card feature-card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">4 Sezioni Configurazione</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>1. Template Comunicazioni:</h6>
+                            <ul>
+                                <li><strong>Tabella template</strong> con 11 tipi caricati da JSON</li>
+                                <li><strong>Colonne:</strong> Codice, Descrizione, File Template, Canale, Stato</li>
+                                <li><strong>Azioni:</strong> Modifica, Scarica, Anteprima (placeholder)</li>
+                            </ul>
+
+                            <h6 class="mt-3">2. Regole Evidenze:</h6>
+                            <ul>
+                                <li><strong>Regole automatiche</strong> per creazione evidenze su eventi</li>
+                                <li><strong>3 regole esempio:</strong>
+                                    <ul>
+                                        <li>Scadenza Permesso Soggiorno (60gg anticipo)</li>
+                                        <li>Revisione Verbale Invalidità (60gg anticipo)</li>
+                                        <li>Rinnovo Prestazione Annuale (90gg anticipo)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Configurabili:</strong> Nome, Tipo, Trigger, Giorni, Attiva/Disattiva</li>
+                            </ul>
+
+                            <h6 class="mt-3">3. Categorie:</h6>
+                            <ul>
+                                <li><strong>Tipi Evidenza:</strong> lista 9 categorie con icone e colori</li>
+                                <li><strong>Categorie Note:</strong> 5 categorie con descrizioni</li>
+                                <li><strong>Modificabili</strong> (placeholder)</li>
+                            </ul>
+
+                            <h6 class="mt-3">4. Parametri Sistema:</h6>
+                            <ul>
+                                <li><strong>Evidenze:</strong> soglie giorni Scaduta (0) e Corrente (30)</li>
+                                <li><strong>Notifiche:</strong> switch Email/Push</li>
+                                <li><strong>Protocollo:</strong> URL EProcs, Timeout</li>
+                                <li><strong>Sistema:</strong> Versione (1.0.0 POC), Ambiente (Dev/Test/Prod)</li>
+                            </ul>
+
+                            <h6 class="mt-3">File coinvolti:</h6>
+                            <code>editor.html, js/editor.js (161 righe)</code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architettura -->
+                <section id="architettura" class="mb-5">
+                    <h2 class="section-header">🏗️ Architettura Tecnica</h2>
+
+                    <h4>Struttura File</h4>
+                    <pre><code>POC/
+├── index.html              (Dashboard)
+├── ricerca.html            (Ricerca assistiti)
+├── dettaglio.html          (Fascicolo 7 tab)
+├── documenti.html          (Documenti protocollati)
+├── editor.html             (Configurazione)
+├── documentazione.html     (Questa pagina)
+├── css/
+│   ├── style.css           (307 righe - stili globali)
+│   └── components.css      (447 righe - componenti)
+├── js/
+│   ├── utils.js            (356 righe - utility functions)
+│   ├── evidenze.js         (334 righe - gestione evidenze)
+│   ├── app.js              (485 righe - dashboard logic)
+│   ├── ricerca.js          (411 righe - ricerca assistiti)
+│   ├── dettaglio.js        (566 righe - fascicolo 7 tab)
+│   ├── documenti.js        (449 righe - doc protocollati)
+│   └── editor.js           (161 righe - configurazione)
+└── data/
+    ├── tipo_evidenze.json       (9 tipologie)
+    ├── tipo_comunicazioni.json  (11 tipologie)
+    ├── assistiti.json           (5 campione)
+    ├── evidenze.json            (12 evidenze)
+    ├── note.json                (12 note)
+    ├── prestazioni.json         (6 con mensilità)
+    ├── verbali.json             (8 verbali)
+    └── comunicazioni.json       (11 comunicazioni)</code></pre>
+
+                    <h4 class="mt-4">Pattern Architetturali</h4>
+                    <ul>
+                        <li><strong>Module Pattern:</strong> Ogni pagina ha un oggetto principale (App, RicercaApp, DettaglioApp, ecc.)</li>
+                        <li><strong>Lazy Loading:</strong> Tab caricati on-demand con flag <code>tabsLoaded</code></li>
+                        <li><strong>Separation of Concerns:</strong> utils.js per funzioni generiche, moduli specializzati per logica specifica</li>
+                        <li><strong>Event-Driven:</strong> Event listeners centralizzati in <code>setupEventListeners()</code></li>
+                        <li><strong>Data-First:</strong> Fetch JSON → Elaborazione → Rendering</li>
+                    </ul>
+
+                    <h4 class="mt-4">Funzionalità Comuni (utils.js)</h4>
+                    <ul>
+                        <li><code>formatDate()</code> - ISO → DD/MM/YYYY</li>
+                        <li><code>formatDateTime()</code> - ISO → DD/MM/YYYY HH:MM</li>
+                        <li><code>formatCurrency()</code> - Number → 1.234,56 €</li>
+                        <li><code>daysFromNow()</code> - Calcolo giorni rimanenti</li>
+                        <li><code>getEvidenzaStato()</code> - Determina stato (Scaduta/Corrente/Futura)</li>
+                        <li><code>normalizeString()</code> - Lowercase + rimozione accenti</li>
+                        <li><code>searchItems()</code> - Ricerca multi-campo</li>
+                        <li><code>sortBy()</code> - Ordinamento array</li>
+                        <li><code>groupBy()</code> - Raggruppamento</li>
+                        <li><code>debounce()</code> - Ottimizzazione ricerche (300ms)</li>
+                        <li><code>showToast()</code> - Notifiche Bootstrap</li>
+                        <li><code>escapeHtml()</code> - Prevenzione XSS</li>
+                        <li><code>loadJSON()</code> - Fetch JSON con error handling</li>
+                    </ul>
+                </section>
+
+                <!-- Modello Dati -->
+                <section id="dati" class="mb-5">
+                    <h2 class="section-header">💾 Modello Dati</h2>
+
+                    <h4>Entità Principali</h4>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Entità</th>
+                                    <th>Campi Principali</th>
+                                    <th>File JSON</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Assistito</strong></td>
+                                    <td>cf, cognome, nome, dataNascita, luogoNascita, indirizzo, comune, telefono, email, stato, operatoreRiferimento</td>
+                                    <td>assistiti.json</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Evidenza</strong></td>
+                                    <td>id, cf, assistito, idTipoEvidenza, tipoEvidenza, descrizione, dataScadenza, priorita, stato, note, operatore</td>
+                                    <td>evidenze.json</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nota</strong></td>
+                                    <td>id, cf, assistito, categoria, titolo, testo, dataCreazione, operatore, principale</td>
+                                    <td>note.json</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prestazione</strong></td>
+                                    <td>id, cf, tipoPrestazione, codice, dataDecorrenza, dataScadenza, importoMensile, stato, mensilita[]</td>
+                                    <td>prestazioni.json</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Verbale</strong></td>
+                                    <td>id, cf, tipo, numero, dataEmissione, dataScadenza, percentuale, commissione, esito, stato</td>
+                                    <td>verbali.json</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Comunicazione</strong></td>
+                                    <td>id, cf, idTipoComunicazione, oggetto, dataGenerazione, dataInvio, numeroProtocollo, canale, destinatario, stato</td>
+                                    <td>comunicazioni.json</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="mt-4">Stati & Enumerazioni</h4>
+                    <ul>
+                        <li><strong>Stato Evidenza:</strong> Scaduta (< oggi), Corrente (≤ 30gg), Futura (> 30gg)</li>
+                        <li><strong>Priorità:</strong> Alta, Media, Bassa</li>
+                        <li><strong>Stato Prestazione:</strong> Concessa, Sospesa, Revocata, Negata</li>
+                        <li><strong>Stato Mensilità:</strong> pagato, sospeso, negato, revocato, non-dovuto</li>
+                        <li><strong>Stato Comunicazione:</strong> Generata, Caricata, Protocollata, Errore</li>
+                        <li><strong>Canale:</strong> PEC, Email, Raccomandata</li>
+                    </ul>
+
+                    <h4 class="mt-4">Relazioni</h4>
+                    <pre><code>Assistito (1) ──→ (N) Evidenze
+          (1) ──→ (N) Note
+          (1) ──→ (N) Prestazioni
+          (1) ──→ (N) Verbali
+          (1) ──→ (N) Comunicazioni
+
+TipoEvidenza (1) ──→ (N) Evidenze
+TipoComunicazione (1) ──→ (N) Comunicazioni
+
+Prestazione (1) ──→ (N) Mensilità (embedded array)</code></pre>
+                </section>
+
+                <!-- Footer Info -->
+                <div class="alert alert-success">
+                    <h5><i class="bi bi-check-circle"></i> POC Completo e Funzionale</h5>
+                    <p class="mb-0">Tutte le funzionalità descritte sono implementate e testabili aprendo i file HTML 
+                    tramite web server locale (<code>python -m http.server 8000</code>).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">ASSE InCiSo - Proof of Concept v1.0.0</p>
+            <p class="mb-0"><small>Sviluppato con Bootstrap 5.3 | Totale: ~4.700 righe di codice</small></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

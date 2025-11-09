@@ -98,8 +98,31 @@ const App = {
         const filterCategoria = document.getElementById('categoriaFilter');
         if (filterCategoria) {
             filterCategoria.addEventListener('change', (e) => {
-                EvidenzeManager.setFilter('categoria', e.target.value);
+                const idTipo = e.target.value;
+                if (idTipo) {
+                    const tipo = EvidenzeManager.tipoEvidenze.find(t => t.id === Number.parseInt(idTipo));
+                    EvidenzeManager.setFilter('categoria', tipo ? tipo.descrizione : 'Tutte');
+                } else {
+                    EvidenzeManager.setFilter('categoria', 'Tutte');
+                }
                 this.refreshCurrentEvidenzeTab();
+            });
+        }
+
+        // Filtro tipo evidenza (select duplicato - sincronizza con categoriaFilter)
+        const tipoEvidenzaFilter = document.getElementById('tipoEvidenzaFilter');
+        if (tipoEvidenzaFilter) {
+            tipoEvidenzaFilter.addEventListener('change', (e) => {
+                EvidenzeManager.setFilter('categoria', e.target.value || 'Tutte');
+                this.refreshCurrentEvidenzeTab();
+            });
+        }
+
+        // Pulsante esporta evidenze
+        const btnExportEvidenze = document.getElementById('exportEvidenze');
+        if (btnExportEvidenze) {
+            btnExportEvidenze.addEventListener('click', () => {
+                this.esportaEvidenze();
             });
         }
 
@@ -181,11 +204,17 @@ const App = {
      * Popola select filtro categoria
      */
     populateFilterCategoria() {
-        const select = document.getElementById('categoriaFilter');
-        if (!select) return;
-
-        // Opzione "Tutte" già presente nell'HTML
-        // Aggiungi categorie da tipo_evidenze se necessario
+        // Le opzioni sono già nell'HTML per categoriaFilter
+        // Popola tipoEvidenzaFilter con i dati dinamici
+        const tipoEvidenzaFilter = document.getElementById('tipoEvidenzaFilter');
+        if (tipoEvidenzaFilter) {
+            EvidenzeManager.tipoEvidenze.forEach(tipo => {
+                const option = document.createElement('option');
+                option.value = tipo.descrizione;
+                option.textContent = tipo.descrizione;
+                tipoEvidenzaFilter.appendChild(option);
+            });
+        }
     },
 
     /**
@@ -446,6 +475,34 @@ const App = {
         form.classList.remove('was-validated');
 
         Utils.showToast('Nota salvata con successo', 'success');
+    },
+
+    /**
+     * Esporta evidenze visibili in CSV
+     */
+    esportaEvidenze() {
+        const evidenze = EvidenzeManager.getFilteredEvidenze();
+        
+        if (evidenze.length === 0) {
+            Utils.showToast('Nessuna evidenza da esportare', 'warning');
+            return;
+        }
+
+        // Crea CSV
+        let csv = 'ID;Assistito;CF;Tipo Evidenza;Descrizione;Data Scadenza;Priorità;Stato;Data Inserimento;Note;Operatore\n';
+        
+        evidenze.forEach(e => {
+            csv += `"${e.id}";"${e.assistito}";"${e.cf}";"${e.tipoEvidenza}";"${e.descrizione}";"${Utils.formatDate(e.dataScadenza)}";"${e.priorita}";"${e.stato}";"${Utils.formatDate(e.dataInserimento)}";"${e.note || ''}";"${e.operatore}"\n`;
+        });
+
+        // Download
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `evidenze_${new Date().toISOString().split('T')[0]}.csv`;
+        link.click();
+
+        Utils.showToast(`Esportate ${evidenze.length} evidenze`, 'success');
     }
 };
 
