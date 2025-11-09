@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "codice": "PERM",
+    "descrizione": "Permessi",
+    "colore": "danger",
+    "icona": "bi-file-earmark-text"
+  },
+  {
+    "id": 2,
+    "codice": "TRASF",
+    "descrizione": "Trasferimenti",
+    "colore": "warning",
+    "icona": "bi-arrow-left-right"
+  },
+  {
+    "id": 3,
+    "codice": "STATO_DOM",
+    "descrizione": "Stati Domanda",
+    "colore": "info",
+    "icona": "bi-clipboard-check"
+  },
+  {
+    "id": 4,
+    "codice": "STATO_PREST",
+    "descrizione": "Stati Prestazione",
+    "colore": "success",
+    "icona": "bi-coin"
+  },
+  {
+    "id": 5,
+    "codice": "RECUP",
+    "descrizione": "Recuperi",
+    "colore": "danger",
+    "icona": "bi-arrow-counterclockwise"
+  },
+  {
+    "id": 6,
+    "codice": "RICORSI",
+    "descrizione": "Ricorsi",
+    "colore": "warning",
+    "icona": "bi-shield-exclamation"
+  },
+  {
+    "id": 7,
+    "codice": "VERBALI",
+    "descrizione": "Verbali",
+    "colore": "info",
+    "icona": "bi-file-medical"
+  },
+  {
+    "id": 8,
+    "codice": "ASDAA",
+    "descrizione": "ASDAA",
+    "colore": "primary",
+    "icona": "bi-hospital"
+  },
+  {
+    "id": 9,
+    "codice": "MODIF",
+    "descrizione": "Modifiche",
+    "colore": "secondary",
+    "icona": "bi-pencil-square"
+  }
+]

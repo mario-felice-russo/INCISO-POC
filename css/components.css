@@ -1,0 +1,447 @@
+/* ========================================
+   ASSE InCiSo - Components.css
+   Componenti riutilizzabili
+   ======================================== */
+
+/* ========== CARD EVIDENZA ========== */
+.evidenza-card {
+    border-left: 4px solid;
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+}
+
+.evidenza-card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Colori bordo per tipologia */
+.evidenza-card.border-danger {
+    border-left-color: #dc3545 !important;
+}
+
+.evidenza-card.border-warning {
+    border-left-color: #ffc107 !important;
+}
+
+.evidenza-card.border-success {
+    border-left-color: #198754 !important;
+}
+
+.evidenza-card.border-info {
+    border-left-color: #0dcaf0 !important;
+}
+
+.evidenza-card .card-header {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    background-color: #f8f9fa;
+}
+
+.evidenza-card .card-body {
+    padding: 1rem;
+}
+
+.evidenza-card .card-body p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.evidenza-card .card-body p:last-child {
+    margin-bottom: 0;
+}
+
+.evidenza-card .evidenza-scadenza {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Badge per Evidenza */
+.evidenza-categoria {
+    font-size: 0.75rem;
+    padding: 0.25em 0.5em;
+}
+
+/* ========== CARD NOTA ========== */
+.nota-card {
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+}
+
+.nota-card:hover {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.nota-card .card-header {
+    padding: 0.5rem 0.75rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.nota-card .card-body {
+    padding: 0.75rem;
+}
+
+.nota-card.nota-principale {
+    border: 2px solid #ffc107;
+    box-shadow: 0 0 0.5rem rgba(255, 193, 7, 0.3);
+}
+
+.nota-categoria-badge {
+    font-size: 0.85rem;
+    padding: 0.3em 0.6em;
+}
+
+.nota-categoria-badge.cat-residenza {
+    background-color: #0dcaf0;
+}
+
+.nota-categoria-badge.cat-pagamenti {
+    background-color: #198754;
+}
+
+.nota-categoria-badge.cat-degenze {
+    background-color: #dc3545;
+}
+
+.nota-categoria-badge.cat-amministrazione {
+    background-color: #6f42c1;
+}
+
+.nota-categoria-badge.cat-generiche {
+    background-color: #6c757d;
+}
+
+.nota-testo {
+    font-size: 0.9rem;
+    color: #495057;
+    line-height: 1.5;
+}
+
+.nota-footer {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+/* ========== PRESTAZIONE CARD ========== */
+.prestazione-card {
+    border-top: 3px solid;
+}
+
+.prestazione-card.prestazione-concessa {
+    border-top-color: #198754;
+}
+
+.prestazione-card.prestazione-sospesa {
+    border-top-color: #ffc107;
+}
+
+.prestazione-card.prestazione-revocata,
+.prestazione-card.prestazione-negata {
+    border-top-color: #dc3545;
+}
+
+.importo-prestazione {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #198754;
+}
+
+.importo-prestazione.sospeso {
+    color: #ffc107;
+}
+
+.importo-prestazione.revocato {
+    color: #dc3545;
+}
+
+/* ========== GRIGLIA MENSILITA ========== */
+.griglia-mensilita {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.mese-cell {
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.mese-cell:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.mese-cell .mese-nome {
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.mese-cell .mese-importo {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.mese-cell.pagato {
+    background-color: #d1e7dd;
+    border-color: #198754;
+}
+
+.mese-cell.pagato .mese-importo {
+    color: #198754;
+}
+
+.mese-cell.sospeso {
+    background-color: #fff3cd;
+    border-color: #ffc107;
+}
+
+.mese-cell.sospeso .mese-importo {
+    color: #997404;
+}
+
+.mese-cell.negato,
+.mese-cell.revocato {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+}
+
+.mese-cell.negato .mese-importo,
+.mese-cell.revocato .mese-importo {
+    color: #dc3545;
+}
+
+.mese-cell.non-dovuto {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    opacity: 0.5;
+}
+
+/* ========== VERBALE TIMELINE ========== */
+.verbale-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.verbale-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #dee2e6;
+}
+
+.verbale-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+}
+
+.verbale-item::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: 0.5rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #0d6efd;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #0d6efd;
+}
+
+.verbale-item.verbale-attivo::before {
+    background-color: #198754;
+    box-shadow: 0 0 0 2px #198754;
+}
+
+.verbale-item.verbale-superato::before {
+    background-color: #6c757d;
+    box-shadow: 0 0 0 2px #6c757d;
+}
+
+.verbale-card {
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.verbale-card.verbale-superato {
+    opacity: 0.6;
+}
+
+/* ========== TABELLA COMUNICAZIONI ========== */
+.comunicazione-row {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.comunicazione-row:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.stato-comunicazione {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.stato-comunicazione.generata {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.stato-comunicazione.caricata {
+    background-color: #cfe2ff;
+    color: #084298;
+}
+
+.stato-comunicazione.protocollata {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.stato-comunicazione.errore {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* ========== HEADER DETTAGLIO ASSISTITO ========== */
+.assistito-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1.5rem;
+}
+
+.assistito-header h2 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.assistito-header .info-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.assistito-header .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.assistito-header .badge {
+    font-size: 0.9rem;
+    padding: 0.5em 0.8em;
+}
+
+/* ========== LOG TABLE ========== */
+.log-table {
+    font-size: 0.85rem;
+}
+
+.log-table tbody tr {
+    vertical-align: middle;
+}
+
+.log-operazione {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+}
+
+/* ========== STATISTICHE CARD ========== */
+.stat-card {
+    border-left: 4px solid;
+    transition: all 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-card .stat-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+}
+
+.stat-card.stat-success {
+    border-left-color: #198754;
+}
+
+.stat-card.stat-success .stat-value {
+    color: #198754;
+}
+
+.stat-card.stat-danger {
+    border-left-color: #dc3545;
+}
+
+.stat-card.stat-danger .stat-value {
+    color: #dc3545;
+}
+
+.stat-card.stat-warning {
+    border-left-color: #ffc107;
+}
+
+.stat-card.stat-warning .stat-value {
+    color: #997404;
+}
+
+.stat-card.stat-info {
+    border-left-color: #0dcaf0;
+}
+
+.stat-card.stat-info .stat-value {
+    color: #087990;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 767.98px) {
+    .griglia-mensilita {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .assistito-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .assistito-header .info-row {
+        gap: 1rem;
+    }
+    
+    .verbale-timeline {
+        padding-left: 1.5rem;
+    }
+}

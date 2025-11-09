@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fascicolo Personale - ASSE InCiSo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/components.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-hospital"></i> ASSE InCiSo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ricerca.html">
+                            <i class="bi bi-search"></i> Ricerca Assistiti
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="documenti.html">
+                            <i class="bi bi-file-earmark-text"></i> Documenti
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="editor.html">
+                            <i class="bi bi-gear"></i> Configurazione
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ricerca.html">
+                            <i class="bi bi-arrow-left"></i> Torna alla Ricerca
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> Mario Rossi
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Impostazioni</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Esci</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <!-- Header Assistito -->
+        <div class="assistito-header" id="assistitoHeader">
+            <div class="d-flex justify-content-center align-items-center" style="min-height: 150px;">
+                <div class="spinner-border text-white" role="status">
+                    <span class="visually-hidden">Caricamento...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <ul class="nav nav-tabs mb-4" id="fascicoloTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="riepilogo-tab" data-bs-toggle="tab" 
+                        data-bs-target="#riepilogo" type="button" role="tab">
+                    <i class="bi bi-card-list"></i> Riepilogo
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="prestazioni-tab" data-bs-toggle="tab" 
+                        data-bs-target="#prestazioni" type="button" role="tab">
+                    <i class="bi bi-coin"></i> Prestazioni
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="verbali-tab" data-bs-toggle="tab" 
+                        data-bs-target="#verbali" type="button" role="tab">
+                    <i class="bi bi-file-medical"></i> Verbali
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="comunicazioni-tab" data-bs-toggle="tab" 
+                        data-bs-target="#comunicazioni" type="button" role="tab">
+                    <i class="bi bi-envelope"></i> Comunicazioni
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="evidenze-tab" data-bs-toggle="tab" 
+                        data-bs-target="#evidenze" type="button" role="tab">
+                    <i class="bi bi-exclamation-triangle"></i> Evidenze
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="note-tab" data-bs-toggle="tab" 
+                        data-bs-target="#note" type="button" role="tab">
+                    <i class="bi bi-sticky"></i> Note
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="log-tab" data-bs-toggle="tab" 
+                        data-bs-target="#log" type="button" role="tab">
+                    <i class="bi bi-clock-history"></i> Log Attività
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="fascicoloTabContent">
+            <!-- TAB RIEPILOGO -->
+            <div class="tab-pane fade show active" id="riepilogo" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="bi bi-person-vcard"></i> Dati Anagrafici</h5>
+                            </div>
+                            <div class="card-body" id="datiAnagrafici">
+                                <div class="text-center py-3">
+                                    <div class="spinner-border" role="status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0"><i class="bi bi-bar-chart"></i> Statistiche</h5>
+                            </div>
+                            <div class="card-body" id="statistiche">
+                                <div class="text-center py-3">
+                                    <div class="spinner-border" role="status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0"><i class="bi bi-exclamation-circle"></i> Evidenze Recenti</h5>
+                            </div>
+                            <div class="card-body" id="evidenzeRecenti">
+                                <div class="text-center py-3">
+                                    <div class="spinner-border" role="status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB PRESTAZIONI -->
+            <div class="tab-pane fade" id="prestazioni" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-coin"></i> Prestazioni Assistenziali</h5>
+                    </div>
+                    <div class="card-body" id="prestazioniContent">
+                        <div class="text-center py-5">
+                            <i class="bi bi-inbox display-4 text-muted"></i>
+                            <p class="mt-3 text-muted">Seleziona questo tab per visualizzare le prestazioni</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB VERBALI -->
+            <div class="tab-pane fade" id="verbali" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-file-medical"></i> Verbali Invalidità / Handicap</h5>
+                    </div>
+                    <div class="card-body" id="verbaliContent">
+                        <div class="text-center py-5">
+                            <i class="bi bi-inbox display-4 text-muted"></i>
+                            <p class="mt-3 text-muted">Seleziona questo tab per visualizzare i verbali</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB COMUNICAZIONI -->
+            <div class="tab-pane fade" id="comunicazioni" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-envelope"></i> Comunicazioni</h5>
+                        <button class="btn btn-sm btn-light" id="btnNuovaComunicazione">
+                            <i class="bi bi-plus-circle"></i> Nuova Comunicazione
+                        </button>
+                    </div>
+                    <div class="card-body" id="comunicazioniContent">
+                        <div class="text-center py-5">
+                            <i class="bi bi-inbox display-4 text-muted"></i>
+                            <p class="mt-3 text-muted">Seleziona questo tab per visualizzare le comunicazioni</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB EVIDENZE -->
+            <div class="tab-pane fade" id="evidenze" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-exclamation-triangle"></i> Evidenze / Promemoria</h5>
+                        <button class="btn btn-sm btn-dark" id="btnNuovaEvidenza">
+                            <i class="bi bi-plus-circle"></i> Nuova Evidenza
+                        </button>
+                    </div>
+                    <div class="card-body" id="evidenzeContent">
+                        <div class="text-center py-5">
+                            <i class="bi bi-inbox display-4 text-muted"></i>
+                            <p class="mt-3 text-muted">Seleziona questo tab per visualizzare le evidenze</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB NOTE -->
+            <div class="tab-pane fade" id="note" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-sticky"></i> Note Operative</h5>
+                        <button class="btn btn-sm btn-light" id="btnNuovaNota">
+                            <i class="bi bi-plus-circle"></i> Nuova Nota
+                        </button>
+                    </div>
+                    <div class="card-body" id="noteContent">
+                        <div class="text-center py-5">
+                            <i class="bi bi-inbox display-4 text-muted"></i>
+                            <p class="mt-3 text-muted">Seleziona questo tab per visualizzare le note</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB LOG -->
+            <div class="tab-pane fade" id="log" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0"><i class="bi bi-clock-history"></i> Log Attività</h5>
+                    </div>
+                    <div class="card-body" id="logContent">
+                        <div class="text-center py-5">
+                            <i class="bi bi-inbox display-4 text-muted"></i>
+                            <p class="mt-3 text-muted">Seleziona questo tab per visualizzare il log</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/utils.js"></script>
+    <script src="js/dettaglio.js"></script>
+</body>
+</html>

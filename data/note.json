@@ -1,0 +1,134 @@
+[
+  {
+    "id": 2001,
+    "cf": "RSSMRA80A01H501U",
+    "assistito": "Rossi Mario",
+    "categoria": "Residenza",
+    "titolo": "Cambio indirizzo comunicato",
+    "testo": "L'assistito ha comunicato telefonicamente il cambio di indirizzo da Via Roma 15 a Via Mazzini 33. Da verificare con visura camerale.",
+    "dataCreazione": "2024-02-25T10:30:00",
+    "operatore": "Dott. Bianchi",
+    "principale": false
+  },
+  {
+    "id": 2002,
+    "cf": "RSSMRA80A01H501U",
+    "assistito": "Rossi Mario",
+    "categoria": "Pagamenti",
+    "titolo": "URGENTE - IBAN errato",
+    "testo": "Pagamento febbraio 2024 respinto. IBAN fornito errato. Contattare assistito per nuovo IBAN corretto. Bloccare ulteriori bonifici fino ad aggiornamento.",
+    "dataCreazione": "2024-02-28T14:15:00",
+    "operatore": "Dott. Bianchi",
+    "principale": true
+  },
+  {
+    "id": 2003,
+    "cf": "VRDGPP75M15F205X",
+    "assistito": "Verdi Giuseppe",
+    "categoria": "Degenze",
+    "titolo": "Ricovero ospedaliero",
+    "testo": "Ricoverato presso Ospedale di Merano dal 20/02/2024. Reparto Cardiologia. Previsione dimissioni 05/03/2024. Sospendere temporaneamente assistenza domiciliare.",
+    "dataCreazione": "2024-02-20T16:45:00",
+    "operatore": "Dott.ssa Ferrari",
+    "principale": false
+  },
+  {
+    "id": 2004,
+    "cf": "BNCLRA85D45H501Z",
+    "assistito": "Bianchi Laura",
+    "categoria": "Amministrazione Sostegno",
+    "titolo": "Richiesta nomina ADS",
+    "testo": "Avviata pratica per nomina Amministratore di Sostegno. Documentazione depositata presso Tribunale di Bolzano in data 15/02/2024. Prot. 234/2024.",
+    "dataCreazione": "2024-02-15T11:20:00",
+    "operatore": "Dott. Rossi",
+    "principale": true
+  },
+  {
+    "id": 2005,
+    "cf": "VRDGPP75M15F205X",
+    "assistito": "Verdi Giuseppe",
+    "categoria": "Pagamenti",
+    "titolo": "Verifica rata piano rientro",
+    "testo": "Controllare se rata febbraio piano rientro indebito (€250) è stata pagata. Ultima rata verificata: gennaio 2024 OK.",
+    "dataCreazione": "2024-03-01T09:00:00",
+    "operatore": "Dott.ssa Ferrari",
+    "principale": false
+  },
+  {
+    "id": 2006,
+    "cf": "MRNGNN60L12A952V",
+    "assistito": "Marani Giovanni",
+    "categoria": "Generiche",
+    "titolo": "Contatto familiare",
+    "testo": "Figlia (Elena Marani, tel. 348-7654321) ha chiesto aggiornamenti sullo stato del ricorso. Fornite informazioni generali. Prossima udienza 18/04/2024.",
+    "dataCreazione": "2024-02-22T15:30:00",
+    "operatore": "Dott.ssa Ferrari",
+    "principale": false
+  },
+  {
+    "id": 2007,
+    "cf": "FRRPTR92H50H501L",
+    "assistito": "Ferrari Petra",
+    "categoria": "Residenza",
+    "titolo": "Residenza confermata",
+    "testo": "Effettuato controllo anagrafico. Residenza attuale confermata in Via Claudia Augusta 124, Bolzano. Nessuna variazione.",
+    "dataCreazione": "2024-02-18T10:15:00",
+    "operatore": "Dott. Bianchi",
+    "principale": false
+  },
+  {
+    "id": 2008,
+    "cf": "BNCLRA85D45H501Z",
+    "assistito": "Bianchi Laura",
+    "categoria": "Generiche",
+    "titolo": "Documentazione integrazione presentata",
+    "testo": "Assistita ha presentato documentazione richiesta per integrazione domanda. Documenti: certificato ISEE, autocertificazione stato di famiglia, estratto conto. Completo.",
+    "dataCreazione": "2024-02-28T12:00:00",
+    "operatore": "Dott. Rossi",
+    "principale": false
+  },
+  {
+    "id": 2009,
+    "cf": "RSSMRA80A01H501U",
+    "assistito": "Rossi Mario",
+    "categoria": "Generiche",
+    "titolo": "Appuntamento fissato",
+    "testo": "Fissato appuntamento per colloquio il 10/03/2024 ore 10:00 presso ufficio. Motivo: verifica documentazione permesso soggiorno.",
+    "dataCreazione": "2024-02-26T14:30:00",
+    "operatore": "Dott. Bianchi",
+    "principale": false
+  },
+  {
+    "id": 2010,
+    "cf": "FRRPTR92H50H501L",
+    "assistito": "Ferrari Petra",
+    "categoria": "Degenze",
+    "titolo": "Ricovero programmato",
+    "testo": "Ricovero programmato presso Centro Riabilitazione dal 15/03/2024 al 30/03/2024. Già comunicato al servizio di assistenza domiciliare.",
+    "dataCreazione": "2024-02-20T11:45:00",
+    "operatore": "Dott. Bianchi",
+    "principale": false
+  },
+  {
+    "id": 2011,
+    "cf": "MRNGNN60L12A952V",
+    "assistito": "Marani Giovanni",
+    "categoria": "Amministrazione Sostegno",
+    "titolo": "ADS nominato",
+    "testo": "Amministratore di Sostegno nominato: Avv. Marco Gentile. Decreto Tribunale n. 125/2023 del 12/11/2023. Contatti: 0471-567890, m.gentile@avvocati.bz.it",
+    "dataCreazione": "2023-11-15T09:00:00",
+    "operatore": "Dott.ssa Ferrari",
+    "principale": true
+  },
+  {
+    "id": 2012,
+    "cf": "VRDGPP75M15F205X",
+    "assistito": "Verdi Giuseppe",
+    "categoria": "Generiche",
+    "titolo": "Email di cortesia inviata",
+    "testo": "Inviata email promemoria per scadenza verbale invalidità (30/06/2024). Suggerito di avviare iter revisione entro aprile 2024.",
+    "dataCreazione": "2024-02-27T16:00:00",
+    "operatore": "Dott.ssa Ferrari",
+    "principale": false
+  }
+]

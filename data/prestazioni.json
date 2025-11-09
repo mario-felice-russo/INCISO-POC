@@ -1,0 +1,108 @@
+[
+  {
+    "id": 3001,
+    "cf": "RSSMRA80A01H501U",
+    "assistito": "Rossi Mario",
+    "tipoPrestazione": "Assegno Sociale",
+    "codice": "AS-2020-0234",
+    "dataDecorrenza": "2020-04-01",
+    "dataScadenza": "2025-03-31",
+    "importoMensile": 534.41,
+    "stato": "Concessa",
+    "note": "Rinnovo annuale automatico previo controllo requisiti",
+    "mensilita": [
+      {"mese": "2024-01", "importo": 534.41, "stato": "pagato"},
+      {"mese": "2024-02", "importo": 534.41, "stato": "pagato"},
+      {"mese": "2024-03", "importo": 534.41, "stato": "pagato"},
+      {"mese": "2024-04", "importo": 534.41, "stato": "sospeso"},
+      {"mese": "2024-05", "importo": 534.41, "stato": "non-dovuto"}
+    ]
+  },
+  {
+    "id": 3002,
+    "cf": "VRDGPP75M15F205X",
+    "assistito": "Verdi Giuseppe",
+    "tipoPrestazione": "Contributo Assistenza Domiciliare",
+    "codice": "CAD-2018-1156",
+    "dataDecorrenza": "2018-07-01",
+    "dataScadenza": null,
+    "importoMensile": 850.00,
+    "stato": "Concessa",
+    "note": "Contributo per assistenza domiciliare - Ore settimanali: 25",
+    "mensilita": [
+      {"mese": "2024-01", "importo": 850.00, "stato": "pagato"},
+      {"mese": "2024-02", "importo": 850.00, "stato": "pagato"},
+      {"mese": "2024-03", "importo": 850.00, "stato": "pagato"},
+      {"mese": "2024-04", "importo": 850.00, "stato": "sospeso"}
+    ]
+  },
+  {
+    "id": 3003,
+    "cf": "BNCLRA85D45H501Z",
+    "assistito": "Bianchi Laura",
+    "tipoPrestazione": "Indennità di Accompagnamento",
+    "codice": "IA-2019-0782",
+    "dataDecorrenza": "2019-02-01",
+    "dataScadenza": "2024-12-31",
+    "importoMensile": 527.16,
+    "stato": "Concessa",
+    "note": "Verbale invalidità 100% con indennità accompagnamento",
+    "mensilita": [
+      {"mese": "2024-01", "importo": 527.16, "stato": "pagato"},
+      {"mese": "2024-02", "importo": 527.16, "stato": "pagato"},
+      {"mese": "2024-03", "importo": 527.16, "stato": "pagato"}
+    ]
+  },
+  {
+    "id": 3004,
+    "cf": "MRNGNN60L12A952V",
+    "assistito": "Marani Giovanni",
+    "tipoPrestazione": "Contributo Affitto",
+    "codice": "CA-2016-2341",
+    "dataDecorrenza": "2016-01-01",
+    "dataScadenza": "2024-01-31",
+    "importoMensile": 350.00,
+    "stato": "Revocata",
+    "note": "Revocata per mancanza requisiti reddituali - Ricorso pendente",
+    "mensilita": [
+      {"mese": "2023-11", "importo": 350.00, "stato": "pagato"},
+      {"mese": "2023-12", "importo": 350.00, "stato": "pagato"},
+      {"mese": "2024-01", "importo": 350.00, "stato": "revocato"},
+      {"mese": "2024-02", "importo": 0, "stato": "negato"}
+    ]
+  },
+  {
+    "id": 3005,
+    "cf": "FRRPTR92H50H501L",
+    "assistito": "Ferrari Petra",
+    "tipoPrestazione": "Assegno di Cura",
+    "codice": "AC-2021-1567",
+    "dataDecorrenza": "2021-10-01",
+    "dataScadenza": "2024-09-30",
+    "importoMensile": 720.00,
+    "stato": "Concessa",
+    "note": "Assegno per assistenza a persona non autosufficiente",
+    "mensilita": [
+      {"mese": "2024-01", "importo": 720.00, "stato": "pagato"},
+      {"mese": "2024-02", "importo": 720.00, "stato": "pagato"},
+      {"mese": "2024-03", "importo": 720.00, "stato": "pagato"}
+    ]
+  },
+  {
+    "id": 3006,
+    "cf": "RSSMRA80A01H501U",
+    "assistito": "Rossi Mario",
+    "tipoPrestazione": "Contributo Trasporti",
+    "codice": "CT-2022-0445",
+    "dataDecorrenza": "2022-06-01",
+    "dataScadenza": null,
+    "importoMensile": 150.00,
+    "stato": "Sospesa",
+    "note": "Sospesa per verifica requisiti - In attesa documentazione",
+    "mensilita": [
+      {"mese": "2024-01", "importo": 150.00, "stato": "pagato"},
+      {"mese": "2024-02", "importo": 150.00, "stato": "sospeso"},
+      {"mese": "2024-03", "importo": 150.00, "stato": "sospeso"}
+    ]
+  }
+]

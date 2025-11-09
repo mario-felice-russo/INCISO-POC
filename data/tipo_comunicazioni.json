@@ -1,0 +1,79 @@
+[
+  {
+    "id": "00001",
+    "codice": "RICH_DOC",
+    "descrizione": "Richiesta documentazione",
+    "template": "template_richiesta_doc.docx",
+    "canale": "PEC"
+  },
+  {
+    "id": "00002",
+    "codice": "CONVOC",
+    "descrizione": "Convocazione",
+    "template": "template_convocazione.docx",
+    "canale": "PEC"
+  },
+  {
+    "id": "00003",
+    "codice": "CONCESS",
+    "descrizione": "Concessione prestazione",
+    "template": "template_concessione.docx",
+    "canale": "PEC"
+  },
+  {
+    "id": "00004",
+    "codice": "DINIEGO",
+    "descrizione": "Diniego prestazione",
+    "template": "template_diniego.docx",
+    "canale": "PEC"
+  },
+  {
+    "id": "00005",
+    "codice": "SOSPENS",
+    "descrizione": "Sospensione prestazione",
+    "template": "template_sospensione.docx",
+    "canale": "PEC"
+  },
+  {
+    "id": "00006",
+    "codice": "REVOCA",
+    "descrizione": "Revoca prestazione",
+    "template": "template_revoca.docx",
+    "canale": "PEC"
+  },
+  {
+    "id": "00007",
+    "codice": "INFO_GEN",
+    "descrizione": "Informazioni generali",
+    "template": "template_info.docx",
+    "canale": "Email"
+  },
+  {
+    "id": "00008",
+    "codice": "RICH_INTEG",
+    "descrizione": "Richiesta integrazione",
+    "template": "template_integrazione.docx",
+    "canale": "PEC"
+  },
+  {
+    "id": "00009",
+    "codice": "REMIND",
+    "descrizione": "Promemoria scadenza",
+    "template": "template_reminder.docx",
+    "canale": "Email"
+  },
+  {
+    "id": "00010",
+    "codice": "CONFERMA",
+    "descrizione": "Conferma ricezione",
+    "template": "template_conferma.docx",
+    "canale": "Email"
+  },
+  {
+    "id": "00011",
+    "codice": "RINNOVO",
+    "descrizione": "Richiesta rinnovo",
+    "template": "template_rinnovo.docx",
+    "canale": "PEC"
+  }
+]
