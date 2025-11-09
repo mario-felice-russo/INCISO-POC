@@ -93,7 +93,7 @@ const DettaglioApp = {
             <div class="info-row">
                 <div class="info-item">
                     <i class="bi bi-credit-card"></i>
-                    <strong>CF:</strong> <code>${this.assistito.cf}</code>
+                    <strong>CF:</strong> <span class="cf-highlight">${this.assistito.cf}</span>
                 </div>
                 <div class="info-item">
                     <i class="bi bi-calendar3"></i>

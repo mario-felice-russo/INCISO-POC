@@ -356,6 +356,13 @@
     padding: 0.5em 0.8em;
 }
 
+.assistito-header .cf-highlight {
+    color: white;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 0.05em;
+}
+
 /* ========== LOG TABLE ========== */
 .log-table {
     font-size: 0.85rem;

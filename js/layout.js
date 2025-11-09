@@ -4,10 +4,11 @@
  */
 const LayoutManager = {
     /**
-     * Inizializza il layout caricando header e footer
+     * Inizializza il layout caricando header, change-notes e footer
      */
     async init() {
         await this.loadHeader();
+        await this.loadChangeNotes();
         await this.loadFooter();
         this.setActiveNavItem();
     },
@@ -28,6 +29,25 @@ const LayoutManager = {
             }
         } catch (error) {
             console.error('Errore caricamento header:', error);
+        }
+    },
+
+    /**
+     * Carica il componente change-notes da file esterno
+     */
+    async loadChangeNotes() {
+        try {
+            const response = await fetch('includes/change-notes.html');
+            if (!response.ok) throw new Error('Errore caricamento change-notes');
+            
+            const html = await response.text();
+            const changeNotesContainer = document.getElementById('change-notes-container');
+            
+            if (changeNotesContainer) {
+                changeNotesContainer.innerHTML = html;
+            }
+        } catch (error) {
+            console.error('Errore caricamento change-notes:', error);
         }
     },
 
