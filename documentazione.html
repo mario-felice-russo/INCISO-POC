@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentazione POC - ASSE InCiSo</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -17,30 +20,35 @@
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/theme-professional.css" rel="stylesheet">
-    
+
     <style>
         .toc {
             position: sticky;
             top: 20px;
         }
+
         .feature-card {
             transition: transform 0.2s;
         }
+
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
         }
+
         .tech-badge {
             font-size: 0.85rem;
             padding: 0.35em 0.65em;
             margin: 0.2rem;
         }
+
         pre code {
             background-color: #f8f9fa;
             padding: 1rem;
             border-radius: 0.375rem;
             display: block;
         }
+
         .section-header {
             border-bottom: 3px solid #0d6efd;
             padding-bottom: 0.5rem;
@@ -48,16 +56,21 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <div id="header-container"></div>
 
     <!-- Hero Section -->
-    <div class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-bottom: 3px solid #dee2e6;">
+    <div class="py-5"
+        style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-bottom: 3px solid #dee2e6;">
         <div class="container">
             <h1 class="display-4" style="color: #2c3e50;"><i class="bi bi-book"></i> Documentazione POC</h1>
-            <p class="lead" style="color: #495057;">ASSE InCiSo - Sistema di gestione assistiti e prestazioni assistenziali</p>
-            <p class="mb-0"><span class="badge" style="background-color: #6c757d; color: white; font-size: 1rem; padding: 0.5rem 1rem;">Versione 1.0.0 - Proof of Concept</span></p>
+            <p class="lead" style="color: #495057;">ASSE InCiSo - Sistema di gestione assistiti e prestazioni
+                assistenziali</p>
+            <p class="mb-0"><span class="badge"
+                    style="background-color: #6c757d; color: white; font-size: 1rem; padding: 0.5rem 1rem;">Versione
+                    1.0.0 - Proof of Concept</span></p>
         </div>
     </div>
 
@@ -87,7 +100,7 @@
                 <section id="overview" class="mb-5">
                     <h2 class="section-header">📋 Panoramica Generale</h2>
                     <div class="alert alert-info">
-                        <strong>Obiettivo:</strong> Proof of Concept per il sistema ASSE InCiSo di gestione 
+                        <strong>Obiettivo:</strong> Proof of Concept per il sistema ASSE InCiSo di gestione
                         assistiti, evidenze/promemoria, prestazioni assistenziali e comunicazioni protocollate.
                     </div>
 
@@ -138,9 +151,23 @@
                     </div>
                     <div class="alert alert-light border mt-3">
                         <small>
-                            <strong>Totale file:</strong> 6 HTML + 2 Componenti + 8 JS + 2 CSS + 8 JSON = <strong>26 file</strong><br>
-                            <strong>Novità:</strong> Sistema header/footer dinamico con 3 nuovi file (header.html, footer.html, layout.js)
+                            <strong>Totale file:</strong> 6 HTML + 2 Componenti + 8 JS + 2 CSS + 8 JSON = <strong>26
+                                file</strong><br>
+                            <strong>Novità:</strong> Sistema header/footer dinamico con 3 nuovi file (header.html,
+                            footer.html, layout.js)
                         </small>
+                    </div>
+                </section>
+
+                <section id="dashboard" class="mb-5">
+                    <h2 class="section-header">Logo</h2>
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="assets/images/img-logo.png" alt="Logo"/>
+                        </div>
+                        <div class="col-3 ml-2">
+                            <img src="assets/images/img-logo-negativo.png" alt="Logo in negativo"/>
+                        </div>
                     </div>
                 </section>
 
@@ -181,7 +208,7 @@
                                 </li>
                                 <li><strong>Esportazione CSV</strong> delle evidenze filtrate</li>
                             </ul>
-                            
+
                             <h6 class="mt-3">File coinvolti:</h6>
                             <code>index.html, js/app.js, js/evidenze.js, js/utils.js, data/evidenze.json, data/tipo_evidenze.json</code>
                         </div>
@@ -194,7 +221,8 @@
                         <div class="card-body">
                             <h6>Funzionalità:</h6>
                             <ul>
-                                <li><strong>Filtro per categoria:</strong> Residenza, Pagamenti, Degenze, Amministrazione Sostegno, Generiche</li>
+                                <li><strong>Filtro per categoria:</strong> Residenza, Pagamenti, Degenze,
+                                    Amministrazione Sostegno, Generiche</li>
                                 <li><strong>Ricerca testuale</strong> su titolo, testo, assistito, operatore</li>
                                 <li><strong>Card nota</strong> con:
                                     <ul>
@@ -208,7 +236,7 @@
                                 <li><strong>Modal dettagli nota</strong> per visualizzazione completa</li>
                                 <li><strong>Ordinamento</strong> per data creazione (più recenti prime)</li>
                             </ul>
-                            
+
                             <h6 class="mt-3">File coinvolti:</h6>
                             <code>index.html, js/app.js, data/note.json</code>
                         </div>
@@ -255,7 +283,7 @@
     // Ricerca parziale con normalizzazione stringhe
     // Case-insensitive e senza accenti
 });</code></pre>
-                            
+
                             <h6 class="mt-3">File coinvolti:</h6>
                             <code>ricerca.html, js/ricerca.js, data/assistiti.json</code>
                         </div>
@@ -295,7 +323,8 @@
                         <!-- Tab 1: Riepilogo -->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tab1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tab1">
                                     Tab 1: Riepilogo
                                 </button>
                             </h2>
@@ -303,7 +332,8 @@
                                 <div class="accordion-body">
                                     <strong>Contenuto:</strong>
                                     <ul>
-                                        <li><strong>Dati Anagrafici (card):</strong> tutti i campi anagrafica completi</li>
+                                        <li><strong>Dati Anagrafici (card):</strong> tutti i campi anagrafica completi
+                                        </li>
                                         <li><strong>Statistiche (4 card):</strong>
                                             <ul>
                                                 <li>Prestazioni Attive (verde)</li>
@@ -322,7 +352,8 @@
                         <!-- Tab 2: Prestazioni -->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tab2">
                                     Tab 2: Prestazioni
                                 </button>
                             </h2>
@@ -331,7 +362,8 @@
                                     <strong>Contenuto:</strong>
                                     <ul>
                                         <li><strong>Card prestazione</strong> con bordo colorato per stato</li>
-                                        <li><strong>Dati visualizzati:</strong> tipo, codice, decorrenza, scadenza, importo mensile</li>
+                                        <li><strong>Dati visualizzati:</strong> tipo, codice, decorrenza, scadenza,
+                                            importo mensile</li>
                                         <li><strong>Griglia mensilità:</strong> visualizzazione mesi con stati
                                             <ul>
                                                 <li>Pagato (verde)</li>
@@ -342,7 +374,8 @@
                                         </li>
                                         <li><strong>Responsive:</strong> griglia adattiva mobile (3 colonne)</li>
                                     </ul>
-                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabPrestazioni(), data/prestazioni.json</code>
+                                    <strong>File:</strong>
+                                    <code>js/dettaglio.js → loadTabPrestazioni(), data/prestazioni.json</code>
                                 </div>
                             </div>
                         </div>
@@ -350,7 +383,8 @@
                         <!-- Tab 3: Verbali -->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tab3">
                                     Tab 3: Verbali
                                 </button>
                             </h2>
@@ -366,11 +400,13 @@
                                             </ul>
                                         </li>
                                         <li><strong>Tipi verbale:</strong> Invalidità Civile, Handicap L.104</li>
-                                        <li><strong>Dati:</strong> numero, data emissione, scadenza, percentuale, commissione, esito</li>
+                                        <li><strong>Dati:</strong> numero, data emissione, scadenza, percentuale,
+                                            commissione, esito</li>
                                         <li><strong>Ordinamento:</strong> più recenti primi</li>
                                         <li><strong>Opacità ridotta</strong> per verbali superati</li>
                                     </ul>
-                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabVerbali(), data/verbali.json</code>
+                                    <strong>File:</strong>
+                                    <code>js/dettaglio.js → loadTabVerbali(), data/verbali.json</code>
                                 </div>
                             </div>
                         </div>
@@ -378,7 +414,8 @@
                         <!-- Tab 4: Comunicazioni -->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tab4">
                                     Tab 4: Comunicazioni
                                 </button>
                             </h2>
@@ -386,7 +423,8 @@
                                 <div class="accordion-body">
                                     <strong>Contenuto:</strong>
                                     <ul>
-                                        <li><strong>Tabella 8 colonne:</strong> Tipo, Oggetto, Data Gen., Data Invio, Protocollo, Canale, Stato, Azioni</li>
+                                        <li><strong>Tabella 8 colonne:</strong> Tipo, Oggetto, Data Gen., Data Invio,
+                                            Protocollo, Canale, Stato, Azioni</li>
                                         <li><strong>Badge stati:</strong>
                                             <ul>
                                                 <li>Generata (grigio)</li>
@@ -398,7 +436,8 @@
                                         <li><strong>Pulsante visualizza</strong> con dettagli completi</li>
                                         <li><strong>Ordinamento:</strong> data generazione DESC</li>
                                     </ul>
-                                    <strong>File:</strong> <code>js/dettaglio.js → loadTabComunicazioni(), data/comunicazioni.json</code>
+                                    <strong>File:</strong>
+                                    <code>js/dettaglio.js → loadTabComunicazioni(), data/comunicazioni.json</code>
                                 </div>
                             </div>
                         </div>
@@ -406,7 +445,8 @@
                         <!-- Tab 5: Evidenze -->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tab5">
                                     Tab 5: Evidenze
                                 </button>
                             </h2>
@@ -433,7 +473,8 @@
                         <!-- Tab 6: Note -->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tab6">
                                     Tab 6: Note
                                 </button>
                             </h2>
@@ -455,7 +496,8 @@
                         <!-- Tab 7: Log -->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tab7">
                                     Tab 7: Log Attività
                                 </button>
                             </h2>
@@ -463,8 +505,10 @@
                                 <div class="accordion-body">
                                     <strong>Contenuto:</strong>
                                     <ul>
-                                        <li><strong>Tabella log</strong> con 4 colonne: Data/Ora, Operatore, Operazione, Descrizione</li>
-                                        <li><strong>Operazione:</strong> in formato monospace (MODIFICA_ANAGRAFICA, INSERIMENTO_NOTA, ecc.)</li>
+                                        <li><strong>Tabella log</strong> con 4 colonne: Data/Ora, Operatore, Operazione,
+                                            Descrizione</li>
+                                        <li><strong>Operazione:</strong> in formato monospace (MODIFICA_ANAGRAFICA,
+                                            INSERIMENTO_NOTA, ecc.)</li>
                                         <li><strong>Dati:</strong> mock simulati per demo</li>
                                         <li><strong>Ordinamento:</strong> cronologico inverso</li>
                                     </ul>
@@ -475,7 +519,7 @@
                     </div>
 
                     <div class="alert alert-success mt-3">
-                        <strong>Caricamento Lazy:</strong> Ogni tab viene caricato solo quando viene selezionato 
+                        <strong>Caricamento Lazy:</strong> Ogni tab viene caricato solo quando viene selezionato
                         per la prima volta (flag <code>tabsLoaded</code>)
                     </div>
 
@@ -615,25 +659,35 @@
 
                     <h4 class="mt-4">Pattern Architetturali</h4>
                     <ul>
-                        <li><strong>Module Pattern:</strong> Ogni pagina ha un oggetto principale (App, RicercaApp, DettaglioApp, ecc.)</li>
-                        <li><strong>Component-Based Layout:</strong> Header e footer centralizzati in <code>includes/</code> e caricati dinamicamente</li>
+                        <li><strong>Module Pattern:</strong> Ogni pagina ha un oggetto principale (App, RicercaApp,
+                            DettaglioApp, ecc.)</li>
+                        <li><strong>Component-Based Layout:</strong> Header e footer centralizzati in
+                            <code>includes/</code> e caricati dinamicamente
+                        </li>
                         <li><strong>Lazy Loading:</strong> Tab caricati on-demand con flag <code>tabsLoaded</code></li>
-                        <li><strong>Separation of Concerns:</strong> utils.js per funzioni generiche, moduli specializzati per logica specifica</li>
-                        <li><strong>Event-Driven:</strong> Event listeners centralizzati in <code>setupEventListeners()</code></li>
+                        <li><strong>Separation of Concerns:</strong> utils.js per funzioni generiche, moduli
+                            specializzati per logica specifica</li>
+                        <li><strong>Event-Driven:</strong> Event listeners centralizzati in
+                            <code>setupEventListeners()</code>
+                        </li>
                         <li><strong>Data-First:</strong> Fetch JSON → Elaborazione → Rendering</li>
                     </ul>
 
                     <h4 class="mt-4">Sistema Header/Footer Dinamico</h4>
                     <div class="alert alert-info">
-                        <strong>Vantaggi:</strong> Manutenzione centralizzata di navbar e footer. Una modifica si riflette su tutte le 6 pagine.
+                        <strong>Vantaggi:</strong> Manutenzione centralizzata di navbar e footer. Una modifica si
+                        riflette su tutte le 6 pagine.
                     </div>
                     <ul>
-                        <li><strong>includes/header.html:</strong> Navbar Bootstrap con 5 voci menu + dropdown utente</li>
-                        <li><strong>includes/footer.html:</strong> Footer a 3 colonne con info progetto, tecnologie e copyright</li>
+                        <li><strong>includes/header.html:</strong> Navbar Bootstrap con 5 voci menu + dropdown utente
+                        </li>
+                        <li><strong>includes/footer.html:</strong> Footer a 3 colonne con info progetto, tecnologie e
+                            copyright</li>
                         <li><strong>js/layout.js:</strong> LayoutManager che:
                             <ul>
                                 <li>Carica dinamicamente header.html e footer.html via fetch()</li>
-                                <li>Inietta contenuto in <code>#header-container</code> e <code>#footer-container</code></li>
+                                <li>Inietta contenuto in <code>#header-container</code> e <code>#footer-container</code>
+                                </li>
                                 <li>Imposta automaticamente il link attivo basandosi sul nome file corrente</li>
                                 <li>Gestisce errori di caricamento con console.error</li>
                             </ul>
@@ -663,7 +717,7 @@
                     <h2 class="section-header">💾 Modello Dati</h2>
 
                     <h4>Entità Principali</h4>
-                    
+
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead class="table-light">
@@ -676,32 +730,38 @@
                             <tbody>
                                 <tr>
                                     <td><strong>Assistito</strong></td>
-                                    <td>cf, cognome, nome, dataNascita, luogoNascita, indirizzo, comune, telefono, email, stato, operatoreRiferimento</td>
+                                    <td>cf, cognome, nome, dataNascita, luogoNascita, indirizzo, comune, telefono,
+                                        email, stato, operatoreRiferimento</td>
                                     <td>assistiti.json</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Evidenza</strong></td>
-                                    <td>id, cf, assistito, idTipoEvidenza, tipoEvidenza, descrizione, dataScadenza, priorita, stato, note, operatore</td>
+                                    <td>id, cf, assistito, idTipoEvidenza, tipoEvidenza, descrizione, dataScadenza,
+                                        priorita, stato, note, operatore</td>
                                     <td>evidenze.json</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Nota</strong></td>
-                                    <td>id, cf, assistito, categoria, titolo, testo, dataCreazione, operatore, principale</td>
+                                    <td>id, cf, assistito, categoria, titolo, testo, dataCreazione, operatore,
+                                        principale</td>
                                     <td>note.json</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Prestazione</strong></td>
-                                    <td>id, cf, tipoPrestazione, codice, dataDecorrenza, dataScadenza, importoMensile, stato, mensilita[]</td>
+                                    <td>id, cf, tipoPrestazione, codice, dataDecorrenza, dataScadenza, importoMensile,
+                                        stato, mensilita[]</td>
                                     <td>prestazioni.json</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Verbale</strong></td>
-                                    <td>id, cf, tipo, numero, dataEmissione, dataScadenza, percentuale, commissione, esito, stato</td>
+                                    <td>id, cf, tipo, numero, dataEmissione, dataScadenza, percentuale, commissione,
+                                        esito, stato</td>
                                     <td>verbali.json</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Comunicazione</strong></td>
-                                    <td>id, cf, idTipoComunicazione, oggetto, dataGenerazione, dataInvio, numeroProtocollo, canale, destinatario, stato</td>
+                                    <td>id, cf, idTipoComunicazione, oggetto, dataGenerazione, dataInvio,
+                                        numeroProtocollo, canale, destinatario, stato</td>
                                     <td>comunicazioni.json</td>
                                 </tr>
                             </tbody>
@@ -734,8 +794,8 @@ Prestazione (1) ──→ (N) Mensilità (embedded array)</code></pre>
                 <!-- Footer Info -->
                 <div class="alert alert-success">
                     <h5><i class="bi bi-check-circle"></i> POC Completo e Funzionale</h5>
-                    <p class="mb-0">Tutte le funzionalità descritte sono implementate e testabili aprendo i file HTML 
-                    tramite web server locale (<code>python -m http.server 8000</code>).</p>
+                    <p class="mb-0">Tutte le funzionalità descritte sono implementate e testabili aprendo i file HTML
+                        tramite web server locale (<code>python -m http.server 8000</code>).</p>
                 </div>
             </div>
         </div>
@@ -749,11 +809,11 @@ Prestazione (1) ──→ (N) Mensilità (embedded array)</code></pre>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Layout JS -->
     <script src="js/layout.js"></script>
     <script src="js/change-notes.js"></script>
-    
+
     <script>
         // Smooth scroll for TOC links
         document.querySelectorAll('.toc a').forEach(anchor => {
@@ -768,4 +828,5 @@ Prestazione (1) ──→ (N) Mensilità (embedded array)</code></pre>
         });
     </script>
 </body>
+
 </html>
