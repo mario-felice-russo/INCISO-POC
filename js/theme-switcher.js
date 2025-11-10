@@ -164,6 +164,24 @@ const ThemeSwitcher = {
     }
 };
 
+// Pre-carica il tema salvato PRIMA del DOMContentLoaded per evitare flash
+(function() {
+    const savedTheme = localStorage.getItem('asse_inciso_theme');
+    if (savedTheme && savedTheme !== 'default') {
+        const themes = {
+            professional: 'css/theme-professional.css',
+            luxe: 'css/theme-luxe.css'
+        };
+        if (themes[savedTheme]) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = themes[savedTheme];
+            link.setAttribute('data-theme', savedTheme);
+            document.head.appendChild(link);
+        }
+    }
+})();
+
 // Inizializza quando il DOM è pronto e dopo che il layout manager ha caricato la navbar
 document.addEventListener('DOMContentLoaded', () => {
     // Attendi che la navbar sia caricata
