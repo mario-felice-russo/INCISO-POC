@@ -7,7 +7,7 @@
 :root {
     /* Colori Brand dal Logo */
     --brand-blue: #2B5A8F;
-    --brand-blue-dark: #1e4066;
+    --brand-blue-dark: #16304C; /* 1e4066 */
     --brand-blue-light: #3a6fa8;
     
     --brand-gold: #7FA84F;
@@ -374,7 +374,8 @@ a:hover {
 
 /* ========== FOOTER LUXE ========== */
 footer {
-    background: linear-gradient(135deg, var(--gray-800) 0%, var(--gray-900) 100%);
+    /* Footer più scuro del 15% rispetto all'header */
+    background: linear-gradient(135deg, --brand-blue 0%, --brand-blue-dark 90%);
     color: var(--gray-400);
 }
 

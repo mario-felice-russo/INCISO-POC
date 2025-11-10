@@ -97,7 +97,7 @@ const ThemeSwitcher = {
         themeDropdown.innerHTML = `
             <a class="nav-link dropdown-toggle" href="#" id="themeDropdown" role="button" 
                data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-palette"></i> Tema
+                <i class="bi bi-palette"></i> Tema: <span id="currentThemeName"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" id="themeDropdownMenu">
                 ${Object.entries(this.themes).map(([key, theme]) => `
@@ -151,6 +151,12 @@ const ThemeSwitcher = {
             if (check) {
                 check.style.display = 'inline';
             }
+        }
+        
+        // Aggiorna nome tema nella navbar
+        const themeNameSpan = document.getElementById('currentThemeName');
+        if (themeNameSpan) {
+            themeNameSpan.textContent = this.themes[this.currentTheme].name;
         }
     }
 };
