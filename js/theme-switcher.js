@@ -33,7 +33,10 @@ const ThemeSwitcher = {
     init() {
         this.loadSavedTheme();
         this.createSwitcherUI();
-        this.applyTheme(this.currentTheme);
+        // Applica tema e aggiorna UI con piccolo delay per assicurarsi che il DOM sia pronto
+        setTimeout(() => {
+            this.applyTheme(this.currentTheme, false); // false = non mostrare toast all'init
+        }, 50);
     },
 
     /**
@@ -56,7 +59,7 @@ const ThemeSwitcher = {
     /**
      * Applica un tema
      */
-    applyTheme(themeName) {
+    applyTheme(themeName, showToast = true) {
         if (!this.themes[themeName]) return;
 
         // Rimuovi tutti i temi custom esistenti
@@ -77,8 +80,8 @@ const ThemeSwitcher = {
         this.saveTheme(themeName);
         this.updateSwitcherUI();
         
-        // Toast notification
-        if (typeof Utils !== 'undefined') {
+        // Toast notification (solo se richiesto, non all'init)
+        if (showToast && typeof Utils !== 'undefined') {
             Utils.showToast(`Tema "${this.themes[themeName].name}" applicato`, 'success');
         }
     },
@@ -97,7 +100,7 @@ const ThemeSwitcher = {
         themeDropdown.innerHTML = `
             <a class="nav-link dropdown-toggle" href="#" id="themeDropdown" role="button" 
                data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-palette"></i> Tema: <span id="currentThemeName"></span>
+                Tema
             </a>
             <ul class="dropdown-menu dropdown-menu-end" id="themeDropdownMenu">
                 ${Object.entries(this.themes).map(([key, theme]) => `
