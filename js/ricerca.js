@@ -55,54 +55,30 @@ const RicercaApp = {
                 }
                 
                 // Mappa i tipi di verbale alle proprietà invalidità
+                // Se esiste un verbale attivo, l'invalidità è attiva
                 if (verbale.tipo === 'Invalidità Civile' && verbale.percentuale !== null) {
-                    if (typeof assistito.invalidita.civile === 'boolean') {
-                        assistito.invalidita.civile = { 
-                            attivo: assistito.invalidita.civile,
-                            percentuale: verbale.percentuale 
-                        };
-                    } else if (assistito.invalidita.civile) {
-                        assistito.invalidita.civile.percentuale = verbale.percentuale;
-                    } else {
-                        assistito.invalidita.civile = { 
-                            attivo: true,
-                            percentuale: verbale.percentuale 
-                        };
-                    }
+                    assistito.invalidita.civile = { 
+                        attivo: true,
+                        percentuale: verbale.percentuale 
+                    };
                 }
                 
                 // Mappatura per Cecità
+                // Se esiste un verbale attivo, l'invalidità è attiva
                 if (verbale.tipo === 'Cecità' && verbale.percentuale !== null) {
-                    if (typeof assistito.invalidita.cecita === 'boolean') {
-                        assistito.invalidita.cecita = { 
-                            attivo: assistito.invalidita.cecita,
-                            percentuale: verbale.percentuale 
-                        };
-                    } else if (assistito.invalidita.cecita) {
-                        assistito.invalidita.cecita.percentuale = verbale.percentuale;
-                    } else {
-                        assistito.invalidita.cecita = { 
-                            attivo: true,
-                            percentuale: verbale.percentuale 
-                        };
-                    }
+                    assistito.invalidita.cecita = { 
+                        attivo: true,
+                        percentuale: verbale.percentuale 
+                    };
                 }
                 
                 // Mappatura per Sordità
+                // Se esiste un verbale attivo, l'invalidità è attiva
                 if (verbale.tipo === 'Sordità' && verbale.percentuale !== null) {
-                    if (typeof assistito.invalidita.sordita === 'boolean') {
-                        assistito.invalidita.sordita = { 
-                            attivo: assistito.invalidita.sordita,
-                            percentuale: verbale.percentuale 
-                        };
-                    } else if (assistito.invalidita.sordita) {
-                        assistito.invalidita.sordita.percentuale = verbale.percentuale;
-                    } else {
-                        assistito.invalidita.sordita = { 
-                            attivo: true,
-                            percentuale: verbale.percentuale 
-                        };
-                    }
+                    assistito.invalidita.sordita = { 
+                        attivo: true,
+                        percentuale: verbale.percentuale 
+                    };
                 }
             });
             
@@ -129,6 +105,8 @@ const RicercaApp = {
      * Setup event listeners
      */
     setupEventListeners() {
+        console.log('Setup event listeners...');
+        
         // Form submit
         const form = document.getElementById('formRicerca');
         if (form) {
@@ -137,6 +115,18 @@ const RicercaApp = {
                 this.eseguiRicerca();
             });
         }
+
+        // Filtro immediato tipologie invalidità
+        const checkboxesTipologia = document.querySelectorAll('.tipo-invalidita-filter');
+        console.log('Checkbox trovati:', checkboxesTipologia.length);
+        
+        checkboxesTipologia.forEach((checkbox, index) => {
+            console.log(`Attaching listener to checkbox ${index}:`, checkbox.id);
+            checkbox.addEventListener('change', (e) => {
+                console.log('Checkbox change event:', e.target.id, 'checked:', e.target.checked);
+                this.applicaFiltroImmediato();
+            });
+        });
 
         // Reset
         const btnReset = document.getElementById('btnResetRicerca');
@@ -264,6 +254,46 @@ const RicercaApp = {
         this.renderRisultati();
         
         Utils.showToast(`Trovati ${this.risultati.length} risultati`, 'info');
+    },
+
+    /**
+     * Applica filtro immediato alle tipologie di invalidità
+     */
+    applicaFiltroImmediato() {
+        console.log('=== APPLICAZIONE FILTRO IMMEDIATO ===');
+        const tipologie = this.getTipologieSelezionate();
+        console.log('Tipologie selezionate:', tipologie);
+        
+        // Se nessuna tipologia selezionata, mostra tutti
+        if (tipologie.length === 0) {
+            this.risultati = [...this.assistiti];
+            console.log('Nessun filtro - mostra tutti:', this.risultati.length);
+        } else {
+            // Filtra per tipologie selezionate
+            this.risultati = this.assistiti.filter(assistito => {
+                const match = tipologie.some(tipo => {
+                    const hasInvalidita = assistito.invalidita?.[tipo];
+                    return hasInvalidita;
+                });
+                return match;
+            });
+            console.log('Filtrati:', this.risultati.length);
+        }
+        
+        // Reset paginazione e renderizza
+        this.currentPage = 1;
+        this.renderRisultati();
+        
+        // Mostra feedback
+        if (tipologie.length > 0) {
+            const tipologieNomi = [];
+            if (tipologie.includes('civile')) tipologieNomi.push('Invalidità Civile');
+            if (tipologie.includes('cecita')) tipologieNomi.push('Cecità');
+            if (tipologie.includes('sordita')) tipologieNomi.push('Sordità');
+            Utils.showToast(`Filtro: ${tipologieNomi.join(', ')} - ${this.risultati.length} risultati`, 'info');
+        } else {
+            Utils.showToast('Filtro rimosso - Visualizzati tutti gli assistiti', 'info');
+        }
     },
 
     /**

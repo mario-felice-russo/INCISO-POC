@@ -17,25 +17,62 @@
                     <!-- Badges Tipologia Invalidità -->
                     <div class="row mb-3">
                         <div class="col-12">
-                            <label class="form-label fw-bold">Tipologia Invalidità</label>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <input type="checkbox" class="btn-check" id="tipoCivile" autocomplete="off" value="civile">
-                                <label class="btn btn-outline-primary" for="tipoCivile">
+                            <label class="form-label fw-bold">Tipologia Invalidità <small class="text-muted">(Filtro immediato)</small></label>
+                            <div class="d-flex gap-3 flex-wrap">
+                                <input type="checkbox" class="btn-check tipo-invalidita-filter" id="tipoCivile" autocomplete="off" value="civile">
+                                <label class="btn btn-outline-primary btn-lg shadow-sm" for="tipoCivile" style="font-weight: 600; padding: 0.75rem 1.5rem; border-width: 2px;">
                                     <i class="bi bi-person-wheelchair"></i> Invalidità Civile
                                 </label>
                                 
-                                <input type="checkbox" class="btn-check" id="tipoCecita" autocomplete="off" value="cecita">
-                                <label class="btn btn-outline-warning" for="tipoCecita">
+                                <input type="checkbox" class="btn-check tipo-invalidita-filter" id="tipoCecita" autocomplete="off" value="cecita">
+                                <label class="btn btn-outline-warning btn-lg shadow-sm" for="tipoCecita" style="font-weight: 600; padding: 0.75rem 1.5rem; border-width: 2px;">
                                     <i class="bi bi-eye-slash"></i> Cecità
                                 </label>
                                 
-                                <input type="checkbox" class="btn-check" id="tipoSordita" autocomplete="off" value="sordita">
-                                <label class="btn btn-outline-info" for="tipoSordita">
+                                <input type="checkbox" class="btn-check tipo-invalidita-filter" id="tipoSordita" autocomplete="off" value="sordita">
+                                <label class="btn btn-outline-info btn-lg shadow-sm" for="tipoSordita" style="font-weight: 600; padding: 0.75rem 1.5rem; border-width: 2px;">
                                     <i class="bi bi-ear"></i> Sordità
                                 </label>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- CSS per evidenziazione checkbox selezionati -->
+                    <style>
+                        .btn-check:checked + .btn-outline-primary {
+                            background-color: #0d6efd !important;
+                            color: white !important;
+                            border-color: #0d6efd !important;
+                            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+                            transform: scale(1.05);
+                        }
+                        .btn-check:checked + .btn-outline-warning {
+                            background-color: #ffc107 !important;
+                            color: #000 !important;
+                            border-color: #ffc107 !important;
+                            box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25) !important;
+                            transform: scale(1.05);
+                        }
+                        .btn-check:checked + .btn-outline-info {
+                            background-color: #0dcaf0 !important;
+                            color: #000 !important;
+                            border-color: #0dcaf0 !important;
+                            box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.25) !important;
+                            transform: scale(1.05);
+                        }
+                        label[for="tipoCivile"],
+                        label[for="tipoCecita"],
+                        label[for="tipoSordita"] {
+                            transition: all 0.3s ease;
+                            cursor: pointer;
+                        }
+                        label[for="tipoCivile"]:hover,
+                        label[for="tipoCecita"]:hover,
+                        label[for="tipoSordita"]:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+                        }
+                    </style>
 
                     <hr class="my-4">
 
