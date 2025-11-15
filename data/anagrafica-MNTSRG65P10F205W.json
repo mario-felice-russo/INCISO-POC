@@ -1,0 +1,33 @@
+{
+  "stato": "Sospeso",
+  "residenza": {
+    "provincia": "BZ",
+    "comune": "Merano",
+    "indirizzo": "Via Mainardo 56",
+    "cap": "39012"
+  },
+  "statoCivile": "Separato",
+  "cognome": "Monti",
+  "rappresentanteLegale": null,
+  "linguaPreferita": "DE",
+  "sesso": "M",
+  "cf": "MNTSRG65P10F205W",
+  "dataNascita": "1965-09-10",
+  "telefono": "0473112233",
+  "operatoreRiferimento": "Dott.ssa Ferrari",
+  "intestatarioIban": "Monti Sergio",
+  "domicilio": null,
+  "cittadinanza": "Italiana",
+  "dataIscrizione": "2014-05-25",
+  "email": "sergio.monti@libero.it",
+  "invalidita": {
+    "civile": false,
+    "cecita": false,
+    "sordita": true
+  },
+  "luogoNascita": "Merano",
+  "posizioneAS400": "567890",
+  "nome": "Sergio",
+  "dataDecesso": null,
+  "iban": "IT44 Y030 0203 2800 0040 0123 456"
+}

@@ -1,0 +1,571 @@
+<style>
+    .intro-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    .intro-content h1 {
+        color: #0066CC;
+        margin-bottom: 1.5rem;
+        border-bottom: 3px solid #0066CC;
+        padding-bottom: 0.5rem;
+    }
+    .intro-content h2 {
+        color: #004080;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    .intro-content h3 {
+        color: #0066CC;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    .intro-content h4 {
+        color: #333;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .intro-content pre {
+        background-color: #f5f5f5;
+        border-left: 4px solid #0066CC;
+        padding: 1rem;
+        overflow-x: auto;
+        border-radius: 4px;
+    }
+    .intro-content code {
+        background-color: #f5f5f5;
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+    .intro-content ul, .intro-content ol {
+        margin-bottom: 1rem;
+    }
+    .intro-content li {
+        margin-bottom: 0.5rem;
+    }
+    .intro-content strong {
+        color: #004080;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="intro-content">
+        <h1>Istruzioni per la realizzazione della POC INCISO</h1>
+        
+        <p>Crea un'applicazione web proof-of-concept per il sistema INCISO (gestione invalidità civile) utilizzando <strong>Bootstrap Italia</strong> come framework CSS. L'applicazione deve simulare un sistema reale caricando dati da file JSON statici invece di chiamate API.</p>
+
+        <h2>Framework e Tecnologie</h2>
+        <ul>
+            <li><strong>CSS Framework</strong>: Bootstrap Italia (https://italia.github.io/bootstrap-italia/)</li>
+            <li><strong>HTML5</strong> semantico</li>
+            <li><strong>JavaScript vanilla</strong> o framework leggero (React/Vue opzionale)</li>
+            <li><strong>Dati</strong>: File JSON statici per simulare le risposte API</li>
+        </ul>
+
+        <h2>Struttura delle Pagine</h2>
+
+        <h3>1. PAGINA DI RICERCA (Homepage)</h3>
+        <h4><strong>Layout:</strong></h4>
+        <ul>
+            <li>Header con logo e titolo "Sistema INCISO - Gestione Invalidità Civile"</li>
+            <li>Barra di ricerca centrale prominente con:
+                <ul>
+                    <li>Campo input per: Codice Fiscale, Cognome, Nome, Data di Nascita, o Codice Posizione (es. "S 400")</li>
+                    <li>Pulsante "Cerca" (stile primario Bootstrap Italia)</li>
+                    <li>Suggerimenti placeholder: "Cerca per CF, Nome, Cognome, Data Nascita o Posizione..."</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4><strong>Risultati della Ricerca:</strong></h4>
+        <ul>
+            <li>Tabella responsive con colonne:
+                <ul>
+                    <li>Codice Fiscale</li>
+                    <li>Cognome e Nome</li>
+                    <li>Data di Nascita</li>
+                    <li>Data Decesso (se presente, evidenziata in rosso)</li>
+                    <li>Rappresentante Legale (icona + nome se presente)</li>
+                    <li>Tipologie Invalidità (badge colorati vivaci):
+                        <ul>
+                            <li><strong style="color: #0066CC;">■ Invalidità Civile</strong> (Blu #0066CC) - Con percentuale</li>
+                            <li><strong style="color: #FFA500;">■ Cecità</strong> (Arancione #FFA500) - Con percentuale</li>
+                            <li><strong style="color: #00B4D8;">■ Sordità</strong> (Azzurro #00B4D8) - Con percentuale</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Ogni riga cliccabile per aprire il fascicolo personale</li>
+        </ul>
+
+        <h4><strong>File JSON necessario:</strong> <code>ricerca.json</code></h4>
+        <pre><code>{
+  "risultati": [
+    {
+      "cf": "RSSMRA80A01H501X",
+      "cognome": "Rossi",
+      "nome": "Mario",
+      "dataNascita": "1980-01-01",
+      "dataDecesso": null,
+      "rappresentanteLegale": {
+        "tipo": "Tutore",
+        "nome": "Rossi Giovanni"
+      },
+      "invalidita": {
+        "civile": true,
+        "cecita": false,
+        "sordita": false
+      }
+    }
+  ]
+}</code></pre>
+
+        <hr>
+
+        <h3>2. FASCICOLO PERSONALE (Dettaglio Assistito)</h3>
+        <p><strong>Layout:</strong> Pagina con sidebar o tab navigation</p>
+
+        <h4><strong>Header della pagina:</strong></h4>
+        <ul>
+            <li>Breadcrumb: Home &gt; Ricerca &gt; [Nome Cognome - CF]</li>
+            <li>Card riassuntiva con dati principali:
+                <ul>
+                    <li>Nome completo, CF, Data Nascita</li>
+                    <li>Badge di stato (Attivo/Deceduto)</li>
+                    <li>Pulsante "Stampa fascicolo"</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4><strong>Sezioni (Accordion o Tab):</strong></h4>
+
+        <h4>A) DATI ANAGRAFICI</h4>
+        <ul>
+            <li><strong>Dati Generali</strong>: CF, Cognome, Nome, Sesso, Data/Luogo Nascita, Stato Civile</li>
+            <li><strong>Residenza e Domicilio</strong>: Indirizzo completo, CAP, Comune, Provincia</li>
+            <li><strong>Cittadinanza</strong></li>
+            <li><strong>Lingua preferita</strong> (dropdown: IT/DE/EN)</li>
+            <li><strong>Estremi Pagamento</strong>: IBAN (campo editabile con validazione)</li>
+            <li><strong>Rappresentante Legale</strong>: Tipo (Tutore/Curatore/Amministratore), Nome, CF, Rapporto</li>
+            <li>Pulsanti: "Modifica" e "Salva modifiche"</li>
+        </ul>
+        <p><strong>File JSON:</strong> <code>anagrafica-{cf}.json</code></p>
+
+        <h4>B) PRESTAZIONI</h4>
+        <p><strong>Esempio JSON assistiti.json:</strong></p>
+        <pre><code>{
+  "cf": "RSSMRA80A01H501U",
+  "cognome": "Rossi",
+  "nome": "Mario",
+  "dataNascita": "1980-01-01",
+  "invalidita": {
+    "civile": {
+      "attivo": true,
+      "percentuale": 75
+    },
+    "cecita": null,
+    "sordita": null
+  },
+  "rappresentanteLegale": null
+}</code></pre>
+
+        <p><strong>Stati Prestazione disponibili:</strong></p>
+        <ul>
+            <li><strong style="color: #28a745;">✔ Concessa</strong> (Verde)</li>
+            <li><strong style="color: #ffc107;">⏸ Sospesa</strong> (Giallo)</li>
+            <li><strong style="color: #dc3545;">✖ Revocata</strong> (Rosso)</li>
+            <li><strong style="color: #6c757d;">➖ Negata</strong> (Grigio)</li>
+        </ul>
+        <ul>
+            <li>Tabella o card list con:
+                <ul>
+                    <li><strong>Tipologia</strong> (Invalidità Civile/Cecità/Sordità)</li>
+                    <li><strong>Percentuale/Categoria</strong></li>
+                    <li><strong>Stato</strong> (badge colorato: Concessa/Sospesa/Revocata/Negata)</li>
+                    <li><strong>Data Concessione</strong></li>
+                    <li><strong>Data Decorrenza</strong></li>
+                    <li><strong>Importo mensile</strong></li>
+                    <li><strong>Azioni</strong> (dropdown):
+                        <ul>
+                            <li>Concedi</li>
+                            <li>Nega</li>
+                            <li>Sospendi</li>
+                            <li>Revoca</li>
+                            <li>Modifica</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p><strong>Esempio JSON prestazioni.json:</strong></p>
+        <pre><code>{
+  "id": 3001,
+  "cf": "RSSMRA80A01H501U",
+  "tipoPrestazione": "Invalidità Civile",
+  "codice": "PREST-IC-2020-001",
+  "dataDecorrenza": "2020-04-01",
+  "dataScadenza": null,
+  "importoMensile": 313.91,
+  "stato": "Concessa",
+  "mensilita": [
+    { "mese": "2024-01", "stato": "pagato", "importo": 313.91 },
+    { "mese": "2024-02", "stato": "pagato", "importo": 313.91 }
+  ]
+}</code></pre>
+
+        <h4>C) PAGAMENTI / LIQUIDAZIONI</h4>
+        <ul>
+            <li><strong>Visualizzazione Pivot Table</strong> (tabella incrociata):
+                <ul>
+                    <li>Righe: Prestazioni</li>
+                    <li>Colonne: Mesi/Anno (es. Gen 2024, Feb 2024...)</li>
+                    <li>Celle: Importo liquidato</li>
+                    <li>Riga/Colonna totali</li>
+                </ul>
+            </li>
+            <li>Filtri: Anno, Prestazione</li>
+            <li>Esportazione Excel (simulata con download CSV)</li>
+        </ul>
+        <p><strong>File JSON:</strong> <code>pagamenti-{cf}.json</code></p>
+
+        <h4>D) DOCUMENTI</h4>
+        <p><strong>11 Tipologie di Comunicazioni:</strong></p>
+        <ol>
+            <li>Richiesta Documentazione</li>
+            <li>Avvio Procedimento</li>
+            <li>Comunicazione Esito Positivo</li>
+            <li>Comunicazione Esito Negativo</li>
+            <li>Preavviso di Rigetto</li>
+            <li>Sospensione Prestazione</li>
+            <li>Revoca Prestazione</li>
+            <li>Richiesta Integrazione</li>
+            <li>Comunicazione Verbale Scaduto</li>
+            <li>Convocazione Visita</li>
+            <li>Comunicazione Generica</li>
+        </ol>
+        <p><strong>Stati Comunicazione:</strong></p>
+        <ul>
+            <li><strong style="color: #6c757d;">● Generata</strong> (Grigio)</li>
+            <li><strong style="color: #0d6efd;">● Caricata</strong> (Blu)</li>
+            <li><strong style="color: #28a745;">● Protocollata</strong> (Verde)</li>
+            <li><strong style="color: #dc3545;">● Errore</strong> (Rosso)</li>
+        </ul>
+        <ul>
+            <li>Tabella con:
+                <ul>
+                    <li><strong>N° Protocollo</strong> (link cliccabile)</li>
+                    <li><strong>Data</strong></li>
+                    <li><strong>Tipologia/Titolo</strong> (es. "Verbale SABES", "Comunicazione Avvio Procedimento")</li>
+                    <li><strong>Direzione</strong> (badge: In Entrata/In Uscita)</li>
+                    <li><strong>Azione</strong>: Pulsante "Visualizza" (apre modale o PDF simulato)</li>
+                </ul>
+            </li>
+            <li>Filtri: Tipo documento, Data (range picker)</li>
+            <li>Pulsante "Nuova Comunicazione"</li>
+        </ul>
+        <p><strong>Esempio JSON comunicazioni.json:</strong></p>
+        <pre><code>{
+  "id": 5001,
+  "cf": "RSSMRA80A01H501U",
+  "idTipoComunicazione": 1,
+  "tipoComunicazione": "Richiesta Documentazione",
+  "oggetto": "Richiesta integrazione documentale",
+  "dataGenerazione": "2024-02-15T10:30:00",
+  "dataInvio": "2024-02-15T14:20:00",
+  "numeroProtocollo": "EPROCS-2024-00123",
+  "canale": "PEC",
+  "destinatario": "mario.rossi@pec.it",
+  "stato": "Protocollata"
+}</code></pre>
+
+        <h4>E) EVIDENZE</h4>
+        <p><strong>9 Tipologie di Evidenze disponibili:</strong></p>
+        <ol>
+            <li><strong>Permessi e Controlli</strong> (ID 1) - Colore: danger</li>
+            <li><strong>Trasferimenti</strong> (ID 2) - Colore: info</li>
+            <li><strong>Stati Domanda</strong> (ID 3) - Colore: warning</li>
+            <li><strong>Stati Prestazione</strong> (ID 4) - Colore: primary</li>
+            <li><strong>Recuperi</strong> (ID 5) - Colore: danger</li>
+            <li><strong>Ricorsi</strong> (ID 6) - Colore: warning</li>
+            <li><strong>Verbali</strong> (ID 7) - Colore: success</li>
+            <li><strong>ASDAA</strong> (ID 8) - Colore: info</li>
+            <li><strong>Modifiche</strong> (ID 9) - Colore: secondary</li>
+        </ol>
+        <ul>
+            <li><strong>Visualizzazione Tabella/Card:</strong> Toggle per cambiare modalità (default: tabella)</li>
+            <li>Lista filtrabile di promemoria/scadenze:
+                <ul>
+                    <li><strong>Tipo</strong> (badge colorato per categoria)</li>
+                    <li><strong>Descrizione</strong></li>
+                    <li><strong>Data Scadenza</strong> (evidenziata se imminente/scaduta)</li>
+                    <li><strong>Stato</strong> (Aperta/Chiusa)</li>
+                    <li><strong>Automatica/Manuale</strong> (icona)</li>
+                    <li><strong>Azioni</strong>: 
+                        <ul>
+                            <li>"Genera Comunicazione" (se associata)</li>
+                            <li>"Chiudi"</li>
+                            <li>"Modifica Scadenza"</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Filtri avanzati:
+                <ul>
+                    <li>Tipo Evidenza (dropdown multiplo)</li>
+                    <li>Range date scadenza</li>
+                    <li>Stato</li>
+                </ul>
+            </li>
+            <li>Pulsante "Esporta Lista (Excel)" - genera CSV</li>
+            <li>Pulsante "Nuova Evidenza Manuale"</li>
+        </ul>
+        <p><strong>Esempio JSON evidenze.json:</strong></p>
+        <pre><code>{
+  "id": 1001,
+  "cf": "RSSMRA80A01H501U",
+  "assistito": "Rossi Mario",
+  "idTipoEvidenza": 7,
+  "tipoEvidenza": "Verbali",
+  "descrizione": "Scadenza verbale invalidità",
+  "dataScadenza": "2024-06-30",
+  "priorita": "Alta",
+  "stato": "Corrente",
+  "note": "Necessaria revisione entro 60 giorni",
+  "operatore": "Dott. Bianchi"
+}</code></pre>
+
+        <p><strong>Esempio JSON tipo_evidenze.json:</strong></p>
+        <pre><code>{
+  "id": 7,
+  "descrizione": "Verbali",
+  "colore": "success",
+  "icona": "bi-file-earmark-text"
+}</code></pre>
+
+        <p><strong>Modale per Nuova Evidenza:</strong></p>
+        <ul>
+            <li>Form con: Tipo, Descrizione, Data Scadenza, Note</li>
+        </ul>
+
+        <h4>F) NOTE</h4>
+        <p><strong>6 Categorie di Note con colori vivaci:</strong></p>
+        <ol>
+            <li><strong style="color: #FF6B35;">■ Residenza</strong> (#FF6B35 - Arancione vivace)</li>
+            <li><strong style="color: #004E89;">■ Pagamenti</strong> (#004E89 - Blu scuro)</li>
+            <li><strong style="color: #F77F00;">■ Degenze</strong> (#F77F00 - Arancione)</li>
+            <li><strong style="color: #9B59B6;">■ Amministrazione Sostegno</strong> (#9B59B6 - Viola)</li>
+            <li><strong style="color: #27AE60;">■ Redditi</strong> (#27AE60 - Verde)</li>
+            <li><strong style="color: #7F8C8D;">■ Varie</strong> (#7F8C8D - Grigio)</li>
+        </ol>
+        <ul>
+            <li><strong>Visualizzazione Tabella/Card:</strong> Toggle per cambiare modalità (default: tabella)</li>
+            <li>Elenco cronologico (stile timeline):
+                <ul>
+                    <li><strong>Data/Ora</strong></li>
+                    <li><strong>Categoria</strong> (badge colorato vivace con alto contrasto)</li>
+                    <li><strong>Testo nota</strong></li>
+                    <li><strong>Operatore</strong> (chi ha creato la nota)</li>
+                </ul>
+            </li>
+            <li>Form per aggiungere nuova nota:
+                <ul>
+                    <li>Campo textarea</li>
+                    <li>Dropdown categoria</li>
+                    <li>Pulsante "Aggiungi Nota"</li>
+                </ul>
+            </li>
+        </ul>
+        <p><strong>Esempio JSON note.json:</strong></p>
+        <pre><code>{
+  "id": 2001,
+  "cf": "RSSMRA80A01H501U",
+  "assistito": "Rossi Mario",
+  "categoria": "Pagamenti",
+  "titolo": "URGENTE - IBAN errato",
+  "testo": "Pagamento febbraio 2024 respinto. IBAN fornito errato. Contattare assistito per nuovo IBAN corretto.",
+  "dataCreazione": "2024-02-28T14:15:00",
+  "operatore": "Dott. Bianchi",
+  "principale": true
+}</code></pre>
+
+        <h4>G) LOG OPERAZIONI</h4>
+        <ul>
+            <li>Tabella cronologica:
+                <ul>
+                    <li><strong>Data/Ora</strong></li>
+                    <li><strong>Operatore</strong></li>
+                    <li><strong>Operazione</strong> (es. "Inserito IBAN", "Modificata prestazione", "Generata comunicazione")</li>
+                    <li><strong>Dettagli</strong> (campo espandibile)</li>
+                </ul>
+            </li>
+            <li>Filtri: Range date, Operatore, Tipo operazione</li>
+        </ul>
+        <p><strong>File JSON:</strong> <code>log-{cf}.json</code></p>
+
+        <h4>H) PRESA IN CARICO</h4>
+        <ul>
+            <li>Card in evidenza in alto:
+                <ul>
+                    <li>Stato: "Nessuno sta lavorando a questa pratica" / "In lavorazione da [Nome Operatore]"</li>
+                    <li>Pulsante "Prendi in carico" / "Rilascia"</li>
+                    <li>Note della presa in carico (campo testo breve)</li>
+                </ul>
+            </li>
+            <li>Stile: alert Bootstrap Italia (info o warning)</li>
+        </ul>
+
+        <hr>
+
+        <h4><strong>Esempio JSON verbali.json (verbali standard):</strong></h4>
+        <pre><code>{
+  "id": 4001,
+  "cf": "RSSMRA80A01H501U",
+  "assistito": "Rossi Mario",
+  "tipo": "Invalidità Civile",
+  "numero": "VIC-2020-00234",
+  "dataEmissione": "2020-03-15",
+  "dataScadenza": null,
+  "percentuale": 75,
+  "commissione": "Commissione ASL Bolzano",
+  "esito": "Riconosciuta invalidità 75%",
+  "stato": "Attivo",
+  "note": "Verbale permanente - Nessuna revisione prevista"
+}</code></pre>
+
+        <hr>
+
+        <h3>3. PAGINA GESTIONE COMUNICAZIONI</h3>
+        <p><strong>Accesso:</strong> Da pulsante "Nuova Comunicazione" o "Genera Comunicazione" da Evidenza</p>
+
+        <h4><strong>Layout:</strong></h4>
+        <ul>
+            <li>Form wizard a step:
+                <ol>
+                    <li><strong>Selezione Template</strong>: Grid di card con modelli predefiniti (Avvio Procedimento, Richiesta Documentazione, Comunicazione Esito, etc.)</li>
+                    <li><strong>Compilazione</strong>: Editor WYSIWYG simulato (textarea con formattazione base) pre-compilato con dati del template</li>
+                    <li><strong>Revisione</strong>: Anteprima del documento generato (iframe o div formattato)</li>
+                    <li><strong>Conferma</strong>: 
+                        <ul>
+                            <li>Checkbox "Richiedi protocollazione"</li>
+                            <li>Checkbox "Richiedi firma automatica"</li>
+                            <li>Pulsante "Invia" (simula chiamata a IPROX)</li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+        <p><strong>Esempio JSON tipo_comunicazioni.json:</strong></p>
+        <pre><code>{
+  "id": 1,
+  "codice": "REQ_DOC",
+  "descrizione": "Richiesta Documentazione",
+  "template": "template_richiesta_doc.docx",
+  "canale": "PEC",
+  "attivo": true
+}</code></pre>
+
+        <hr>
+
+        <h3>4. DASHBOARD EVIDENZE GLOBALE (Opzionale)</h3>
+        <ul>
+            <li>Vista aggregata di tutte le evidenze in scadenza</li>
+            <li>Filtri per operatore, ufficio, tipo</li>
+            <li>Card con contatori: Scadute, In scadenza (7gg), Future</li>
+            <li>Tabella riepilogativa esportabile</li>
+        </ul>
+
+        <hr>
+
+        <h2>Componenti UI Riutilizzabili Bootstrap Italia</h2>
+        <ol>
+            <li><strong>Header/Navbar</strong>: Logo + Titolo + Menu utente</li>
+            <li><strong>Breadcrumb</strong>: Navigazione contestuale</li>
+            <li><strong>Card</strong>: Per sezioni informative</li>
+            <li><strong>Accordion</strong>: Per fascicolo personale (alternativa a tab)</li>
+            <li><strong>Tab Navigation</strong>: Per fascicolo personale</li>
+            <li><strong>Form Controls</strong>: Input validati, date picker, dropdown</li>
+            <li><strong>Table responsive</strong>: Con ordinamento e paginazione</li>
+            <li><strong>Badge</strong>: Per stati e categorie</li>
+            <li><strong>Button Group</strong>: Per azioni multiple</li>
+            <li><strong>Modal</strong>: Per form e conferme</li>
+            <li><strong>Alert</strong>: Per messaggi sistema e presa in carico</li>
+            <li><strong>Progress bar</strong>: Per step wizard</li>
+            <li><strong>Timeline</strong>: Per note cronologiche</li>
+        </ol>
+
+        <h2>Funzionalità JavaScript</h2>
+        <ul>
+            <li><strong>Ricerca</strong>: Filtro dinamico della tabella risultati</li>
+            <li><strong>Caricamento JSON</strong>: Fetch API per simulare chiamate asincrone</li>
+            <li><strong>Validazione Form</strong>: IBAN, CF, date</li>
+            <li><strong>Ordinamento Tabelle</strong>: Click su header colonna</li>
+            <li><strong>Filtri Avanzati</strong>: Applicazione multipla con aggiornamento dinamico</li>
+            <li><strong>Export CSV</strong>: Generazione file da dati JSON</li>
+            <li><strong>Local Storage</strong>: Simulazione presa in carico e stato sessione</li>
+            <li><strong>Toast Notifications</strong>: Feedback operazioni (Bootstrap Italia)</li>
+        </ul>
+
+        <h2>Note Implementative</h2>
+        <ul>
+            <li>Usa <strong>data attributes</strong> per collegare azioni a elementi DOM</li>
+            <li>Implementa <strong>lazy loading</strong> per tab/accordion (carica JSON solo quando aperto)</li>
+            <li>Simula <strong>ritardi API</strong> con setTimeout per realismo (300-800ms)</li>
+            <li>Gestisci <strong>stati di errore</strong> con messaggi utente chiari</li>
+            <li><strong>Responsive</strong>: Ottimizza tabelle per mobile (scroll orizzontale o card collassabili)</li>
+            <li><strong>Accessibilità</strong>: ARIA labels, navigazione da tastiera, contrasto colori</li>
+        </ul>
+
+        <h2>Sezione VERBALI SABES/ASDAA</h2>
+        <p>Nuova sezione nella Dashboard per gestire i verbali in arrivo da SABES/ASDAA</p>
+        <h4><strong>Colonne Tabella:</strong></h4>
+        <ol>
+            <li><strong>Codice Fiscale</strong></li>
+            <li><strong>Cognome</strong></li>
+            <li><strong>Nome</strong></li>
+            <li><strong>Data Nascita</strong></li>
+            <li><strong>Invalidità Civile</strong> - Percentuale</li>
+            <li><strong>Cecità</strong> - Percentuale</li>
+            <li><strong>Sordità</strong> - Percentuale</li>
+            <li><strong>Stato Prestazione</strong> (badge):
+                <ul>
+                    <li style="color: #28a745;">■ Concessa (Verde)</li>
+                    <li style="color: #ffc107;">■ Sospesa (Giallo)</li>
+                    <li style="color: #dc3545;">■ Revocata (Rosso)</li>
+                </ul>
+            </li>
+        </ol>
+        <h4><strong>Azioni disponibili:</strong></h4>
+        <ul>
+            <li><strong>Bottone Ricevibile</strong> (Verde) - Marca il verbale come ricevibile</li>
+            <li><strong>Bottone Irricevibile</strong> (Rosso) - Marca il verbale come irricevibile</li>
+            <li><strong>Click riga</strong> - Visualizza dettaglio completo verbale</li>
+        </ul>
+        <h4><strong>Funzionalità:</strong></h4>
+        <ul>
+            <li>Filtri per CF/protocollo, % invalidità, stato</li>
+            <li>Esportazione CSV completa</li>
+            <li>Contatore totale verbali</li>
+            <li>Caricamento automatico con spinner</li>
+        </ul>
+        <p><strong>Esempio JSON verbali_sabes.json:</strong></p>
+        <pre><code>{
+  "id": 1,
+  "cf": "RSSMRA80A01H501U",
+  "cognome": "Rossi",
+  "nome": "Mario",
+  "dataNascita": "1980-01-01",
+  "invaliditaCivile": {
+    "percentuale": 75,
+    "statoPrestazione": "Concessa"
+  },
+  "cecita": null,
+  "sordita": null
+}</code></pre>
+
+        <hr>
+
+        <p><strong>Conclusione:</strong> Crea prima la struttura HTML delle pagine principali, poi implementa le funzionalità JavaScript progressive, e infine definisci gli stili custom per personalizzazioni non coperte da Bootstrap Italia.</p>
+
+    </div>
+</div>

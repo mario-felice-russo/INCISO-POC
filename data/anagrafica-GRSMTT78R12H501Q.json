@@ -1,0 +1,33 @@
+{
+  "cf": "GRSMTT78R12H501Q",
+  "cognome": "Grassi",
+  "nome": "Matteo",
+  "dataNascita": "1978-10-12",
+  "luogoNascita": "Bolzano",
+  "sesso": "M",
+  "statoCivile": "Celibe",
+  "cittadinanza": "Italiana",
+  "linguaPreferita": "IT",
+  "residenza": {
+    "indirizzo": "Piazza Gries 7",
+    "cap": "39100",
+    "comune": "Bolzano",
+    "provincia": "BZ"
+  },
+  "domicilio": null,
+  "telefono": "0471556677",
+  "email": "matteo.grassi@gmail.com",
+  "iban": "IT88 A030 6909 2061 0000 0234 567",
+  "intestatarioIban": "Grassi Matteo",
+  "rappresentanteLegale": null,
+  "stato": "Attivo",
+  "dataIscrizione": "2019-11-30",
+  "dataDecesso": null,
+  "operatoreRiferimento": "Dott. Bianchi",
+  "posizioneAS400": "890123",
+  "invalidita": {
+    "civile": false,
+    "cecita": true,
+    "sordita": true
+  }
+}

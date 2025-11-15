@@ -23,14 +23,49 @@ body {
     min-height: 100vh;
 }
 
-.container-fluid {
+/* .container-fluid {
     max-width: 1400px;
-}
+} */
 
 /* Navbar */
+.navbar {
+    padding: 0.5rem 1rem;
+}
+
 .navbar-brand {
     font-weight: 600;
     font-size: 1.25rem;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.75rem;
+    white-space: nowrap;
+}
+
+.navbar-nav .nav-link i {
+    font-size: 1rem;
+    margin-right: 0.25rem;
+}
+
+.navbar-nav .dropdown-toggle {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.75rem;
+}
+
+.navbar-nav .dropdown-menu {
+    font-size: 0.875rem;
+}
+
+.navbar-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    opacity: 0.95;
 }
 
 /* Card Migliorati */
@@ -247,6 +282,20 @@ a.assistito-link:hover {
 @media (max-width: 767.98px) {
     .navbar-brand {
         font-size: 1rem;
+    }
+    
+    .navbar-brand img {
+        height: 60px;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+    
+    .navbar-nav .nav-link i {
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
     }
     
     .card-header h5 {

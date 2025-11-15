@@ -1,81 +1,53 @@
-<!DOCTYPE html>
-<html lang="it">
+<!-- Documentazione Content -->
+<style>
+    .toc {
+        position: sticky;
+        top: 20px;
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentazione POC - ASSE InCiSo</title>
+    .feature-card {
+        transition: transform 0.2s;
+    }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
 
-    <!-- Bootstrap Italia CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.8/dist/css/bootstrap-italia.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/theme-luxe.css" rel="stylesheet">
+    .tech-badge {
+        font-size: 0.85rem;
+        padding: 0.35em 0.65em;
+        margin: 0.2rem;
+    }
 
-    <style>
-        .toc {
-            position: sticky;
-            top: 20px;
-        }
+    pre code {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 0.375rem;
+        display: block;
+    }
 
-        .feature-card {
-            transition: transform 0.2s;
-        }
+    .section-header {
+        border-bottom: 1px solid gray;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+</style>
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-        }
-
-        .tech-badge {
-            font-size: 0.85rem;
-            padding: 0.35em 0.65em;
-            margin: 0.2rem;
-        }
-
-        pre code {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            border-radius: 0.375rem;
-            display: block;
-        }
-
-        .section-header {
-            border-bottom: 1px solid gray;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Header -->
-    <div id="header-container"></div>
-
-    <!-- Hero Section -->
-    <div class="py-5"
-        style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-bottom: 3px solid #dee2e6;">
-        <div class="container">
-            <h1 class="display-4" style="color: #2c3e50;">Documentazione POC</h1>
-            <p class="lead" style="color: #495057;">ASSE InCiSo - Sistema di gestione assistiti e prestazioni
-                assistenziali</p>
-            <p class="mb-0"><span class="badge"
-                    style="background-color: #6c757d; color: white; font-size: 1rem; padding: 0.5rem 1rem;">Versione
-                    1.0.0 - Proof of Concept</span></p>
-        </div>
+<!-- Hero Section -->
+<div class="py-5"
+    style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-bottom: 3px solid #dee2e6;">
+    <div class="container">
+        <h1 class="display-4" style="color: #2c3e50;">Documentazione POC</h1>
+        <p class="lead" style="color: #495057;">ASSE InCiSo - Sistema di gestione assistiti e prestazioni
+            assistenziali</p>
+        <p class="mb-0"><span class="badge"
+                style="background-color: #6c757d; color: white; font-size: 1rem; padding: 0.5rem 1rem;">Versione
+                1.0.0 - Proof of Concept</span></p>
     </div>
+</div>
 
-    <!-- Main Content -->
-    <div class="container my-5">
+<div class="container my-5">
         <div class="row">
             <!-- Table of Contents -->
             <div class="col-lg-3">
@@ -119,7 +91,7 @@
                         <div class="col-md-3 mb-3">
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <h3 class="text-primary">6</h3>
+                                    <h3 class="text-primary">7</h3>
                                     <small>Pagine HTML</small>
                                 </div>
                             </div>
@@ -127,7 +99,7 @@
                         <div class="col-md-3 mb-3">
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <h3 class="text-success">8</h3>
+                                    <h3 class="text-success">9</h3>
                                     <small>Moduli JavaScript</small>
                                 </div>
                             </div>
@@ -135,7 +107,7 @@
                         <div class="col-md-3 mb-3">
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <h3 class="text-info">8</h3>
+                                    <h3 class="text-info">9</h3>
                                     <small>File Dati JSON</small>
                                 </div>
                             </div>
@@ -143,18 +115,17 @@
                         <div class="col-md-3 mb-3">
                             <div class="card text-center">
                                 <div class="card-body">
-                                    <h3 class="text-warning">~4.875</h3>
+                                    <h3 class="text-warning">~5.600</h3>
                                     <small>Righe di Codice</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="alert alert-light border mt-3">
+                    <div class="alert alert-success border mt-3">
+                        <i class="bi bi-stars"></i> <strong>Architettura SPA:</strong> Single Page Application con caricamento dinamico dei contenuti<br>
                         <small>
-                            <strong>Totale file:</strong> 6 HTML + 2 Componenti + 8 JS + 2 CSS + 8 JSON = <strong>26
-                                file</strong><br>
-                            <strong>Novità:</strong> Sistema header/footer dinamico con 3 nuovi file (header.html,
-                            footer.html, layout.js)
+                            <strong>Totale file:</strong> 1 index.html + 6 pagine contenuto + 2 componenti + 9 JS + 2 CSS + 9 JSON = <strong>29 file</strong><br>
+                            <strong>Novità:</strong> Sistema di navigazione SPA con caricamento dinamico pagine e script + Gestione Verbali SABES/ASDAA
                         </small>
                     </div>
                 </section>
@@ -174,7 +145,7 @@
                 <!-- Dashboard -->
                 <section id="dashboard" class="mb-5">
                     <h2 class="section-header">1. Dashboard</h2>
-                    <p class="lead">Pagina principale con vista evidenze/promemoria e note operative</p>
+                    <p class="lead">Pagina principale con vista evidenze/promemoria, note operative e verbali SABES/ASDAA</p>
 
                     <div class="card feature-card mb-3">
                         <div class="card-header bg-warning text-dark">
@@ -184,6 +155,7 @@
                             <h6>Funzionalità:</h6>
                             <ul>
                                 <li><strong>Layout a 2 colonne</strong> (70% evidenze / 30% note)</li>
+                                <li><strong>Visualizzazione Tabella/Card:</strong> Toggle per cambiare tra vista tabellare e card per evidenze</li>
                                 <li><strong>3 Tab dinamici:</strong>
                                     <ul>
                                         <li>Scadute (data scadenza < oggi)</li>
@@ -210,7 +182,7 @@
                             </ul>
 
                             <h6 class="mt-3">File coinvolti:</h6>
-                            <code>index.html, js/app.js, js/evidenze.js, js/utils.js, data/evidenze.json, data/tipo_evidenze.json</code>
+                            <code>dashboard.html, js/app.js, js/evidenze.js, js/utils.js, data/evidenze.json, data/tipo_evidenze.json</code>
                         </div>
                     </div>
 
@@ -221,9 +193,12 @@
                         <div class="card-body">
                             <h6>Funzionalità:</h6>
                             <ul>
+                                <li><strong>Visualizzazione Tabella/Card:</strong> Toggle per cambiare modalità di visualizzazione</li>
                                 <li><strong>Filtro per categoria:</strong> Residenza, Pagamenti, Degenze,
-                                    Amministrazione Sostegno, Generiche</li>
+                                    Amministrazione Sostegno, Redditi, Varie</li>
+                                <li><strong>Badge colorati vivaci</strong> per categorie con colori ad alto contrasto</li>
                                 <li><strong>Ricerca testuale</strong> su titolo, testo, assistito, operatore</li>
+                                <li><strong>Esportazione CSV</strong> delle note filtrate</li>
                                 <li><strong>Card nota</strong> con:
                                     <ul>
                                         <li>Badge categoria colorato</li>
@@ -238,7 +213,36 @@
                             </ul>
 
                             <h6 class="mt-3">File coinvolti:</h6>
-                            <code>index.html, js/app.js, data/note.json</code>
+                            <code>dashboard.html, js/app.js, data/note.json</code>
+                        </div>
+                    </div>
+
+                    <div class="card feature-card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="bi bi-file-earmark-medical"></i> Nuovi Verbali SABES/ASDAA</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Funzionalità:</h6>
+                            <ul>
+                                <li><strong>Tabella verbali</strong> con colonne:
+                                    <ul>
+                                        <li>Codice Fiscale</li>
+                                        <li>Cognome e Nome</li>
+                                        <li>Data Nascita</li>
+                                        <li>% Invalidità Civile, Cecità, Sordità (3 colonne separate)</li>
+                                        <li>Stato Prestazione (badge colorato: Verde=Concessa, Giallo=Sospesa, Rosso=Revocata)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Bottoni azione:</strong> Ricevibile (verde) e Irricevibile (rosso) per ogni verbale</li>
+                                <li><strong>Click sulla riga:</strong> Visualizza dettaglio verbale completo</li>
+                                <li><strong>Filtri:</strong> Ricerca per CF/protocollo, filtro per % invalidità, filtro per stato</li>
+                                <li><strong>Esportazione CSV</strong> completa di tutti i verbali</li>
+                                <li><strong>Contatore totale</strong> verbali presenti</li>
+                                <li><strong>Caricamento automatico</strong> con spinner che si ferma dopo il caricamento</li>
+                            </ul>
+
+                            <h6 class="mt-3">File coinvolti:</h6>
+                            <code>dashboard.html, js/verbali-sabes.js, data/verbali_sabes.json</code>
                         </div>
                     </div>
                 </section>
@@ -252,24 +256,31 @@
                         <div class="card-body">
                             <h6>Funzionalità:</h6>
                             <ul>
-                                <li><strong>Form ricerca con 7 criteri:</strong>
+                                <li><strong>Badge tipologia invalidità:</strong> Filtri checkbox colorati per Invalidità Civile, Cecità, Sordità</li>
+                                <li><strong>Form ricerca con 10 criteri:</strong>
                                     <ul>
                                         <li>Codice Fiscale (16 caratteri)</li>
                                         <li>Cognome (ricerca parziale)</li>
                                         <li>Nome (ricerca parziale)</li>
                                         <li>Data Nascita (esatta)</li>
-                                        <li>Comune (ricerca parziale)</li>
-                                        <li>Stato (Attivo/Sospeso/Cessato)</li>
-                                        <li>Operatore riferimento</li>
+                                        <li>Data Decesso</li>
+                                        <li>Tipo Rappresentante Legale</li>
+                                        <li>Rappresentante Legale (nome)</li>
+                                        <li>% Invalidità Civile (range)</li>
+                                        <li>% Cecità (range)</li>
+                                        <li>% Sordità (range)</li>
                                     </ul>
                                 </li>
-                                <li><strong>Vista doppia:</strong>
+                                <li><strong>Tabella risultati:</strong>
                                     <ul>
-                                        <li>Tabella (8 colonne) - default</li>
-                                        <li>Griglia (card responsive)</li>
+                                        <li><strong>11 colonne:</strong> Tipo Invalidità (badge), CF, Cognome, Nome, Data Nascita, Tipo R.L, Rapp. Legale, %INV, %Cecità, %Sordità, Azioni</li>
+                                        <li><strong>Colorazione righe:</strong> Sfondo tenue nel colore del badge di invalidità con bordo laterale colorato</li>
+                                        <li><strong>Badge colorati vivaci:</strong> Blu per Inv. Civile, Arancione per Cecità, Azzurro per Sordità</li>
+                                        <li><strong>Percentuali integrate</strong> dai verbali JSON attivi</li>
                                     </ul>
                                 </li>
-                                <li><strong>Paginazione:</strong> 10 elementi per pagina con navigazione completa</li>
+                                <li><strong>Visualizzazione tutti gli assistiti:</strong> Al caricamento o senza filtri, mostra tutti gli assistiti disponibili</li>
+                                <li><strong>Paginazione:</strong> 50 elementi per pagina con navigazione completa</li>
                                 <li><strong>Esportazione CSV</strong> risultati completi</li>
                                 <li><strong>Normalizzazione ricerca:</strong> rimozione accenti, lowercase</li>
                                 <li><strong>Badge contatore</strong> risultati trovati</li>
@@ -626,45 +637,50 @@
 
                     <h4>Struttura File</h4>
                     <pre><code>POC/
-├── index.html              (Dashboard)
-├── ricerca.html            (Ricerca assistiti)
-├── dettaglio.html          (Fascicolo 7 tab)
-├── documenti.html          (Documenti protocollati)
-├── editor.html             (Configurazione)
-├── documentazione.html     (Questa pagina)
+├── index.html              (Shell SPA - container principale)
+├── dashboard.html          (Contenuto dashboard)
+├── ricerca.html            (Contenuto ricerca assistiti)
+├── dettaglio.html          (Contenuto fascicolo 7 tab)
+├── documenti.html          (Contenuto documenti protocollati)
+├── editor.html             (Contenuto configurazione)
+├── documentazione.html     (Contenuto questa pagina)
 ├── includes/
-│   ├── header.html         (52 righe - navbar riutilizzabile)
+│   ├── header.html         (52 righe - navbar con link SPA)
 │   └── footer.html         (42 righe - footer riutilizzabile)
 ├── css/
 │   ├── style.css           (307 righe - stili globali)
 │   └── components.css      (447 righe - componenti)
 ├── js/
-│   ├── layout.js           (80 righe - caricamento header/footer)
+│   ├── layout.js           (266 righe - SPA router e loader)
 │   ├── utils.js            (356 righe - utility functions)
-│   ├── evidenze.js         (334 righe - gestione evidenze)
-│   ├── app.js              (485 righe - dashboard logic)
-│   ├── ricerca.js          (411 righe - ricerca assistiti)
+│   ├── evidenze.js         (380 righe - gestione evidenze + tabella/card)
+│   ├── app.js              (640 righe - dashboard logic + note tabella/card)
+│   ├── ricerca.js          (495 righe - ricerca assistiti avanzata)
 │   ├── dettaglio.js        (566 righe - fascicolo 7 tab)
 │   ├── documenti.js        (449 righe - doc protocollati)
-│   └── editor.js           (161 righe - configurazione)
+│   ├── editor.js           (161 righe - configurazione)
+│   └── verbali-sabes.js    (266 righe - gestione verbali SABES/ASDAA)
 └── data/
     ├── tipo_evidenze.json       (9 tipologie)
     ├── tipo_comunicazioni.json  (11 tipologie)
     ├── assistiti.json           (5 campione)
     ├── evidenze.json            (12 evidenze)
-    ├── note.json                (12 note)
+    ├── note.json                (14 note - aggiornate con nuove categorie)
     ├── prestazioni.json         (6 con mensilità)
     ├── verbali.json             (8 verbali)
+    ├── verbali_sabes.json       (8 verbali SABES/ASDAA)
     └── comunicazioni.json       (11 comunicazioni)</code></pre>
 
                     <h4 class="mt-4">Pattern Architetturali</h4>
                     <ul>
+                        <li><strong>Single Page Application (SPA):</strong> Navigazione senza ricaricamento pagina completa</li>
                         <li><strong>Module Pattern:</strong> Ogni pagina ha un oggetto principale (App, RicercaApp,
                             DettaglioApp, ecc.)</li>
                         <li><strong>Component-Based Layout:</strong> Header e footer centralizzati in
                             <code>includes/</code> e caricati dinamicamente
                         </li>
-                        <li><strong>Lazy Loading:</strong> Tab caricati on-demand con flag <code>tabsLoaded</code></li>
+                        <li><strong>Dynamic Content Loading:</strong> HTML e JS caricati on-demand tramite fetch()</li>
+                        <li><strong>Lazy Loading:</strong> Tab e script caricati solo quando necessario</li>
                         <li><strong>Separation of Concerns:</strong> utils.js per funzioni generiche, moduli
                             specializzati per logica specifica</li>
                         <li><strong>Event-Driven:</strong> Event listeners centralizzati in
@@ -673,26 +689,106 @@
                         <li><strong>Data-First:</strong> Fetch JSON → Elaborazione → Rendering</li>
                     </ul>
 
-                    <h4 class="mt-4">Sistema Header/Footer Dinamico</h4>
+                    <h4 class="mt-4">Architettura SPA (Single Page Application)</h4>
                     <div class="alert alert-info">
-                        <strong>Vantaggi:</strong> Manutenzione centralizzata di navbar e footer. Una modifica si
-                        riflette su tutte le 6 pagine.
+                        <i class="bi bi-lightning-charge"></i> <strong>Vantaggi SPA:</strong> Navigazione fluida senza ricaricamento pagina, header/footer persistenti, 
+                        caricamento ottimizzato degli script, esperienza utente migliorata.
                     </div>
+                    
+                    <h5>Componenti Principali</h5>
                     <ul>
-                        <li><strong>includes/header.html:</strong> Navbar Bootstrap con 5 voci menu + dropdown utente
-                        </li>
-                        <li><strong>includes/footer.html:</strong> Footer a 3 colonne con info progetto, tecnologie e
-                            copyright</li>
-                        <li><strong>js/layout.js:</strong> LayoutManager che:
+                        <li><strong>index.html:</strong> Shell principale dell'applicazione
                             <ul>
-                                <li>Carica dinamicamente header.html e footer.html via fetch()</li>
-                                <li>Inietta contenuto in <code>#header-container</code> e <code>#footer-container</code>
-                                </li>
-                                <li>Imposta automaticamente il link attivo basandosi sul nome file corrente</li>
-                                <li>Gestisce errori di caricamento con console.error</li>
+                                <li>Contiene solo header, footer e <code>#content-container</code></li>
+                                <li>Carica il minimo indispensabile di script (layout.js)</li>
+                                <li>Punto di ingresso unico dell'applicazione</li>
+                            </ul>
+                        </li>
+                        <li><strong>Pagine contenuto:</strong> HTML puro senza tag &lt;html&gt;, &lt;head&gt;, &lt;body&gt;
+                            <ul>
+                                <li>dashboard.html, ricerca.html, dettaglio.html, ecc.</li>
+                                <li>Contengono solo il markup del contenuto specifico</li>
+                                <li>Caricati dinamicamente nel <code>#content-container</code></li>
+                            </ul>
+                        </li>
+                        <li><strong>includes/header.html:</strong> Navbar con link SPA (href="#")
+                            <ul>
+                                <li>5 voci menu principali + dropdown utente</li>
+                                <li>Attributo <code>data-page</code> per identificare la destinazione</li>
+                                <li>Click intercettati da JavaScript per navigazione SPA</li>
+                            </ul>
+                        </li>
+                        <li><strong>includes/footer.html:</strong> Footer a 3 colonne con info progetto</li>
+                    </ul>
+
+                    <h5 class="mt-3">LayoutManager (js/layout.js)</h5>
+                    <p>Cuore della navigazione SPA con le seguenti funzionalità:</p>
+                    <ul>
+                        <li><strong>init():</strong> Inizializza l'applicazione
+                            <ul>
+                                <li>Carica header e footer via fetch()</li>
+                                <li>Configura la navigazione SPA</li>
+                                <li>Carica automaticamente la dashboard all'avvio</li>
+                            </ul>
+                        </li>
+                        <li><strong>setupNavigation():</strong> Intercetta i click sulla navbar
+                            <ul>
+                                <li>Previene il comportamento di default dei link</li>
+                                <li>Chiama loadPage() per caricare il contenuto</li>
+                            </ul>
+                        </li>
+                        <li><strong>loadPage(pageName):</strong> Carica dinamicamente una pagina
+                            <ul>
+                                <li>Mostra spinner durante il caricamento</li>
+                                <li>Fetch del file HTML (es. dashboard.html)</li>
+                                <li>Inietta contenuto nel <code>#content-container</code></li>
+                                <li>Aggiorna lo stato attivo della navbar</li>
+                                <li>Carica gli script necessari per la pagina</li>
+                            </ul>
+                        </li>
+                        <li><strong>loadPageScripts(pageName):</strong> Gestione script dinamici
+                            <ul>
+                                <li>Mappa delle dipendenze per ogni pagina</li>
+                                <li>Dashboard: utils.js + evidenze.js + app.js + verbali-sabes.js</li>
+                                <li>Caricamento script solo se non già presenti</li>
+                                <li>Inizializza l'app specifica (App.init(), RicercaApp.init(), VerbaliSabesManager.init(), ecc.)</li>
+                            </ul>
+                        </li>
+                        <li><strong>loadScript(src):</strong> Carica uno script JavaScript
+                            <ul>
+                                <li>Crea dinamicamente tag &lt;script&gt;</li>
+                                <li>Gestisce Promise per caricamento asincrono</li>
+                                <li>Rimuove script esistenti per evitare duplicati</li>
+                            </ul>
+                        </li>
+                        <li><strong>setActiveNavItem(pageName):</strong> Evidenzia link attivo
+                            <ul>
+                                <li>Aggiunge classe 'active' al link corrente</li>
+                                <li>Rimuove 'active' dagli altri link</li>
                             </ul>
                         </li>
                     </ul>
+
+                    <h5 class="mt-3">Flusso di Navigazione</h5>
+                    <pre><code>1. Utente clicca su link navbar (es. "Ricerca Assistiti")
+   ↓
+2. setupNavigation() intercetta il click
+   ↓
+3. loadPage('ricerca') viene chiamata
+   ↓
+4. Mostra spinner nel content-container
+   ↓
+5. Fetch di ricerca.html
+   ↓
+6. Inietta HTML nel content-container
+   ↓
+7. Aggiorna navbar (link "Ricerca" diventa active)
+   ↓
+8. loadPageScripts('ricerca') carica utils.js e ricerca.js
+   ↓
+9. initPageApp('ricerca') chiama RicercaApp.init()
+   ↓
+10. Pagina ricerca è pronta e funzionante</code></pre>
 
                     <h4 class="mt-4">Funzionalità Comuni (utils.js)</h4>
                     <ul>
@@ -710,6 +806,84 @@
                         <li><code>escapeHtml()</code> - Prevenzione XSS</li>
                         <li><code>loadJSON()</code> - Fetch JSON con error handling</li>
                     </ul>
+
+                    <h4 class="mt-5">Come Lanciare il Sito Statico</h4>
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle"></i> <strong>Importante:</strong> Non aprire direttamente index.html dal filesystem.
+                        L'applicazione SPA richiede un web server locale per funzionare correttamente (a causa delle richieste fetch()).
+                    </div>
+
+                    <h5>Metodo 1: Python (Semplice e Veloce)</h5>
+                    <p>Se hai Python installato (versione 3.x), puoi avviare un server web locale con un solo comando:</p>
+                    
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6><i class="bi bi-terminal"></i> Passaggi:</h6>
+                            <ol>
+                                <li>Apri il <strong>Prompt dei comandi</strong> (Win + R, digita <code>cmd</code> e premi Invio)</li>
+                                <li>Naviga nella cartella del progetto:
+                                    <pre><code>cd percorso\della\tua\cartella</code></pre>
+                                    <small class="text-muted">Sostituisci con il percorso reale dove si trova il progetto</small>
+                                </li>
+                                <li>Avvia il server web:
+                                    <pre><code>python -m http.server 8000</code></pre>
+                                </li>
+                                <li>Apri il browser e vai all'indirizzo:
+                                    <pre><code>http://localhost:8000</code></pre>
+                                    Oppure:
+                                    <pre><code>http://127.0.0.1:8000</code></pre>
+                                </li>
+                            </ol>
+                            <div class="alert alert-info mb-0">
+                                <i class="bi bi-info-circle"></i> <strong>Tip:</strong> Per fermare il server, premi <kbd>Ctrl</kbd> + <kbd>C</kbd> nel terminale.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4">Metodo 2: Node.js (con npm)</h5>
+                    <p>Se hai Node.js installato, puoi usare il pacchetto <code>http-server</code>:</p>
+                    
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6><i class="bi bi-terminal"></i> Passaggi:</h6>
+                            <ol>
+                                <li>Installa <code>http-server</code> globalmente (se non l'hai già fatto):
+                                    <pre><code>npm install -g http-server</code></pre>
+                                </li>
+                                <li>Naviga nella cartella del progetto e avvia il server:
+                                    <pre><code>http-server -p 8000</code></pre>
+                                </li>
+                                <li>Apri il browser e vai a:
+                                    <pre><code>http://localhost:8000</code></pre>
+                                </li>
+                            </ol>
+                            <div class="alert alert-info mb-0">
+                                <i class="bi bi-info-circle"></i> <strong>Vantaggi:</strong> <code>http-server</code> offre funzionalità aggiuntive come caching e compressione.
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4">Metodo 3: Visual Studio Code (Live Server)</h5>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6><i class="bi bi-code-square"></i> Passaggi:</h6>
+                            <ol>
+                                <li>Apri il progetto in <strong>Visual Studio Code</strong></li>
+                                <li>Installa l'estensione <strong>Live Server</strong> (se non già installata)</li>
+                                <li>Click destro su <code>index.html</code> → <strong>Open with Live Server</strong></li>
+                                <li>Il browser si aprirà automaticamente con l'applicazione</li>
+                            </ol>
+                            <div class="alert alert-success mb-0">
+                                <i class="bi bi-check-circle"></i> <strong>Hot Reload:</strong> Live Server ricarica automaticamente la pagina quando modifichi i file!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light border mt-3">
+                        <h6><i class="bi bi-lightbulb"></i> Nota sulla Porta</h6>
+                        <p class="mb-0">Se la porta 8000 è già in uso, puoi usare una porta diversa (es. 3000, 5000, 8080). 
+                        Ricorda di aggiornare l'URL del browser di conseguenza.</p>
+                    </div>
                 </section>
 
                 <!-- Modello Dati -->
@@ -742,9 +916,14 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Nota</strong></td>
-                                    <td>id, cf, assistito, categoria, titolo, testo, dataCreazione, operatore,
+                                    <td>id, cf, assistito, categoria (Residenza/Pagamenti/Degenze/Amministrazione Sostegno/Redditi/Varie), titolo, testo, dataCreazione, operatore,
                                         principale</td>
                                     <td>note.json</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Verbale SABES</strong></td>
+                                    <td>id, cf, cognome, nome, dataNascita, invaliditaCivile{percentuale, statoPrestazione}, cecita{percentuale, statoPrestazione}, sordita{percentuale, statoPrestazione}</td>
+                                    <td>verbali_sabes.json</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Prestazione</strong></td>
@@ -801,32 +980,16 @@ Prestazione (1) ──→ (N) Mensilità (embedded array)</code></pre>
         </div>
     </div>
 
-    <!-- Change Notes -->
-    <div id="change-notes-container"></div>
-
-    <!-- Footer -->
-    <div id="footer-container"></div>
-
-    <!-- Bootstrap Italia JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.8/dist/js/bootstrap-italia.bundle.min.js"></script>
-
-    <!-- Layout JS -->
-    <script src="js/layout.js"></script>
-    <script src="js/change-notes.js"></script>
-
-    <script>
-        // Smooth scroll for TOC links
-        document.querySelectorAll('.toc a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
+<script>
+    // Smooth scroll for TOC links
+    document.querySelectorAll('.toc a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
-    </script>
-</body>
-
-</html>
+    });
+</script>

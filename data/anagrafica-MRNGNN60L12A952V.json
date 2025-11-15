@@ -1,0 +1,33 @@
+{
+  "stato": "Sospeso",
+  "residenza": {
+    "provincia": "BZ",
+    "comune": "Bressanone",
+    "indirizzo": "Piazza Duomo 3",
+    "cap": "39042"
+  },
+  "statoCivile": "Divorziato",
+  "cognome": "Marani",
+  "rappresentanteLegale": null,
+  "linguaPreferita": "IT",
+  "sesso": "M",
+  "cf": "MRNGNN60L12A952V",
+  "dataNascita": "1960-07-12",
+  "telefono": "0472834567",
+  "operatoreRiferimento": "Dott.ssa Ferrari",
+  "intestatarioIban": "Marani Giovanni",
+  "domicilio": null,
+  "cittadinanza": "Italiana",
+  "dataIscrizione": "2015-11-03",
+  "email": null,
+  "invalidita": {
+    "civile": true,
+    "cecita": false,
+    "sordita": false
+  },
+  "luogoNascita": "Bressanone",
+  "posizioneAS400": "100004",
+  "nome": "Giovanni",
+  "dataDecesso": null,
+  "iban": "IT90 L020 0801 6380 0001 2345 678"
+}

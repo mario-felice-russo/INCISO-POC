@@ -1,0 +1,38 @@
+{
+  "cf": "BRTCRL98S55H501A",
+  "cognome": "Berti",
+  "nome": "Carla",
+  "dataNascita": "1998-11-15",
+  "luogoNascita": "Bolzano",
+  "sesso": "F",
+  "statoCivile": "Nubile",
+  "cittadinanza": "Italiana",
+  "linguaPreferita": "IT",
+  "residenza": {
+    "indirizzo": "Via Brennero 150",
+    "cap": "39100",
+    "comune": "Bolzano",
+    "provincia": "BZ"
+  },
+  "domicilio": null,
+  "telefono": "3456789012",
+  "email": "carla.berti@email.com",
+  "iban": "IT11 B030 6234 5670 0000 0123 456",
+  "intestatarioIban": "Berti Anna (AmS)",
+  "rappresentanteLegale": {
+    "tipo": "Amministratore di Sostegno",
+    "nome": "Berti Anna",
+    "cf": "BRTANN70A41H501M",
+    "rapporto": "Madre"
+  },
+  "stato": "Attivo",
+  "dataIscrizione": "2023-03-10",
+  "dataDecesso": null,
+  "operatoreRiferimento": "Dott. Rossi",
+  "posizioneAS400": "678901",
+  "invalidita": {
+    "civile": true,
+    "cecita": false,
+    "sordita": false
+  }
+}

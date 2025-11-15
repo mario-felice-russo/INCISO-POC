@@ -1,0 +1,33 @@
+{
+  "stato": "Attivo",
+  "residenza": {
+    "provincia": "BZ",
+    "comune": "Merano",
+    "indirizzo": "Via San Martino 28",
+    "cap": "39012"
+  },
+  "statoCivile": "Vedovo",
+  "cognome": "Gallo",
+  "rappresentanteLegale": null,
+  "linguaPreferita": "DE",
+  "sesso": "M",
+  "cf": "GLLMRC70T55F205K",
+  "dataNascita": "1970-12-15",
+  "telefono": "0473456789",
+  "operatoreRiferimento": "Dott.ssa Ferrari",
+  "intestatarioIban": "Gallo Marco",
+  "domicilio": null,
+  "cittadinanza": "Italiana",
+  "dataIscrizione": "2017-02-14",
+  "email": null,
+  "invalidita": {
+    "civile": false,
+    "cecita": true,
+    "sordita": false
+  },
+  "luogoNascita": "Merano",
+  "posizioneAS400": "234567",
+  "nome": "Marco",
+  "dataDecesso": null,
+  "iban": "IT22 D010 3012 3450 0000 0012 345"
+}

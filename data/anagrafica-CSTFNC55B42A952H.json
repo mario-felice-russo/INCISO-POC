@@ -1,0 +1,33 @@
+{
+  "cf": "CSTFNC55B42A952H",
+  "cognome": "Costa",
+  "nome": "Francesca",
+  "dataNascita": "1955-02-02",
+  "luogoNascita": "Bressanone",
+  "sesso": "F",
+  "statoCivile": "Vedova",
+  "cittadinanza": "Italiana",
+  "linguaPreferita": "IT",
+  "residenza": {
+    "indirizzo": "Piazza Parrocchia 9",
+    "cap": "39042",
+    "comune": "Bressanone",
+    "provincia": "BZ"
+  },
+  "domicilio": null,
+  "telefono": "0472765432",
+  "email": "f.costa@gmail.com",
+  "iban": "IT66 P076 0103 2000 0001 2345 678",
+  "intestatarioIban": "Costa Francesca",
+  "rappresentanteLegale": null,
+  "stato": "Deceduto",
+  "dataIscrizione": "2010-08-20",
+  "dataDecesso": "2024-03-12",
+  "operatoreRiferimento": "Dott. Rossi",
+  "posizioneAS400": "345678",
+  "invalidita": {
+    "civile": true,
+    "cecita": false,
+    "sordita": true
+  }
+}

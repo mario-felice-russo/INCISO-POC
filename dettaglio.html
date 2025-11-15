@@ -1,30 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fascicolo Personale - ASSE InCiSo</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap Italia CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.8/dist/css/bootstrap-italia.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/components.css" rel="stylesheet">
-    <link href="css/theme-luxe.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Header -->
-    <div id="header-container"></div>
-
-    <!-- Main Content -->
-    <div class="container-fluid mt-4">
+<!-- Dettaglio Content -->
         <!-- Header Assistito -->
         <div class="assistito-header" id="assistitoHeader">
             <div class="d-flex justify-content-center align-items-center" style="min-height: 150px;">
@@ -85,39 +59,68 @@
             <!-- TAB RIEPILOGO -->
             <div class="tab-pane fade show active" id="riepilogo" role="tabpanel">
                 <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="card shadow-sm">
-                            <div class="card-header">
+                    <!-- COLONNA SINISTRA -->
+                    <div class="col-md-6">
+                        <!-- Dati Anagrafici -->
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-primary text-white">
                                 <h5 class="mb-0"><i class="bi bi-person-vcard"></i> Dati Anagrafici</h5>
                             </div>
-                            <div class="card-body" id="datiAnagrafici">
+                            <div class="card-body" id="datiAnagrafici" style="max-height: 600px; overflow-y: auto;">
+                                <div class="text-center py-3">
+                                    <div class="spinner-border" role="status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Documenti Fascicolo -->
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0"><i class="bi bi-folder2-open"></i> Documenti Fascicolo</h5>
+                            </div>
+                            <div class="card-body" id="documentiFascicolo" style="max-height: 500px; overflow-y: auto;">
                                 <div class="text-center py-3">
                                     <div class="spinner-border" role="status"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="card shadow-sm">
-                            <div class="card-header">
-                                <h5 class="mb-0"><i class="bi bi-bar-chart"></i> Statistiche</h5>
+                    
+                    <!-- COLONNA DESTRA -->
+                    <div class="col-md-6">
+                        <!-- Checklist -->
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0"><i class="bi bi-check2-square"></i> Checklist Completezza Fascicolo</h5>
                             </div>
-                            <div class="card-body" id="statistiche">
+                            <div class="card-body" id="statistiche" style="max-height: 500px; overflow-y: auto;">
                                 <div class="text-center py-3">
                                     <div class="spinner-border" role="status"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card shadow-sm">
-                            <div class="card-header">
+                        
+                        <!-- Evidenze Recenti -->
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-danger text-white">
                                 <h5 class="mb-0"><i class="bi bi-exclamation-circle"></i> Evidenze Recenti</h5>
                             </div>
-                            <div class="card-body" id="evidenzeRecenti">
+                            <div class="card-body" id="evidenzeRecenti" style="max-height: 400px; overflow-y: auto;">
+                                <div class="text-center py-3">
+                                    <div class="spinner-border" role="status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Note Recenti -->
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0"><i class="bi bi-sticky"></i> Note Recenti</h5>
+                                <button class="btn btn-sm btn-light" id="btnNuovaNotaRiepilogo">
+                                    <i class="bi bi-plus-circle"></i> Aggiungi
+                                </button>
+                            </div>
+                            <div class="card-body" id="noteRecenti" style="max-height: 400px; overflow-y: auto;">
                                 <div class="text-center py-3">
                                     <div class="spinner-border" role="status"></div>
                                 </div>
@@ -226,21 +229,3 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Change Notes -->
-    <div id="change-notes-container"></div>
-
-    <!-- Footer -->
-    <div id="footer-container"></div>
-
-    <!-- Bootstrap Italia JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.8/dist/js/bootstrap-italia.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="js/layout.js"></script>
-    <script src="js/change-notes.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/dettaglio.js"></script>
-</body>
-</html>

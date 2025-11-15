@@ -14,7 +14,15 @@
     "email": "mario.rossi@email.it",
     "stato": "Attivo",
     "dataIscrizione": "2020-03-15",
-    "operatoreRiferimento": "Dott. Bianchi"
+    "operatoreRiferimento": "Dott. Bianchi",
+    "posizioneAS400": "100001",
+    "invalidita": {
+      "civile": true,
+      "cecita": false,
+      "sordita": false
+    },
+    "rappresentanteLegale": null,
+    "dataDecesso": null
   },
   {
     "cf": "VRDGPP75M15F205X",
@@ -31,7 +39,15 @@
     "email": "g.verdi@pec.it",
     "stato": "Attivo",
     "dataIscrizione": "2018-06-22",
-    "operatoreRiferimento": "Dott.ssa Ferrari"
+    "operatoreRiferimento": "Dott.ssa Ferrari",
+    "posizioneAS400": "100002",
+    "invalidita": {
+      "civile": true,
+      "cecita": false,
+      "sordita": true
+    },
+    "rappresentanteLegale": null,
+    "dataDecesso": null
   },
   {
     "cf": "BNCLRA85D45H501Z",
@@ -48,7 +64,19 @@
     "email": "laura.bianchi@gmail.com",
     "stato": "Attivo",
     "dataIscrizione": "2019-01-10",
-    "operatoreRiferimento": "Dott. Rossi"
+    "operatoreRiferimento": "Dott. Rossi",
+    "posizioneAS400": "100003",
+    "invalidita": {
+      "civile": false,
+      "cecita": true,
+      "sordita": false
+    },
+    "rappresentanteLegale": {
+      "tipo": "Tutore",
+      "nome": "Bianchi Roberto",
+      "cf": "BNCRBT55A01H501Y"
+    },
+    "dataDecesso": null
   },
   {
     "cf": "MRNGNN60L12A952V",
@@ -65,7 +93,15 @@
     "email": null,
     "stato": "Sospeso",
     "dataIscrizione": "2015-11-03",
-    "operatoreRiferimento": "Dott.ssa Ferrari"
+    "operatoreRiferimento": "Dott.ssa Ferrari",
+    "posizioneAS400": "100004",
+    "invalidita": {
+      "civile": true,
+      "cecita": false,
+      "sordita": false
+    },
+    "rappresentanteLegale": null,
+    "dataDecesso": null
   },
   {
     "cf": "FRRPTR92H50H501L",
@@ -82,6 +118,201 @@
     "email": "petra.ferrari@outlook.com",
     "stato": "Attivo",
     "dataIscrizione": "2021-09-05",
-    "operatoreRiferimento": "Dott. Bianchi"
+    "operatoreRiferimento": "Dott. Bianchi",
+    "posizioneAS400": "123456",
+    "invalidita": {
+      "civile": true,
+      "cecita": false,
+      "sordita": false
+    },
+    "rappresentanteLegale": null,
+    "dataDecesso": null
+  },
+  {
+    "cf": "GLLMRC70T55F205K",
+    "cognome": "Gallo",
+    "nome": "Marco",
+    "dataNascita": "1970-12-15",
+    "luogoNascita": "Merano",
+    "sesso": "M",
+    "indirizzo": "Via San Martino 28",
+    "comune": "Merano",
+    "cap": "39012",
+    "provincia": "BZ",
+    "telefono": "0473456789",
+    "email": null,
+    "stato": "Attivo",
+    "dataIscrizione": "2017-02-14",
+    "operatoreRiferimento": "Dott.ssa Ferrari",
+    "posizioneAS400": "234567",
+    "invalidita": {
+      "civile": false,
+      "cecita": true,
+      "sordita": false
+    },
+    "rappresentanteLegale": null,
+    "dataDecesso": null
+  },
+  {
+    "cf": "CSTFNC55B42A952H",
+    "cognome": "Costa",
+    "nome": "Francesca",
+    "dataNascita": "1955-02-02",
+    "luogoNascita": "Bressanone",
+    "sesso": "F",
+    "indirizzo": "Piazza Parrocchia 9",
+    "comune": "Bressanone",
+    "cap": "39042",
+    "provincia": "BZ",
+    "telefono": "0472765432",
+    "email": "f.costa@gmail.com",
+    "stato": "Deceduto",
+    "dataIscrizione": "2010-08-20",
+    "operatoreRiferimento": "Dott. Rossi",
+    "posizioneAS400": "345678",
+    "invalidita": {
+      "civile": true,
+      "cecita": false,
+      "sordita": true
+    },
+    "rappresentanteLegale": null,
+    "dataDecesso": "2024-03-12"
+  },
+  {
+    "cf": "RMNLNG88M50H501B",
+    "cognome": "Romani",
+    "nome": "Elena",
+    "dataNascita": "1988-08-10",
+    "luogoNascita": "Bolzano",
+    "sesso": "F",
+    "indirizzo": "Viale Druso 200",
+    "comune": "Bolzano",
+    "cap": "39100",
+    "provincia": "BZ",
+    "telefono": "3391234567",
+    "email": "elena.romani@pec.it",
+    "stato": "Attivo",
+    "dataIscrizione": "2022-01-18",
+    "operatoreRiferimento": "Dott. Bianchi",
+    "posizioneAS400": "456789",
+    "invalidita": {
+      "civile": true,
+      "cecita": true,
+      "sordita": false
+    },
+    "rappresentanteLegale": {
+      "tipo": "Tutore",
+      "nome": "Romani Paolo",
+      "cf": "RMNPLA60A01H501Z"
+    },
+    "dataDecesso": null
+  },
+  {
+    "cf": "MNTSRG65P10F205W",
+    "cognome": "Monti",
+    "nome": "Sergio",
+    "dataNascita": "1965-09-10",
+    "luogoNascita": "Merano",
+    "sesso": "M",
+    "indirizzo": "Via Mainardo 56",
+    "comune": "Merano",
+    "cap": "39012",
+    "provincia": "BZ",
+    "telefono": "0473112233",
+    "email": "sergio.monti@libero.it",
+    "stato": "Sospeso",
+    "dataIscrizione": "2014-05-25",
+    "operatoreRiferimento": "Dott.ssa Ferrari",
+    "posizioneAS400": "567890",
+    "invalidita": {
+      "civile": false,
+      "cecita": false,
+      "sordita": true
+    },
+    "rappresentanteLegale": null,
+    "dataDecesso": null
+  },
+  {
+    "cf": "BRTCRL98S55H501A",
+    "cognome": "Berti",
+    "nome": "Carla",
+    "dataNascita": "1998-11-15",
+    "luogoNascita": "Bolzano",
+    "sesso": "F",
+    "indirizzo": "Via Brennero 150",
+    "comune": "Bolzano",
+    "cap": "39100",
+    "provincia": "BZ",
+    "telefono": "3456789012",
+    "email": "carla.berti@email.com",
+    "stato": "Attivo",
+    "dataIscrizione": "2023-03-10",
+    "operatoreRiferimento": "Dott. Rossi",
+    "posizioneAS400": "678901",
+    "invalidita": {
+      "civile": true,
+      "cecita": false,
+      "sordita": false
+    },
+    "rappresentanteLegale": {
+      "tipo": "Amministratore di Sostegno",
+      "nome": "Berti Anna",
+      "cf": "BRTANN70A41H501M"
+    },
+    "dataDecesso": null
+  },
+  {
+    "cf": "LMBGVN58D18A952P",
+    "cognome": "Lombardi",
+    "nome": "Giovanni",
+    "dataNascita": "1958-04-18",
+    "luogoNascita": "Bressanone",
+    "sesso": "M",
+    "indirizzo": "Via Ponte Aquila 33",
+    "comune": "Bressanone",
+    "cap": "39042",
+    "provincia": "BZ",
+    "telefono": "0472998877",
+    "email": null,
+    "stato": "Attivo",
+    "dataIscrizione": "2012-07-08",
+    "operatoreRiferimento": "Dott.ssa Ferrari",
+    "posizioneAS400": "789012",
+    "invalidita": {
+      "civile": true,
+      "cecita": true,
+      "sordita": true
+    },
+    "rappresentanteLegale": {
+      "tipo": "Curatore",
+      "nome": "Lombardi Maria",
+      "cf": "LMBMRA62E52A952X"
+    },
+    "dataDecesso": null
+  },
+  {
+    "cf": "GRSMTT78R12H501Q",
+    "cognome": "Grassi",
+    "nome": "Matteo",
+    "dataNascita": "1978-10-12",
+    "luogoNascita": "Bolzano",
+    "sesso": "M",
+    "indirizzo": "Piazza Gries 7",
+    "comune": "Bolzano",
+    "cap": "39100",
+    "provincia": "BZ",
+    "telefono": "0471556677",
+    "email": "matteo.grassi@gmail.com",
+    "stato": "Attivo",
+    "dataIscrizione": "2019-11-30",
+    "operatoreRiferimento": "Dott. Bianchi",
+    "posizioneAS400": "890123",
+    "invalidita": {
+      "civile": false,
+      "cecita": true,
+      "sordita": true
+    },
+    "rappresentanteLegale": null,
+    "dataDecesso": null
   }
 ]

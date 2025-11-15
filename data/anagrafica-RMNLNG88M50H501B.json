@@ -1,0 +1,38 @@
+{
+  "stato": "Attivo",
+  "residenza": {
+    "provincia": "BZ",
+    "comune": "Bolzano",
+    "indirizzo": "Viale Druso 200",
+    "cap": "39100"
+  },
+  "statoCivile": "Nubile",
+  "cognome": "Romani",
+  "rappresentanteLegale": {
+    "nome": "Romani Paolo",
+    "tipo": "Tutore",
+    "rapporto": "Fratello",
+    "cf": "RMNPLA60A01H501Z"
+  },
+  "linguaPreferita": "IT",
+  "sesso": "F",
+  "cf": "RMNLNG88M50H501B",
+  "dataNascita": "1988-08-10",
+  "telefono": "3391234567",
+  "operatoreRiferimento": "Dott. Bianchi",
+  "intestatarioIban": "Romani Paolo (Tutore)",
+  "domicilio": null,
+  "cittadinanza": "Italiana",
+  "dataIscrizione": "2022-01-18",
+  "email": "elena.romani@pec.it",
+  "invalidita": {
+    "civile": true,
+    "cecita": true,
+    "sordita": false
+  },
+  "luogoNascita": "Bolzano",
+  "posizioneAS400": "456789",
+  "nome": "Elena",
+  "dataDecesso": null,
+  "iban": "IT77 Q050 1803 2000 0000 0123 456"
+}

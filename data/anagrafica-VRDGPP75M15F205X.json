@@ -1,0 +1,38 @@
+{
+  "cf": "VRDGPP75M15F205X",
+  "cognome": "Verdi",
+  "nome": "Giuseppe",
+  "dataNascita": "1975-08-15",
+  "luogoNascita": "Merano",
+  "sesso": "M",
+  "statoCivile": "Celibe",
+  "cittadinanza": "Italiana",
+  "linguaPreferita": "DE",
+  "residenza": {
+    "indirizzo": "Corso Italia 42",
+    "cap": "39012",
+    "comune": "Merano",
+    "provincia": "BZ"
+  },
+  "domicilio": {
+    "indirizzo": "Via Portici 88",
+    "cap": "39012",
+    "comune": "Merano",
+    "provincia": "BZ"
+  },
+  "telefono": "0473987654",
+  "email": "g.verdi@pec.it",
+  "iban": "IT45 K030 6909 6061 0000 0001 234",
+  "intestatarioIban": "Verdi Giuseppe",
+  "rappresentanteLegale": null,
+  "stato": "Attivo",
+  "dataIscrizione": "2018-06-22",
+  "dataDecesso": null,
+  "operatoreRiferimento": "Dott.ssa Ferrari",
+  "posizioneAS400": "100002",
+  "invalidita": {
+    "civile": true,
+    "cecita": false,
+    "sordita": true
+  }
+}

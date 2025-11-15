@@ -11,6 +11,7 @@ const EvidenzeManager = {
         categoria: 'Tutte',
         searchQuery: ''
     },
+    viewMode: 'table', // 'table' o 'card'
 
     /**
      * Inizializza il manager caricando i dati
@@ -101,6 +102,13 @@ const EvidenzeManager = {
     },
 
     /**
+     * Imposta modalità di visualizzazione
+     */
+    setViewMode(mode) {
+        this.viewMode = mode;
+    },
+
+    /**
      * Renderizza evidenza come HTML card
      */
     renderEvidenzaCard(evidenza) {
@@ -173,6 +181,69 @@ const EvidenzeManager = {
     },
 
     /**
+     * Renderizza evidenza in formato tabella
+     */
+    renderEvidenzaTabella(evidenze) {
+        return `
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Assistito</th>
+                            <th>CF</th>
+                            <th>Descrizione</th>
+                            <th>Scadenza</th>
+                            <th>Priorità</th>
+                            <th class="text-center">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${evidenze.map(evidenza => {
+                            const tipo = this.tipoEvidenze.find(t => t.id === evidenza.idTipoEvidenza);
+                            const colore = tipo ? tipo.colore : 'secondary';
+                            const giorni = Utils.daysFromNow(evidenza.dataScadenza);
+                            let statoClass = '';
+                            if (giorni !== null) {
+                                if (giorni < 0) statoClass = 'text-danger fw-bold';
+                                else if (giorni <= 7) statoClass = 'text-warning fw-bold';
+                            }
+                            
+                            return `
+                                <tr>
+                                    <td>
+                                        <span class="badge bg-${colore}" style="font-size: 0.85rem; padding: 0.4rem 0.6rem;">
+                                            ${Utils.escapeHtml(evidenza.tipoEvidenza)}
+                                        </span>
+                                    </td>
+                                    <td>${Utils.escapeHtml(evidenza.assistito)}</td>
+                                    <td><code class="small">${evidenza.cf}</code></td>
+                                    <td>
+                                        <div class="text-truncate" style="max-width: 250px;">
+                                            ${Utils.escapeHtml(evidenza.descrizione)}
+                                        </div>
+                                    </td>
+                                    <td class="${statoClass}">${Utils.formatDate(evidenza.dataScadenza)}</td>
+                                    <td>
+                                        <span class="badge bg-${Utils.getPrioritaClass(evidenza.priorita)}">
+                                            ${evidenza.priorita}
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-outline-primary view-evidenza-btn" data-evidenza-id="${evidenza.id}">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+    },
+
+    /**
      * Renderizza lista evidenze in container
      */
     renderEvidenze(containerId) {
@@ -194,7 +265,12 @@ const EvidenzeManager = {
             return;
         }
 
-        container.innerHTML = filtered.map(e => this.renderEvidenzaCard(e)).join('');
+        // Renderizza in base alla modalità
+        if (this.viewMode === 'table') {
+            container.innerHTML = this.renderEvidenzaTabella(filtered);
+        } else {
+            container.innerHTML = filtered.map(e => this.renderEvidenzaCard(e)).join('');
+        }
 
         // Aggiungi event listeners ai pulsanti
         container.querySelectorAll('.view-evidenza-btn').forEach(btn => {

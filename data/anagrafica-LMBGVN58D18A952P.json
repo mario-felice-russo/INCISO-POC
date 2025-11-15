@@ -1,0 +1,38 @@
+{
+  "cf": "LMBGVN58D18A952P",
+  "cognome": "Lombardi",
+  "nome": "Giovanni",
+  "dataNascita": "1958-04-18",
+  "luogoNascita": "Bressanone",
+  "sesso": "M",
+  "statoCivile": "Coniugato",
+  "cittadinanza": "Italiana",
+  "linguaPreferita": "IT",
+  "residenza": {
+    "indirizzo": "Via Ponte Aquila 33",
+    "cap": "39042",
+    "comune": "Bressanone",
+    "provincia": "BZ"
+  },
+  "domicilio": null,
+  "telefono": "0472998877",
+  "email": null,
+  "iban": "IT55 Z032 0103 2000 0000 0234 567",
+  "intestatarioIban": "Lombardi Maria (Curatore)",
+  "rappresentanteLegale": {
+    "tipo": "Curatore",
+    "nome": "Lombardi Maria",
+    "cf": "LMBMRA62E52A952X",
+    "rapporto": "Moglie"
+  },
+  "stato": "Attivo",
+  "dataIscrizione": "2012-07-08",
+  "dataDecesso": null,
+  "operatoreRiferimento": "Dott.ssa Ferrari",
+  "posizioneAS400": "789012",
+  "invalidita": {
+    "civile": true,
+    "cecita": true,
+    "sordita": true
+  }
+}

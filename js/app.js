@@ -6,6 +6,8 @@
 const App = {
     note: [],
     currentNoteFilter: 'Tutte',
+    evidenzeViewMode: 'table', // 'table' o 'card'
+    noteViewMode: 'table', // 'table' o 'card'
     
     /**
      * Inizializza l'applicazione
@@ -136,7 +138,8 @@ const App = {
                     'pagamenti': 'Pagamenti',
                     'degenze': 'Degenze',
                     'amministrazione': 'Amministrazione Sostegno',
-                    'generiche': 'Generiche',
+                    'redditi': 'Redditi',
+                    'varie': 'Varie',
                     '': 'Tutte'
                 };
                 this.filterNote(categoriaMap[categoria]);
@@ -148,6 +151,63 @@ const App = {
         if (btnSalvaNota) {
             btnSalvaNota.addEventListener('click', () => {
                 this.salvaNota();
+            });
+        }
+
+        // Bottoni visualizzazione evidenze
+        const btnEvidenzeTabella = document.getElementById('btnEvidenzeTabella');
+        const btnEvidenzeCard = document.getElementById('btnEvidenzeCard');
+        if (btnEvidenzeTabella && btnEvidenzeCard) {
+            btnEvidenzeTabella.addEventListener('click', () => {
+                this.cambiaVistaEvidenze('table');
+                btnEvidenzeTabella.classList.add('active');
+                btnEvidenzeCard.classList.remove('active');
+            });
+            btnEvidenzeCard.addEventListener('click', () => {
+                this.cambiaVistaEvidenze('card');
+                btnEvidenzeCard.classList.add('active');
+                btnEvidenzeTabella.classList.remove('active');
+            });
+        }
+
+        // Bottoni visualizzazione note
+        const btnNoteTabella = document.getElementById('btnNoteTabella');
+        const btnNoteCard = document.getElementById('btnNoteCard');
+        if (btnNoteTabella && btnNoteCard) {
+            btnNoteTabella.addEventListener('click', () => {
+                this.cambiaVistaNote('table');
+                btnNoteTabella.classList.add('active');
+                btnNoteCard.classList.remove('active');
+            });
+            btnNoteCard.addEventListener('click', () => {
+                this.cambiaVistaNote('card');
+                btnNoteCard.classList.add('active');
+                btnNoteTabella.classList.remove('active');
+            });
+        }
+
+        // Pulsante esporta note
+        const btnExportNote = document.getElementById('exportNote');
+        if (btnExportNote) {
+            btnExportNote.addEventListener('click', () => {
+                this.esportaNote();
+            });
+        }
+
+        // Pulsante nuova evidenza
+        const btnNuovaEvidenza = document.getElementById('btnNuovaEvidenza');
+        if (btnNuovaEvidenza) {
+            btnNuovaEvidenza.addEventListener('click', () => {
+                const modal = new bootstrap.Modal(document.getElementById('modalNuovaEvidenza'));
+                modal.show();
+            });
+        }
+
+        // Pulsante salva evidenza
+        const btnSalvaEvidenza = document.getElementById('btnSalvaEvidenza');
+        if (btnSalvaEvidenza) {
+            btnSalvaEvidenza.addEventListener('click', () => {
+                this.salvaEvidenza();
             });
         }
     },
@@ -280,6 +340,25 @@ const App = {
     },
 
     /**
+     * Cambia vista evidenze
+     */
+    cambiaVistaEvidenze(mode) {
+        this.evidenzeViewMode = mode;
+        EvidenzeManager.setViewMode(mode);
+        this.refreshCurrentEvidenzeTab();
+        Utils.showToast(`Visualizzazione ${mode === 'table' ? 'tabella' : 'card'} attivata`, 'info');
+    },
+
+    /**
+     * Cambia vista note
+     */
+    cambiaVistaNote(mode) {
+        this.noteViewMode = mode;
+        this.renderNote();
+        Utils.showToast(`Visualizzazione ${mode === 'table' ? 'tabella' : 'card'} attivata`, 'info');
+    },
+
+    /**
      * Renderizza note
      */
     renderNote(searchQuery = '') {
@@ -298,7 +377,12 @@ const App = {
             return;
         }
 
-        container.innerHTML = filtered.map(nota => this.renderNotaCard(nota)).join('');
+        // Renderizza in base alla modalità
+        if (this.noteViewMode === 'table') {
+            container.innerHTML = this.renderNoteTabella(filtered);
+        } else {
+            container.innerHTML = filtered.map(nota => this.renderNotaCard(nota)).join('');
+        }
 
         // Aggiungi event listeners
         container.querySelectorAll('.view-nota-btn').forEach(btn => {
@@ -310,17 +394,120 @@ const App = {
     },
 
     /**
+     * Renderizza note in formato tabella
+     */
+    renderNoteTabella(note) {
+        return `
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Assistito</th>
+                            <th>CF</th>
+                            <th>Nota</th>
+                            <th>Data</th>
+                            <th class="text-center">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${note.map(nota => `
+                            <tr>
+                                <td>
+                                    <span class="badge" ${Utils.getNotaCategoriaClass(nota.categoria)} style="font-size: 0.85rem; padding: 0.4rem 0.6rem;">
+                                        ${Utils.escapeHtml(nota.categoria)}
+                                    </span>
+                                    ${nota.principale ? '<i class="bi bi-star-fill text-warning ms-1"></i>' : ''}
+                                </td>
+                                <td>${Utils.escapeHtml(nota.assistito)}</td>
+                                <td><code class="small">${nota.cf}</code></td>
+                                <td>
+                                    <div class="text-truncate" style="max-width: 250px;">
+                                        ${Utils.escapeHtml(nota.testo)}
+                                    </div>
+                                </td>
+                                <td class="small text-muted">${Utils.formatDateTime(nota.dataCreazione)}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-outline-secondary view-nota-btn" data-nota-id="${nota.id}">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+    },
+
+    /**
+     * Esporta note in CSV
+     */
+    esportaNote() {
+        const filtered = this.getFilteredNote();
+        if (filtered.length === 0) {
+            Utils.showToast('Nessuna nota da esportare', 'warning');
+            return;
+        }
+
+        let csv = 'ID;Categoria;Assistito;CF;Testo;Data Creazione;Operatore;Principale\n';
+        filtered.forEach(nota => {
+            csv += `"${nota.id}";"${nota.categoria}";"${nota.assistito}";"${nota.cf}";"${nota.testo}";"${Utils.formatDateTime(nota.dataCreazione)}";"${nota.operatore}";"${nota.principale ? 'Sì' : 'No'}"\n`;
+        });
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `note_${new Date().toISOString().split('T')[0]}.csv`;
+        link.click();
+
+        Utils.showToast('Note esportate con successo', 'success');
+    },
+
+    /**
+     * Salva nuova evidenza
+     */
+    salvaEvidenza() {
+        const form = document.getElementById('formNuovaEvidenza');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const categoria = document.getElementById('evidenzaCategoria').value;
+        const tipo = document.getElementById('evidenzaTipo').value;
+        const cf = document.getElementById('evidenzaCF').value;
+        const scadenza = document.getElementById('evidenzaScadenza').value;
+        const descrizione = document.getElementById('evidenzaDescrizione').value;
+
+        // Qui dovresti salvare l'evidenza nel backend
+        console.log('Salvataggio evidenza:', { categoria, tipo, cf, scadenza, descrizione });
+
+        Utils.showToast('Evidenza salvata con successo', 'success');
+        
+        // Chiudi modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('modalNuovaEvidenza'));
+        modal.hide();
+        
+        // Reset form
+        form.reset();
+        
+        // Ricarica evidenze
+        this.refreshEvidenze();
+    },
+
+    /**
      * Renderizza card nota
      */
     renderNotaCard(nota) {
-        const categoriaClass = Utils.getNotaCategoriaClass(nota.categoria);
+        const categoriaStyle = Utils.getNotaCategoriaClass(nota.categoria);
         const principale = nota.principale ? 'nota-principale' : '';
 
         return `
             <div class="card nota-card ${principale}" data-nota-id="${nota.id}">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div>
-                        <span class="badge nota-categoria-badge ${categoriaClass} text-white">${Utils.escapeHtml(nota.categoria)}</span>
+                        <span class="badge" ${categoriaStyle} style="font-size: 0.85rem; padding: 0.4rem 0.6rem;">${Utils.escapeHtml(nota.categoria)}</span>
                         ${nota.principale ? '<i class="bi bi-star-fill text-warning ms-2" title="Nota principale"></i>' : ''}
                     </div>
                     <small class="text-muted">${Utils.formatDateTime(nota.dataCreazione)}</small>
@@ -350,7 +537,7 @@ const App = {
         const nota = this.note.find(n => n.id === id);
         if (!nota) return;
 
-        const categoriaClass = Utils.getNotaCategoriaClass(nota.categoria);
+        const categoriaStyle = Utils.getNotaCategoriaClass(nota.categoria);
 
         let modal = document.getElementById('notaModal');
         if (!modal) {
@@ -378,7 +565,7 @@ const App = {
         modal.querySelector('#notaModalBody').innerHTML = `
             <div class="row">
                 <div class="col-12 mb-3">
-                    <span class="badge nota-categoria-badge ${categoriaClass} text-white fs-6">${Utils.escapeHtml(nota.categoria)}</span>
+                    <span class="badge" ${categoriaStyle} style="font-size: 1rem; padding: 0.5rem 0.8rem;">${Utils.escapeHtml(nota.categoria)}</span>
                     ${nota.principale ? '<span class="badge bg-warning text-dark ms-2"><i class="bi bi-star-fill"></i> Nota Principale</span>' : ''}
                 </div>
                 <div class="col-12 mb-3">

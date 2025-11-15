@@ -1,30 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ricerca Assistiti - ASSE InCiSo</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap Italia CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.8/dist/css/bootstrap-italia.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/components.css" rel="stylesheet">
-    <link href="css/theme-luxe.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Header -->
-    <div id="header-container"></div>
-
-    <!-- Main Content -->
-    <div class="container-fluid mt-4">
+<!-- Ricerca Content -->
         <!-- Header -->
         <div class="row mb-4">
             <div class="col">
@@ -35,23 +9,49 @@
 
         <!-- Form Ricerca -->
         <div class="card shadow-sm mb-4">
-            <div class="card-header">
+            <div class="card-header bg-primary text-white">
                 <h5 class="mb-0"><i class="bi bi-funnel"></i> Criteri di Ricerca</h5>
             </div>
             <div class="card-body">
                 <form id="formRicerca">
+                    <!-- Badges Tipologia Invalidità -->
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Tipologia Invalidità</label>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <input type="checkbox" class="btn-check" id="tipoCivile" autocomplete="off" value="civile">
+                                <label class="btn btn-outline-primary" for="tipoCivile">
+                                    <i class="bi bi-person-wheelchair"></i> Invalidità Civile
+                                </label>
+                                
+                                <input type="checkbox" class="btn-check" id="tipoCecita" autocomplete="off" value="cecita">
+                                <label class="btn btn-outline-warning" for="tipoCecita">
+                                    <i class="bi bi-eye-slash"></i> Cecità
+                                </label>
+                                
+                                <input type="checkbox" class="btn-check" id="tipoSordita" autocomplete="off" value="sordita">
+                                <label class="btn btn-outline-info" for="tipoSordita">
+                                    <i class="bi bi-ear"></i> Sordità
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <!-- Campi di ricerca -->
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="searchCF" class="form-label">Codice Fiscale</label>
                             <input type="text" class="form-control" id="searchCF" 
                                    placeholder="RSSMRA80A01H501U" maxlength="16">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="searchCognome" class="form-label">Cognome</label>
                             <input type="text" class="form-control" id="searchCognome" 
                                    placeholder="Rossi">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="searchNome" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="searchNome" 
                                    placeholder="Mario">
@@ -61,23 +61,49 @@
                             <input type="date" class="form-control" id="searchDataNascita">
                         </div>
                         <div class="col-md-3">
-                            <label for="searchComune" class="form-label">Comune</label>
-                            <input type="text" class="form-control" id="searchComune" 
-                                   placeholder="Bolzano">
+                            <label for="searchDataDecesso" class="form-label">Data Decesso</label>
+                            <input type="date" class="form-control" id="searchDataDecesso">
                         </div>
                         <div class="col-md-3">
-                            <label for="searchStato" class="form-label">Stato</label>
-                            <select class="form-select" id="searchStato">
+                            <label for="searchTipoRL" class="form-label">Tipo Rappresentante Legale</label>
+                            <select class="form-select" id="searchTipoRL">
                                 <option value="">Tutti</option>
-                                <option value="Attivo">Attivo</option>
-                                <option value="Sospeso">Sospeso</option>
-                                <option value="Cessato">Cessato</option>
+                                <option value="tutore">Tutore</option>
+                                <option value="curatore">Curatore</option>
+                                <option value="amministratore">Amministratore di Sostegno</option>
+                                <option value="genitore">Genitore</option>
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <label for="searchOperatore" class="form-label">Operatore</label>
-                            <input type="text" class="form-control" id="searchOperatore" 
-                                   placeholder="Nome operatore">
+                            <label for="searchRL" class="form-label">Rappresentante Legale</label>
+                            <input type="text" class="form-control" id="searchRL" 
+                                   placeholder="Nome rappresentante">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="searchPercInvalidita" class="form-label">% Invalidità Civile</label>
+                            <select class="form-select" id="searchPercInvalidita">
+                                <option value="">Tutte</option>
+                                <option value="0-33">0-33%</option>
+                                <option value="34-66">34-66%</option>
+                                <option value="67-99">67-99%</option>
+                                <option value="100">100%</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="searchPercCecita" class="form-label">% Cecità</label>
+                            <select class="form-select" id="searchPercCecita">
+                                <option value="">Tutte</option>
+                                <option value="1-99">1-99%</option>
+                                <option value="100">100%</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="searchPercSordita" class="form-label">% Sordità</label>
+                            <select class="form-select" id="searchPercSordita">
+                                <option value="">Tutte</option>
+                                <option value="1-99">1-99%</option>
+                                <option value="100">100%</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mt-4">
@@ -118,23 +144,26 @@
                 <div id="viewTable">
                     <div class="table-responsive">
                         <table class="table table-hover" id="tableRisultati">
-                            <thead>
+                            <thead class="table-light">
                                 <tr>
+                                    <th>Tipo Invalidità</th>
                                     <th>Codice Fiscale</th>
                                     <th>Cognome</th>
                                     <th>Nome</th>
                                     <th>Data Nascita</th>
-                                    <th>Comune</th>
-                                    <th>Stato</th>
-                                    <th>Operatore</th>
-                                    <th>Azioni</th>
+                                    <th>Tipo R.L</th>
+                                    <th>Rapp. Legale</th>
+                                    <th>%INV</th>
+                                    <th>%Cecità</th>
+                                    <th>%Sordità</th>
+                                    <th class="text-center">Azioni</th>
                                 </tr>
                             </thead>
                             <tbody id="tbodyRisultati">
                                 <tr>
-                                    <td colspan="8" class="text-center text-muted py-5">
+                                    <td colspan="11" class="text-center text-muted py-5">
                                         <i class="bi bi-search display-4"></i>
-                                        <p class="mt-3">Utilizza i filtri sopra per cercare assistiti</p>
+                                        <p class="mt-3">Utilizza la barra di ricerca per trovare assistiti</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -157,20 +186,3 @@
             </div>
         </div>
     </div>
-
-    <!-- Change Notes -->
-    <div id="change-notes-container"></div>
-
-    <!-- Footer -->
-    <div id="footer-container"></div>
-
-    <!-- Bootstrap Italia JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.8/dist/js/bootstrap-italia.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="js/layout.js"></script>
-    <script src="js/change-notes.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/ricerca.js"></script>
-</body>
-</html>

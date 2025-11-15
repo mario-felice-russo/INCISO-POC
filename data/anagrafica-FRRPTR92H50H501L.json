@@ -1,0 +1,33 @@
+{
+  "stato": "Attivo",
+  "residenza": {
+    "provincia": "BZ",
+    "comune": "Bolzano",
+    "indirizzo": "Via Claudia Augusta 124",
+    "cap": "39100"
+  },
+  "statoCivile": "Nubile",
+  "cognome": "Ferrari",
+  "rappresentanteLegale": null,
+  "linguaPreferita": "IT",
+  "sesso": "F",
+  "cf": "FRRPTR92H50H501L",
+  "dataNascita": "1992-06-10",
+  "telefono": "3478901234",
+  "operatoreRiferimento": "Dott. Bianchi",
+  "intestatarioIban": "Ferrari Petra",
+  "domicilio": null,
+  "cittadinanza": "Italiana",
+  "dataIscrizione": "2021-09-05",
+  "email": "petra.ferrari@outlook.com",
+  "invalidita": {
+    "civile": true,
+    "cecita": false,
+    "sordita": false
+  },
+  "luogoNascita": "Bolzano",
+  "posizioneAS400": "123456",
+  "nome": "Petra",
+  "dataDecesso": null,
+  "iban": "IT33 F033 5901 6001 0000 0012 345"
+}

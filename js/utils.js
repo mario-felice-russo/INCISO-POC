@@ -304,17 +304,19 @@ const Utils = {
     /**
      * Ottieni badge CSS class per categoria nota
      * @param {string} categoria - Categoria nota
-     * @returns {string} Classe CSS
+     * @returns {string} Classe CSS con stile inline
      */
     getNotaCategoriaClass(categoria) {
+        // Restituisce direttamente lo stile inline per badge vivaci
         const map = {
-            'Residenza': 'cat-residenza',
-            'Pagamenti': 'cat-pagamenti',
-            'Degenze': 'cat-degenze',
-            'Amministrazione Sostegno': 'cat-amministrazione',
-            'Generiche': 'cat-generiche'
+            'Residenza': 'style="background-color: #FF6B35; color: white;"',
+            'Pagamenti': 'style="background-color: #004E89; color: white;"',
+            'Degenze': 'style="background-color: #F77F00; color: white;"',
+            'Amministrazione Sostegno': 'style="background-color: #9B59B6; color: white;"',
+            'Redditi': 'style="background-color: #27AE60; color: white;"',
+            'Varie': 'style="background-color: #7F8C8D; color: white;"'
         };
-        return map[categoria] || 'cat-generiche';
+        return map[categoria] || 'style="background-color: #95A5A6; color: white;"';
     },
 
     /**

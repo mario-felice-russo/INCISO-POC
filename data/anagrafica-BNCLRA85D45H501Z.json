@@ -1,0 +1,38 @@
+{
+  "cf": "BNCLRA85D45H501Z",
+  "cognome": "Bianchi",
+  "nome": "Laura",
+  "dataNascita": "1985-04-05",
+  "luogoNascita": "Bolzano",
+  "sesso": "F",
+  "statoCivile": "Nubile",
+  "cittadinanza": "Italiana",
+  "linguaPreferita": "IT",
+  "residenza": {
+    "indirizzo": "Via Dante 78",
+    "cap": "39100",
+    "comune": "Bolzano",
+    "provincia": "BZ"
+  },
+  "domicilio": null,
+  "telefono": "3334445566",
+  "email": "laura.bianchi@gmail.com",
+  "iban": "IT28 W800 0101 6040 0000 0345 678",
+  "intestatarioIban": "Bianchi Roberto (Tutore)",
+  "rappresentanteLegale": {
+    "tipo": "Tutore",
+    "nome": "Bianchi Roberto",
+    "cf": "BNCRBT55A01H501Y",
+    "rapporto": "Padre"
+  },
+  "stato": "Attivo",
+  "dataIscrizione": "2019-01-10",
+  "dataDecesso": null,
+  "operatoreRiferimento": "Dott. Rossi",
+  "posizioneAS400": "100003",
+  "invalidita": {
+    "civile": false,
+    "cecita": true,
+    "sordita": false
+  }
+}

@@ -1,0 +1,118 @@
+[
+  {
+    "id": 1,
+    "cf": "RSSMRA80A01H501U",
+    "cognome": "Rossi",
+    "nome": "Mario",
+    "dataNascita": "1980-01-01",
+    "invaliditaCivile": {
+      "percentuale": 75,
+      "statoPrestazione": "Concessa"
+    },
+    "cecita": null,
+    "sordita": null
+  },
+  {
+    "id": 2,
+    "cf": "VRDGPP75M15F205X",
+    "cognome": "Verdi",
+    "nome": "Giuseppe",
+    "dataNascita": "1975-08-15",
+    "invaliditaCivile": {
+      "percentuale": 100,
+      "statoPrestazione": "Concessa"
+    },
+    "cecita": null,
+    "sordita": {
+      "percentuale": 80,
+      "statoPrestazione": "Concessa"
+    }
+  },
+  {
+    "id": 3,
+    "cf": "BNCLRA85D45H501Z",
+    "cognome": "Bianchi",
+    "nome": "Laura",
+    "dataNascita": "1985-04-05",
+    "invaliditaCivile": {
+      "percentuale": 100,
+      "statoPrestazione": "Concessa"
+    },
+    "cecita": {
+      "percentuale": 100,
+      "statoPrestazione": "Concessa"
+    },
+    "sordita": null
+  },
+  {
+    "id": 4,
+    "cf": "MRNGNN60L12A952V",
+    "cognome": "Marani",
+    "nome": "Giovanni",
+    "dataNascita": "1960-07-12",
+    "invaliditaCivile": {
+      "percentuale": 80,
+      "statoPrestazione": "Sospesa"
+    },
+    "cecita": null,
+    "sordita": null
+  },
+  {
+    "id": 5,
+    "cf": "FRRPTR92H50H501L",
+    "cognome": "Ferrari",
+    "nome": "Petra",
+    "dataNascita": "1992-06-10",
+    "invaliditaCivile": {
+      "percentuale": 100,
+      "statoPrestazione": "Concessa"
+    },
+    "cecita": null,
+    "sordita": null
+  },
+  {
+    "id": 6,
+    "cf": "GLLMRC70T55F205K",
+    "cognome": "Gallo",
+    "nome": "Marco",
+    "dataNascita": "1970-12-15",
+    "invaliditaCivile": null,
+    "cecita": {
+      "percentuale": 100,
+      "statoPrestazione": "Concessa"
+    },
+    "sordita": null
+  },
+  {
+    "id": 7,
+    "cf": "CSTFNC55B42A952H",
+    "cognome": "Costa",
+    "nome": "Francesca",
+    "dataNascita": "1955-02-02",
+    "invaliditaCivile": {
+      "percentuale": 67,
+      "statoPrestazione": "Revocata"
+    },
+    "cecita": null,
+    "sordita": {
+      "percentuale": 90,
+      "statoPrestazione": "Concessa"
+    }
+  },
+  {
+    "id": 8,
+    "cf": "RMNLNG88M50H501B",
+    "cognome": "Romani",
+    "nome": "Elena",
+    "dataNascita": "1988-08-10",
+    "invaliditaCivile": {
+      "percentuale": 85,
+      "statoPrestazione": "Concessa"
+    },
+    "cecita": {
+      "percentuale": 50,
+      "statoPrestazione": "Sospesa"
+    },
+    "sordita": null
+  }
+]
