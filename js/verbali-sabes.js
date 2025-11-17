@@ -96,6 +96,9 @@ const VerbaliSabesManager = {
                     <td class="text-center">${invCivile}</td>
                     <td class="text-center">${cecita}</td>
                     <td class="text-center">${sordita}</td>
+                <tr/>
+            `;
+            /*
                     <td class="text-center">
                         <span class="badge bg-${statoClass}" style="font-size: 0.85rem; padding: 0.4rem 0.6rem;">
                             ${statoPrestazione}
@@ -111,6 +114,7 @@ const VerbaliSabesManager = {
                     </td>
                 </tr>
             `;
+            */
         }).join('');
         
         // Aggiungi event listeners

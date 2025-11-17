@@ -17,12 +17,24 @@
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="prestazioni-tab" data-bs-toggle="tab" 
-                        data-bs-target="#prestazioni" type="button" role="tab">
-                    <i class="bi bi-coin"></i> Prestazioni
+                <button class="nav-link" id="invalidita-civile-tab" data-bs-toggle="tab" 
+                        data-bs-target="#invalidita-civile" type="button" role="tab">
+                    <i class="bi bi-person-wheelchair"></i> Prestazioni Invalidità Civile (Cod. 77)
                 </button>
             </li>
             <li class="nav-item" role="presentation">
+                <button class="nav-link" id="sordita-tab" data-bs-toggle="tab" 
+                        data-bs-target="#sordita" type="button" role="tab">
+                    <i class="bi bi-ear"></i> Prestazioni Sordità (Cod. 88)
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="cecita-tab" data-bs-toggle="tab" 
+                        data-bs-target="#cecita" type="button" role="tab">
+                    <i class="bi bi-eye-slash"></i> Prestazioni Cecità (Cod. 99)
+                </button>
+            </li>
+            <!-- <li class="nav-item" role="presentation">
                 <button class="nav-link" id="verbali-tab" data-bs-toggle="tab" 
                         data-bs-target="#verbali" type="button" role="tab">
                     <i class="bi bi-file-medical"></i> Verbali
@@ -51,13 +63,25 @@
                         data-bs-target="#log" type="button" role="tab">
                     <i class="bi bi-clock-history"></i> Log Attività
                 </button>
-            </li>
+            </li> -->
         </ul>
 
         <!-- Tab Content -->
         <div class="tab-content" id="fascicoloTabContent">
             <!-- TAB RIEPILOGO -->
             <div class="tab-pane fade show active" id="riepilogo" role="tabpanel">
+                <!-- Riepilogo Prestazioni a tutta larghezza -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-coin"></i> Riepilogo Prestazioni per Tipo di Invalidità</h5>
+                    </div>
+                    <div class="card-body" id="riepilogoPrestazioniContent">
+                        <div class="text-center py-3">
+                            <div class="spinner-border" role="status"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <!-- COLONNA SINISTRA -->
                     <div class="col-md-6">
@@ -130,16 +154,73 @@
                 </div>
             </div>
 
-            <!-- TAB PRESTAZIONI -->
-            <div class="tab-pane fade" id="prestazioni" role="tabpanel">
+            <!-- TAB PRESTAZIONI INVALIDITÀ CIVILE -->
+            <div class="tab-pane fade" id="invalidita-civile" role="tabpanel">
                 <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0"><i class="bi bi-coin"></i> Prestazioni Assistenziali</h5>
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-person-wheelchair"></i> Prestazioni per l'Invalidità Civile (Codice 77)</h5>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-sm btn-light active" id="btnInvaliditaCivileTabella">
+                                <i class="bi bi-table"></i> Tabella
+                            </button>
+                            <button class="btn btn-sm btn-light" id="btnInvaliditaCivileCard">
+                                <i class="bi bi-grid-3x3"></i> Card
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-body" id="prestazioniContent">
+                    <div class="card-body" id="prestazioniInvaliditaCivileContent">
                         <div class="text-center py-5">
-                            <i class="bi bi-inbox display-4 text-muted"></i>
-                            <p class="mt-3 text-muted">Seleziona questo tab per visualizzare le prestazioni</p>
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Caricamento...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB PRESTAZIONI SORDITÀ -->
+            <div class="tab-pane fade" id="sordita" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-ear"></i> Prestazioni per la Sordità (Codice 88)</h5>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-sm btn-light active" id="btnSorditaTabella">
+                                <i class="bi bi-table"></i> Tabella
+                            </button>
+                            <button class="btn btn-sm btn-light" id="btnSorditaCard">
+                                <i class="bi bi-grid-3x3"></i> Card
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" id="prestazioniSorditaContent">
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-warning" role="status">
+                                <span class="visually-hidden">Caricamento...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB PRESTAZIONI CECITÀ -->
+            <div class="tab-pane fade" id="cecita" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-eye-slash"></i> Prestazioni per la Cecità Civile (Codice 99)</h5>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-sm btn-light active" id="btnCecitaTabella">
+                                <i class="bi bi-table"></i> Tabella
+                            </button>
+                            <button class="btn btn-sm btn-light" id="btnCecitaCard">
+                                <i class="bi bi-grid-3x3"></i> Card
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" id="prestazioniCecitaContent">
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-info" role="status">
+                                <span class="visually-hidden">Caricamento...</span>
+                            </div>
                         </div>
                     </div>
                 </div>

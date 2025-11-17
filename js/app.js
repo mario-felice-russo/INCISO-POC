@@ -87,6 +87,15 @@ const App = {
      * Setup event listeners
      */
     setupEventListeners() {
+        // Form ricerca rapida assistito
+        const formRicercaRapida = document.getElementById('formRicercaRapida');
+        if (formRicercaRapida) {
+            formRicercaRapida.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.eseguiRicercaRapida();
+            });
+        }
+
         // Search evidenze
         const searchEvidenze = document.getElementById('searchEvidenze');
         if (searchEvidenze) {
@@ -690,6 +699,39 @@ const App = {
         link.click();
 
         Utils.showToast(`Esportate ${evidenze.length} evidenze`, 'success');
+    },
+
+    /**
+     * Esegui ricerca rapida assistito
+     * Passa i criteri alla pagina ricerca tramite sessionStorage
+     */
+    eseguiRicercaRapida() {
+        const searchValue = document.getElementById('quickSearchInput')?.value.trim();
+        
+        if (!searchValue) {
+            Utils.showToast('Inserisci un valore di ricerca', 'warning');
+            return;
+        }
+
+        // Prepara i criteri di ricerca con OR logic
+        const searchParams = {
+            quickSearch: searchValue,
+            // Questi verranno usati in OR nella pagina ricerca
+            cf: searchValue.toUpperCase(),
+            cognome: searchValue,
+            nome: searchValue
+        };
+
+        // Salva i parametri in sessionStorage
+        sessionStorage.setItem('ricercaParams', JSON.stringify(searchParams));
+
+        // Naviga alla pagina ricerca usando il sistema SPA
+        if (typeof LayoutManager !== 'undefined' && LayoutManager.loadPage) {
+            LayoutManager.loadPage('ricerca');
+        } else {
+            console.error('LayoutManager non disponibile');
+            Utils.showToast('Errore navigazione', 'error');
+        }
     }
 };
 

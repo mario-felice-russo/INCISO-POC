@@ -28,9 +28,20 @@ const RicercaApp = {
             // Setup event listeners
             this.setupEventListeners();
             
-            // Visualizza tutti gli assistiti all'inizio
-            this.risultati = [...this.assistiti];
-            this.renderRisultati();
+            // Controlla se ci sono parametri di ricerca da dashboard
+            const ricercaParams = sessionStorage.getItem('ricercaParams');
+            if (ricercaParams) {
+                console.log('Parametri ricerca ricevuti:', ricercaParams);
+                const params = JSON.parse(ricercaParams);
+                // Rimuovi i parametri da sessionStorage per evitare ricerche ripetute
+                sessionStorage.removeItem('ricercaParams');
+                // Esegui ricerca con i parametri
+                this.eseguiRicercaConParametri(params);
+            } else {
+                // Visualizza tutti gli assistiti all'inizio
+                this.risultati = [...this.assistiti];
+                this.renderRisultati();
+            }
             
             Utils.showToast('Ricerca pronta', 'success');
         } catch (error) {
@@ -162,6 +173,82 @@ const RicercaApp = {
                 btnViewGrid.classList.add('active');
                 btnViewTable.classList.remove('active');
             });
+        }
+    },
+
+    /**
+     * Esegui ricerca con parametri da dashboard (OR logic)
+     */
+    eseguiRicercaConParametri(params) {
+        console.log('Esecuzione ricerca con parametri:', params);
+        
+        if (params.quickSearch) {
+            const searchValue = params.quickSearch;
+            
+            // Popola i campi del form per rendere visibile la ricerca
+            // Popola tutti e tre i campi con lo stesso valore (OR logic)
+            const searchCF = document.getElementById('searchCF');
+            const searchCognome = document.getElementById('searchCognome');
+            const searchNome = document.getElementById('searchNome');
+            
+            if (searchCF) searchCF.value = searchValue.toUpperCase();
+            if (searchCognome) searchCognome.value = searchValue;
+            if (searchNome) searchNome.value = searchValue;
+            
+            // Evidenzia i campi popolati con animazione
+            [searchCF, searchCognome, searchNome].forEach(field => {
+                if (field) {
+                    field.classList.add('border-primary', 'border-2');
+                    field.style.backgroundColor = '#e7f3ff';
+                    // Rimuovi evidenziazione dopo 3 secondi
+                    setTimeout(() => {
+                        field.classList.remove('border-primary', 'border-2');
+                        field.style.backgroundColor = '';
+                    }, 3000);
+                }
+            });
+            
+            // Mostra alert informativo all'utente
+            const alertHtml = `
+                <div class="alert alert-info alert-dismissible fade show" role="alert" id="quickSearchAlert">
+                    <i class="bi bi-info-circle"></i> <strong>Ricerca da Dashboard:</strong> 
+                    Cercando "<strong>${searchValue}</strong>" in <strong>Codice Fiscale OR Cognome OR Nome</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            
+            // Inserisci alert prima del form
+            const formRicerca = document.getElementById('formRicerca');
+            if (formRicerca && formRicerca.parentElement) {
+                formRicerca.parentElement.insertAdjacentHTML('afterbegin', alertHtml);
+                
+                // Rimuovi automaticamente dopo 10 secondi
+                setTimeout(() => {
+                    const alert = document.getElementById('quickSearchAlert');
+                    if (alert) {
+                        alert.remove();
+                    }
+                }, 10000);
+            }
+            
+            // Filtra assistiti con OR logic
+            this.risultati = this.assistiti.filter(assistito => {
+                const cfMatch = assistito.cf.toUpperCase().includes(searchValue.toUpperCase());
+                const cognomeMatch = Utils.normalizeString(assistito.cognome).includes(Utils.normalizeString(searchValue));
+                const nomeMatch = Utils.normalizeString(assistito.nome).includes(Utils.normalizeString(searchValue));
+                
+                // OR logic: almeno uno dei criteri deve matchare
+                return cfMatch || cognomeMatch || nomeMatch;
+            });
+            
+            // Reset paginazione
+            this.currentPage = 1;
+            
+            // Mostra risultati
+            this.renderRisultati();
+            
+            // Toast con risultati
+            Utils.showToast(`Trovati ${this.risultati.length} risultati per "${searchValue}"`, 'success');
         }
     },
 

@@ -13,7 +13,9 @@ const DettaglioApp = {
     note: [],
     tabsLoaded: {
         riepilogo: false,
-        prestazioni: false,
+        'invalidita-civile': false,
+        sordita: false,
+        cecita: false,
         verbali: false,
         comunicazioni: false,
         evidenze: false,
@@ -83,13 +85,14 @@ const DettaglioApp = {
             console.log('File anagrafica non trovato, uso dati base da assistiti.json');
         }
 
-        const [assistiti, prestazioni, verbali, comunicazioni, evidenze, note] = await Promise.all([
+        const [assistiti, prestazioni, verbali, comunicazioni, evidenze, note, prestazioniInvalidita] = await Promise.all([
             Utils.loadJSON('data/assistiti.json'),
             Utils.loadJSON('data/prestazioni.json'),
             Utils.loadJSON('data/verbali.json'),
             Utils.loadJSON('data/comunicazioni.json'),
             Utils.loadJSON('data/evidenze.json'),
-            Utils.loadJSON('data/note.json')
+            Utils.loadJSON('data/note.json'),
+            Utils.loadJSON('data/prestazioni-invalidita.json')
         ]);
 
         this.assistito = assistiti.find(a => a.cf === this.cf);
@@ -117,6 +120,7 @@ const DettaglioApp = {
         this.comunicazioni = comunicazioni.filter(c => c.cf === this.cf);
         this.evidenze = evidenze.filter(e => e.cf === this.cf);
         this.note = note.filter(n => n.cf === this.cf);
+        this.prestazioniInvalidita = prestazioniInvalidita.find(p => p.cf === this.cf) || null;
     },
 
     /**
@@ -158,7 +162,15 @@ const DettaglioApp = {
         tabs.forEach(tab => {
             tab.addEventListener('shown.bs.tab', (e) => {
                 const target = e.target.getAttribute('data-bs-target').replace('#', '');
-                const methodName = `loadTab${target.charAt(0).toUpperCase() + target.slice(1)}`;
+                
+                // Converti nome tab in camelCase per nome metodo
+                // invalidita-civile -> InvaliditaCivile
+                const methodName = 'loadTab' + target
+                    .split('-')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join('');
+                
+                console.log('Tab activated:', target, 'Method:', methodName);
                 
                 if (this[methodName] && !this.tabsLoaded[target]) {
                     this[methodName]();
@@ -173,6 +185,9 @@ const DettaglioApp = {
      */
     loadTabRiepilogo() {
         if (this.tabsLoaded.riepilogo) return;
+
+        // Riepilogo Prestazioni
+        this.renderRiepilogoPrestazioni();
 
         // Dati anagrafici
         const datiContainer = document.getElementById('datiAnagrafici');
@@ -807,58 +822,474 @@ const DettaglioApp = {
     },
 
     /**
-     * TAB PRESTAZIONI
+     * Renderizza riepilogo prestazioni nel tab Riepilogo
      */
-    loadTabPrestazioni() {
-        const container = document.getElementById('prestazioniContent');
+    renderRiepilogoPrestazioni() {
+        const container = document.getElementById('riepilogoPrestazioniContent');
         if (!container) return;
 
-        if (this.prestazioni.length === 0) {
-            container.innerHTML = '<p class="text-muted">Nessuna prestazione registrata</p>';
-            return;
+        // Conta prestazioni per tipo
+        let invaliditaCivileCount = { concessa: 0, negata: 0, assente: 0 };
+        let sorditaCount = { concessa: 0, negata: 0, assente: 0 };
+        let cecitaCount = { concessa: 0, negata: 0, assente: 0 };
+
+        if (this.prestazioniInvalidita) {
+            // Invalidità Civile
+            if (this.prestazioniInvalidita.invaliditaCivile) {
+                Object.values(this.prestazioniInvalidita.invaliditaCivile).forEach(p => {
+                    if (p.stato === 'concessa') invaliditaCivileCount.concessa++;
+                    else if (p.stato === 'negata') invaliditaCivileCount.negata++;
+                    else invaliditaCivileCount.assente++;
+                });
+            }
+
+            // Sordità
+            if (this.prestazioniInvalidita.sordita) {
+                Object.values(this.prestazioniInvalidita.sordita).forEach(p => {
+                    if (p.stato === 'concessa') sorditaCount.concessa++;
+                    else if (p.stato === 'negata') sorditaCount.negata++;
+                    else sorditaCount.assente++;
+                });
+            }
+
+            // Cecità
+            if (this.prestazioniInvalidita.cecita) {
+                Object.values(this.prestazioniInvalidita.cecita).forEach(p => {
+                    if (p.stato === 'concessa') cecitaCount.concessa++;
+                    else if (p.stato === 'negata') cecitaCount.negata++;
+                    else cecitaCount.assente++;
+                });
+            }
         }
 
-        container.innerHTML = this.prestazioni.map(p => {
-            const statoClass = p.stato === 'Concessa' ? 'prestazione-concessa' : 
-                              p.stato === 'Sospesa' ? 'prestazione-sospesa' : 'prestazione-revocata';
-            
-            return `
-                <div class="card prestazione-card ${statoClass} mb-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h5>${Utils.escapeHtml(p.tipoPrestazione)}</h5>
-                                <p class="mb-2"><strong>Codice:</strong> ${p.codice}</p>
-                                <p class="mb-2"><strong>Decorrenza:</strong> ${Utils.formatDate(p.dataDecorrenza)}</p>
-                                ${p.dataScadenza ? `<p class="mb-2"><strong>Scadenza:</strong> ${Utils.formatDate(p.dataScadenza)}</p>` : ''}
-                                <p class="mb-0"><strong>Stato:</strong> <span class="badge bg-${p.stato === 'Concessa' ? 'success' : p.stato === 'Sospesa' ? 'warning' : 'danger'}">${p.stato}</span></p>
-                            </div>
-                            <div class="col-md-4 text-end">
-                                <div class="importo-prestazione ${p.stato === 'Sospesa' ? 'sospeso' : p.stato === 'Revocata' ? 'revocato' : ''}">
-                                    ${Utils.formatCurrency(p.importoMensile)}
-                                </div>
-                                <small class="text-muted">Importo mensile</small>
+        container.innerHTML = `
+            <div class="row g-3">
+                <!-- Invalidità Civile -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-primary" style="border-width: 2px;">
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                <i class="bi bi-person-wheelchair text-primary"></i> Invalidità Civile (Cod. 77)
+                            </h6>
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                ${invaliditaCivileCount.concessa > 0 ? `
+                                    <span class="badge bg-success" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        <i class="bi bi-check-circle"></i> ${invaliditaCivileCount.concessa} Concessa/e
+                                    </span>
+                                ` : ''}
+                                ${invaliditaCivileCount.negata > 0 ? `
+                                    <span class="badge bg-danger" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        <i class="bi bi-x-circle"></i> ${invaliditaCivileCount.negata} Negata/e
+                                    </span>
+                                ` : ''}
+                                ${invaliditaCivileCount.assente > 0 ? `
+                                    <span class="badge bg-secondary" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        <i class="bi bi-dash-circle"></i> ${invaliditaCivileCount.assente} Assente/i
+                                    </span>
+                                ` : ''}
+                                ${invaliditaCivileCount.concessa === 0 && invaliditaCivileCount.negata === 0 && invaliditaCivileCount.assente === 0 ? `
+                                    <span class="badge bg-secondary" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        Nessun dato disponibile
+                                    </span>
+                                ` : ''}
                             </div>
                         </div>
-                        ${p.note ? `<p class="mt-2 text-muted small"><i class="bi bi-info-circle"></i> ${Utils.escapeHtml(p.note)}</p>` : ''}
-                        
-                        <!-- Griglia mensilità -->
-                        ${p.mensilita && p.mensilita.length > 0 ? `
-                            <hr>
-                            <h6>Mensilità</h6>
-                            <div class="griglia-mensilita">
-                                ${p.mensilita.map(m => `
-                                    <div class="mese-cell ${m.stato}">
-                                        <div class="mese-nome">${m.mese}</div>
-                                        <div class="mese-importo">${Utils.formatCurrency(m.importo)}</div>
-                                    </div>
-                                `).join('')}
+                    </div>
+                </div>
+
+                <!-- Sordità -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-warning" style="border-width: 2px;">
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                <i class="bi bi-ear text-warning"></i> Sordità (Cod. 88)
+                            </h6>
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                ${sorditaCount.concessa > 0 ? `
+                                    <span class="badge bg-success" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        <i class="bi bi-check-circle"></i> ${sorditaCount.concessa} Concessa/e
+                                    </span>
+                                ` : ''}
+                                ${sorditaCount.negata > 0 ? `
+                                    <span class="badge bg-danger" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        <i class="bi bi-x-circle"></i> ${sorditaCount.negata} Negata/e
+                                    </span>
+                                ` : ''}
+                                ${sorditaCount.assente > 0 ? `
+                                    <span class="badge bg-secondary" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        <i class="bi bi-dash-circle"></i> ${sorditaCount.assente} Assente/i
+                                    </span>
+                                ` : ''}
+                                ${sorditaCount.concessa === 0 && sorditaCount.negata === 0 && sorditaCount.assente === 0 ? `
+                                    <span class="badge bg-secondary" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        Nessun dato disponibile
+                                    </span>
+                                ` : ''}
                             </div>
-                        ` : ''}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cecità -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-info" style="border-width: 2px;">
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                <i class="bi bi-eye-slash text-info"></i> Cecità (Cod. 99)
+                            </h6>
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                ${cecitaCount.concessa > 0 ? `
+                                    <span class="badge bg-success" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        <i class="bi bi-check-circle"></i> ${cecitaCount.concessa} Concessa/e
+                                    </span>
+                                ` : ''}
+                                ${cecitaCount.negata > 0 ? `
+                                    <span class="badge bg-danger" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        <i class="bi bi-x-circle"></i> ${cecitaCount.negata} Negata/e
+                                    </span>
+                                ` : ''}
+                                ${cecitaCount.assente > 0 ? `
+                                    <span class="badge bg-secondary" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        <i class="bi bi-dash-circle"></i> ${cecitaCount.assente} Assente/i
+                                    </span>
+                                ` : ''}
+                                ${cecitaCount.concessa === 0 && cecitaCount.negata === 0 && cecitaCount.assente === 0 ? `
+                                    <span class="badge bg-secondary" style="font-size: 0.9rem; padding: 0.5rem 0.75rem;">
+                                        Nessun dato disponibile
+                                    </span>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+
+    /**
+     * TAB INVALIDITÀ CIVILE
+     */
+    loadTabInvaliditaCivile() {
+        this.renderPrestazioniInvaliditaCivile();
+        
+        // Setup toggle tabella/card
+        const btnTabella = document.getElementById('btnInvaliditaCivileTabella');
+        const btnCard = document.getElementById('btnInvaliditaCivileCard');
+        
+        if (btnTabella && btnCard) {
+            btnTabella.addEventListener('click', () => {
+                this.invaliditaCivileViewMode = 'table';
+                btnTabella.classList.add('active');
+                btnCard.classList.remove('active');
+                this.renderPrestazioniInvaliditaCivile();
+            });
+            
+            btnCard.addEventListener('click', () => {
+                this.invaliditaCivileViewMode = 'card';
+                btnCard.classList.add('active');
+                btnTabella.classList.remove('active');
+                this.renderPrestazioniInvaliditaCivile();
+            });
+        }
+    },
+
+    /**
+     * TAB SORDITÀ
+     */
+    loadTabSordita() {
+        this.renderPrestazioniSordita();
+        
+        // Setup toggle tabella/card
+        const btnTabella = document.getElementById('btnSorditaTabella');
+        const btnCard = document.getElementById('btnSorditaCard');
+        
+        if (btnTabella && btnCard) {
+            btnTabella.addEventListener('click', () => {
+                this.sorditaViewMode = 'table';
+                btnTabella.classList.add('active');
+                btnCard.classList.remove('active');
+                this.renderPrestazioniSordita();
+            });
+            
+            btnCard.addEventListener('click', () => {
+                this.sorditaViewMode = 'card';
+                btnCard.classList.add('active');
+                btnTabella.classList.remove('active');
+                this.renderPrestazioniSordita();
+            });
+        }
+    },
+
+    /**
+     * TAB CECITÀ
+     */
+    loadTabCecita() {
+        this.renderPrestazioniCecita();
+        
+        // Setup toggle tabella/card
+        const btnTabella = document.getElementById('btnCecitaTabella');
+        const btnCard = document.getElementById('btnCecitaCard');
+        
+        if (btnTabella && btnCard) {
+            btnTabella.addEventListener('click', () => {
+                this.cecitaViewMode = 'table';
+                btnTabella.classList.add('active');
+                btnCard.classList.remove('active');
+                this.renderPrestazioniCecita();
+            });
+            
+            btnCard.addEventListener('click', () => {
+                this.cecitaViewMode = 'card';
+                btnCard.classList.add('active');
+                btnTabella.classList.remove('active');
+                this.renderPrestazioniCecita();
+            });
+        }
+    },
+
+    /**
+     * Render prestazioni Invalidità Civile
+     */
+    renderPrestazioniInvaliditaCivile() {
+        const container = document.getElementById('prestazioniInvaliditaCivileContent');
+        if (!container) return;
+
+        // Template prestazioni Invalidità Civile (sempre visualizzate)
+        const prestazioniTemplate = {
+            pensioneInvalidoAssoluto: {
+                nome: "Pensione invalido civile assoluto (100%)",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            },
+            invalidoParziale: {
+                nome: "Invalido civile parziale (74%-99%)",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            },
+            indennitaAccompagnamento: {
+                nome: "Indennità di accompagnamento",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            },
+            assegnoMinorenni: {
+                nome: "Assegno mensile per invalidi civili parziali minorenni",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            },
+            incrementoPensione: {
+                nome: "Incremento alla pensione",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            }
+        };
+
+        // Se esistono dati, sostituisci il template con i dati reali
+        let prestazioni = prestazioniTemplate;
+        if (this.prestazioniInvalidita && this.prestazioniInvalidita.invaliditaCivile) {
+            prestazioni = this.prestazioniInvalidita.invaliditaCivile;
+        }
+
+        const viewMode = this.invaliditaCivileViewMode || 'table';
+        
+        if (viewMode === 'card') {
+            container.innerHTML = this.renderPrestazioniAsCards(prestazioni);
+        } else {
+            container.innerHTML = this.renderPrestazioniAsTable(prestazioni);
+        }
+    },
+
+    /**
+     * Render prestazioni Sordità
+     */
+    renderPrestazioniSordita() {
+        const container = document.getElementById('prestazioniSorditaContent');
+        if (!container) return;
+
+        // Template prestazioni Sordità (sempre visualizzate)
+        const prestazioniTemplate = {
+            indennitaComunicazione: {
+                nome: "Indennità di comunicazione per i sordi",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            }
+        };
+
+        // Se esistono dati, sostituisci il template con i dati reali
+        let prestazioni = prestazioniTemplate;
+        if (this.prestazioniInvalidita && this.prestazioniInvalidita.sordita) {
+            prestazioni = this.prestazioniInvalidita.sordita;
+        }
+
+        const viewMode = this.sorditaViewMode || 'table';
+        
+        if (viewMode === 'card') {
+            container.innerHTML = this.renderPrestazioniAsCards(prestazioni);
+        } else {
+            container.innerHTML = this.renderPrestazioniAsTable(prestazioni);
+        }
+    },
+
+    /**
+     * Render prestazioni Cecità
+     */
+    renderPrestazioniCecita() {
+        const container = document.getElementById('prestazioniCecitaContent');
+        if (!container) return;
+
+        // Template prestazioni Cecità (sempre visualizzate)
+        const prestazioniTemplate = {
+            pensioneCecita: {
+                nome: "Pensione di cecità civile",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            },
+            assegnoIntegrativo: {
+                nome: "Assegno integrativo",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            },
+            indennitaAccompagnamentoCiechi: {
+                nome: "Indennità di accompagnamento per ciechi assoluti",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            },
+            indennitaSpecialeCiechi: {
+                nome: "Indennità speciale per ciechi con residuo visivo",
+                stato: "assente",
+                importoMensile: null,
+                dataDecorrenza: null,
+                note: "Dati non disponibili nel fascicolo"
+            }
+        };
+
+        // Se esistono dati, sostituisci il template con i dati reali
+        let prestazioni = prestazioniTemplate;
+        if (this.prestazioniInvalidita && this.prestazioniInvalidita.cecita) {
+            prestazioni = this.prestazioniInvalidita.cecita;
+        }
+
+        const viewMode = this.cecitaViewMode || 'table';
+        
+        if (viewMode === 'card') {
+            container.innerHTML = this.renderPrestazioniAsCards(prestazioni);
+        } else {
+            container.innerHTML = this.renderPrestazioniAsTable(prestazioni);
+        }
+    },
+
+    /**
+     * Render prestazioni come CARDS
+     */
+    renderPrestazioniAsCards(prestazioni) {
+        return Object.values(prestazioni).map(p => {
+            let icona = '';
+            let borderClass = '';
+            let bgClass = '';
+            
+            if (p.stato === 'concessa') {
+                icona = '<i class="bi bi-check-circle-fill text-white" style="font-size: 2rem;"></i>';
+                borderClass = 'border-success';
+                bgClass = 'bg-success text-white';
+            } else if (p.stato === 'negata') {
+                icona = '<i class="bi bi-x-circle-fill text-white" style="font-size: 2rem;"></i>';
+                borderClass = 'border-danger';
+                bgClass = 'bg-danger text-white';
+            } else {
+                // assente
+                icona = '';
+                borderClass = 'border-light';
+                bgClass = 'bg-light text-muted';
+            }
+
+            return `
+                <div class="card mb-3 ${borderClass}" style="border-width: 2px;">
+                    <div class="card-body">
+                        <div class="d-flex align-items-start">
+                            <div class="me-3" style="min-width: 50px; text-align: center;">
+                                <div class="rounded-circle ${bgClass} d-inline-flex align-items-center justify-content-center" 
+                                     style="width: 50px; height: 50px;">
+                                    ${icona}
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-2">${Utils.escapeHtml(p.nome)}</h6>
+                                ${p.stato === 'concessa' ? `
+                                    <p class="mb-1"><strong>Importo mensile:</strong> <span class="text-success">${Utils.formatCurrency(p.importoMensile)}</span></p>
+                                    <p class="mb-1"><strong>Decorrenza:</strong> ${Utils.formatDate(p.dataDecorrenza)}</p>
+                                ` : ''}
+                                <p class="mb-0 small ${p.stato === 'assente' ? 'text-muted' : ''}"><i class="bi bi-info-circle"></i> ${Utils.escapeHtml(p.note)}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;
         }).join('');
+    },
+
+    /**
+     * Render prestazioni come TABELLA
+     */
+    renderPrestazioniAsTable(prestazioni) {
+        return `
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 50px;">Stato</th>
+                            <th>Prestazione</th>
+                            <th>Importo Mensile</th>
+                            <th>Decorrenza</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${Object.values(prestazioni).map(p => {
+                            let iconaStato = '';
+                            let rowClass = '';
+                            
+                            if (p.stato === 'concessa') {
+                                iconaStato = '<div class="rounded-circle bg-success d-inline-flex align-items-center justify-content-center" style="width: 30px; height: 30px;"><i class="bi bi-check text-white"></i></div>';
+                                rowClass = 'table-success';
+                            } else if (p.stato === 'negata') {
+                                iconaStato = '<div class="rounded-circle bg-danger d-inline-flex align-items-center justify-content-center" style="width: 30px; height: 30px;"><i class="bi bi-x text-white"></i></div>';
+                                rowClass = 'table-danger';
+                            } else {
+                                iconaStato = '-';
+                                rowClass = 'text-muted';
+                            }
+
+                            return `
+                                <tr class="${rowClass}">
+                                    <td class="text-center">${iconaStato}</td>
+                                    <td><strong>${Utils.escapeHtml(p.nome)}</strong></td>
+                                    <td>${p.importoMensile ? Utils.formatCurrency(p.importoMensile) : '-'}</td>
+                                    <td>${p.dataDecorrenza ? Utils.formatDate(p.dataDecorrenza) : '-'}</td>
+                                    <td><small>${Utils.escapeHtml(p.note)}</small></td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
     },
 
     /**

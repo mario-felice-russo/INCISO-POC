@@ -1,0 +1,247 @@
+[
+  {
+    "cf": "RSSMRA80A01H501U",
+    "assistito": "Rossi Mario",
+    "invaliditaCivile": {
+      "pensioneInvalidoAssoluto": {
+        "nome": "Pensione invalido civile assoluto (100%)",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Percentuale invalidità 75% - Non raggiunge il requisito 100%"
+      },
+      "invalidoParziale": {
+        "nome": "Invalido civile parziale (74%-99%)",
+        "stato": "concessa",
+        "importoMensile": 313.91,
+        "dataDecorrenza": "2020-04-01",
+        "note": "Percentuale invalidità 75% - Assegno mensile"
+      },
+      "indennitaAccompagnamento": {
+        "nome": "Indennità di accompagnamento",
+        "stato": "negata",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Negata in sede di visita - Mantenuta capacità di deambulazione autonoma"
+      },
+      "assegnoMinorenni": {
+        "nome": "Assegno mensile per invalidi civili parziali minorenni",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Non applicabile - Maggiorenne"
+      },
+      "incrementoPensione": {
+        "nome": "Incremento alla pensione",
+        "stato": "concessa",
+        "importoMensile": 25.83,
+        "dataDecorrenza": "2023-01-01",
+        "note": "Incremento al milione per reddito sotto soglia"
+      }
+    },
+    "sordita": null,
+    "cecita": null
+  },
+  {
+    "cf": "VRDGPP75M15F205X",
+    "assistito": "Verdi Giuseppe",
+    "invaliditaCivile": {
+      "pensioneInvalidoAssoluto": {
+        "nome": "Pensione invalido civile assoluto (100%)",
+        "stato": "concessa",
+        "importoMensile": 333.33,
+        "dataDecorrenza": "2018-07-01",
+        "note": "Invalidità 100% con indennità di accompagnamento"
+      },
+      "invalidoParziale": {
+        "nome": "Invalido civile parziale (74%-99%)",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Superata da pensione per invalido assoluto"
+      },
+      "indennitaAccompagnamento": {
+        "nome": "Indennità di accompagnamento",
+        "stato": "concessa",
+        "importoMensile": 527.16,
+        "dataDecorrenza": "2018-07-01",
+        "note": "Riconosciuta impossibilità deambulazione autonoma"
+      },
+      "assegnoMinorenni": {
+        "nome": "Assegno mensile per invalidi civili parziali minorenni",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Non applicabile - Maggiorenne"
+      },
+      "incrementoPensione": {
+        "nome": "Incremento alla pensione",
+        "stato": "concessa",
+        "importoMensile": 136.44,
+        "dataDecorrenza": "2020-01-01",
+        "note": "Incremento al milione"
+      }
+    },
+    "sordita": {
+      "indennitaComunicazione": {
+        "nome": "Indennità di comunicazione per i sordi",
+        "stato": "concessa",
+        "importoMensile": 261.11,
+        "dataDecorrenza": "2018-07-01",
+        "note": "Sordità riconosciuta con percentuale 100%"
+      }
+    },
+    "cecita": null
+  },
+  {
+    "cf": "BNCLRA85D45H501Z",
+    "assistito": "Bianchi Laura",
+    "invaliditaCivile": {
+      "pensioneInvalidoAssoluto": {
+        "nome": "Pensione invalido civile assoluto (100%)",
+        "stato": "concessa",
+        "importoMensile": 333.33,
+        "dataDecorrenza": "2019-02-01",
+        "note": "Invalidità 100%"
+      },
+      "invalidoParziale": {
+        "nome": "Invalido civile parziale (74%-99%)",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Superata da pensione per invalido assoluto"
+      },
+      "indennitaAccompagnamento": {
+        "nome": "Indennità di accompagnamento",
+        "stato": "concessa",
+        "importoMensile": 527.16,
+        "dataDecorrenza": "2019-02-01",
+        "note": "Riconosciuta per cecità assoluta"
+      },
+      "assegnoMinorenni": {
+        "nome": "Assegno mensile per invalidi civili parziali minorenni",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Non applicabile - Maggiorenne"
+      },
+      "incrementoPensione": {
+        "nome": "Incremento alla pensione",
+        "stato": "concessa",
+        "importoMensile": 136.44,
+        "dataDecorrenza": "2020-01-01",
+        "note": "Incremento al milione"
+      }
+    },
+    "sordita": null,
+    "cecita": {
+      "pensioneCecita": {
+        "nome": "Pensione di cecità civile",
+        "stato": "concessa",
+        "importoMensile": 333.33,
+        "dataDecorrenza": "2019-02-01",
+        "note": "Cecità assoluta riconosciuta"
+      },
+      "assegnoIntegrativo": {
+        "nome": "Assegno integrativo",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Non richiesto"
+      },
+      "indennitaAccompagnamentoCiechi": {
+        "nome": "Indennità di accompagnamento per ciechi assoluti",
+        "stato": "concessa",
+        "importoMensile": 961.85,
+        "dataDecorrenza": "2019-02-01",
+        "note": "Riconosciuta per cecità assoluta"
+      },
+      "indennitaSpecialeCiechi": {
+        "nome": "Indennità speciale per ciechi con residuo visivo",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Non applicabile - Cecità assoluta"
+      }
+    }
+  },
+  {
+    "cf": "GLLMRC70T55F205K",
+    "assistito": "Gallo Marco",
+    "invaliditaCivile": null,
+    "sordita": null,
+    "cecita": {
+      "pensioneCecita": {
+        "nome": "Pensione di cecità civile",
+        "stato": "concessa",
+        "importoMensile": 333.33,
+        "dataDecorrenza": "2017-03-01",
+        "note": "Cecità parziale riconosciuta"
+      },
+      "assegnoIntegrativo": {
+        "nome": "Assegno integrativo",
+        "stato": "concessa",
+        "importoMensile": 200.00,
+        "dataDecorrenza": "2018-01-01",
+        "note": "Assegno per integrazione economica"
+      },
+      "indennitaAccompagnamentoCiechi": {
+        "nome": "Indennità di accompagnamento per ciechi assoluti",
+        "stato": "negata",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Negata - Residuo visivo sufficiente per autonomia"
+      },
+      "indennitaSpecialeCiechi": {
+        "nome": "Indennità speciale per ciechi con residuo visivo",
+        "stato": "concessa",
+        "importoMensile": 215.35,
+        "dataDecorrenza": "2017-03-01",
+        "note": "Riconosciuta per cecità parziale"
+      }
+    }
+  },
+  {
+    "cf": "FRRPTR92H50H501L",
+    "assistito": "Ferrari Petra",
+    "invaliditaCivile": {
+      "pensioneInvalidoAssoluto": {
+        "nome": "Pensione invalido civile assoluto (100%)",
+        "stato": "concessa",
+        "importoMensile": 333.33,
+        "dataDecorrenza": "2021-10-01",
+        "note": "Invalidità 100%"
+      },
+      "invalidoParziale": {
+        "nome": "Invalido civile parziale (74%-99%)",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Superata da pensione per invalido assoluto"
+      },
+      "indennitaAccompagnamento": {
+        "nome": "Indennità di accompagnamento",
+        "stato": "negata",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Negata - Mantenuta capacità deambulazione autonoma"
+      },
+      "assegnoMinorenni": {
+        "nome": "Assegno mensile per invalidi civili parziali minorenni",
+        "stato": "assente",
+        "importoMensile": null,
+        "dataDecorrenza": null,
+        "note": "Non applicabile - Maggiorenne"
+      },
+      "incrementoPensione": {
+        "nome": "Incremento alla pensione",
+        "stato": "concessa",
+        "importoMensile": 136.44,
+        "dataDecorrenza": "2022-01-01",
+        "note": "Incremento al milione"
+      }
+    },
+    "sordita": null,
+    "cecita": null
+  }
+]
