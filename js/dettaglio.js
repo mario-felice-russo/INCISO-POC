@@ -38,6 +38,21 @@ const DettaglioApp = {
         
         if (cfFromUrl) {
             await this.loadAssistito(cfFromUrl);
+        } else {
+            // Nessun CF specificato - mostra messaggio
+            const header = document.getElementById('assistitoHeader');
+            if (header) {
+                header.innerHTML = `
+                    <div class="text-center py-5">
+                        <i class="bi bi-info-circle display-1 text-white"></i>
+                        <h3 class="text-white mt-3">Nessun assistito selezionato</h3>
+                        <p class="text-white">Torna alla pagina di ricerca e seleziona un assistito</p>
+                        <button class="btn btn-light btn-lg mt-3" onclick="LayoutManager.loadPage('ricerca')">
+                            <i class="bi bi-search"></i> Vai alla Ricerca
+                        </button>
+                    </div>
+                `;
+            }
         }
     },
     
