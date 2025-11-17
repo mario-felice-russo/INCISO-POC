@@ -655,28 +655,29 @@ const DettaglioApp = {
             // Documenti mockup organizzati per categoria
             const documenti = [
                 {
-                    categoria: 'I. Dati Anagrafici',
+                    categoria: 'Dati Anagrafici',
                     items: [
                         { nome: 'Carta Identità', dataRicezione: '2023-01-15', protocollo: 'EPROCS-2023-001', link: '#' },
                         { nome: 'Codice Fiscale', dataRicezione: '2023-01-15', protocollo: 'EPROCS-2023-001', link: '#' }
                     ]
                 },
                 {
-                    categoria: 'II. Documentazione Sanitaria',
+                    categoria: 'Documentazione Sanitaria',
                     items: [
                         { nome: 'Verbale Accertamento 74%', dataRicezione: '2023-03-10', protocollo: 'EPROCS-2023-045', link: '#' },
                         { nome: 'Certificato Medico', dataRicezione: '2023-03-08', protocollo: 'EPROCS-2023-042', link: '#' }
                     ]
                 },
                 {
-                    categoria: 'III. Prestazioni e Dati Economici',
+                    categoria: 'Prestazioni e Dati Economici',
                     items: [
                         { nome: 'IBAN Bancario', dataRicezione: '2023-01-20', protocollo: 'EPROCS-2023-005', link: '#' },
-                        { nome: 'RED 2024', dataRicezione: '2024-02-01', protocollo: 'EPROCS-2024-012', link: '#' }
+                        { nome: 'RED 2024', dataRicezione: '2024-02-01', protocollo: 'EPROCS-2024-012', link: '#' },
+                        { nome: 'Dichiarazione di Responsabilità (o Modulo Redditi)', dataRicezione: '2024-03-01', protocollo: 'EPROCS-2024-030', link: '#' }
                     ]
                 },
                 {
-                    categoria: 'V. Documentazione e Protocolli',
+                    categoria: 'Documentazione e Protocolli',
                     items: [
                         { nome: 'Domanda Prestazione', dataRicezione: '2023-03-05', protocollo: 'EPROCS-2023-038', link: '#' }
                     ]
