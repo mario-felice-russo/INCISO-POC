@@ -55,6 +55,7 @@
                     <h5 class="mb-3">Indice</h5>
                     <nav class="nav flex-column">
                         <a class="nav-link" href="#overview">Panoramica</a>
+                        <a class="nav-link" href="#costi">Costi POC</a>
                         <a class="nav-link" href="#dashboard">1. Dashboard</a>
                         <a class="nav-link" href="#ricerca">2. Ricerca Assistiti</a>
                         <a class="nav-link" href="#dettaglio">3. Fascicolo Personale</a>
@@ -127,6 +128,207 @@
                             <strong>Totale file:</strong> 1 index.html + 6 pagine contenuto + 2 componenti + 9 JS + 2 CSS + 9 JSON = <strong>29 file</strong><br>
                             <strong>Novità:</strong> Sistema di navigazione SPA con caricamento dinamico pagine e script + Gestione Verbali SABES/ASDAA
                         </small>
+                    </div>
+                </section>
+
+                <!-- Costi POC -->
+                <section id="costi" class="mb-5 d-none">
+                    <h2 class="section-header"><i class="bi bi-calculator"></i> POC - Dettaglio economico ipotetico</h2>
+                    
+                    <div class="alert alert-warning border-start border-warning border-4">
+                        <i class="bi bi-info-circle"></i> <strong>Nota:</strong> I costi indicati si riferiscono esclusivamente alla fase di <strong>Proof of Concept</strong> e non includono sviluppo, manutenzione o deployment in produzione.
+                    </div>
+
+                    <h4 class="mt-4">Riepilogo Costi</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width: 50%;">Voce</th>
+                                    <th class="text-center" style="width: 15%;">Quantità</th>
+                                    <th class="text-end" style="width: 20%;">Totale</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Analisi Requisiti e UX Design</strong></td>
+                                    <td class="text-center">40 ore</td>
+                                    <td class="text-end"><strong>€ 2.000,00</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="bg-light">
+                                        <small>
+                                            <i class="bi bi-dot"></i> Raccolta requisiti con stakeholder (12h)<br>
+                                            <i class="bi bi-dot"></i> Definizione user stories e casi d'uso (10h)<br>
+                                            <i class="bi bi-dot"></i> Progettazione wireframe e mockup (12h)<br>
+                                            <i class="bi bi-dot"></i> Design sistema navigazione e architettura SPA (6h)
+                                        </small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sviluppo Frontend</strong></td>
+                                    <td class="text-center">80 ore</td>
+                                    <td class="text-end"><strong>€ 4.000,00</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="bg-light">
+                                        <small>
+                                            <i class="bi bi-dot"></i> Setup architettura SPA e routing dinamico (16h)<br>
+                                            <i class="bi bi-dot"></i> Dashboard con evidenze, note e verbali SABES (28h)<br>
+                                            <i class="bi bi-dot"></i> Pagina ricerca con filtri avanzati e paginazione (24h)<br>
+                                            <i class="bi bi-dot"></i> Fascicolo personale assistito (20h)<br>
+                                            <i class="bi bi-dot"></i> Gestione documenti e comunicazioni (16h)<br>
+                                            <i class="bi bi-dot"></i> Configurazione editor e sistema template (12h)<br>
+                                            <i class="bi bi-dot"></i> Componenti riusabili (header, navbar, modali) (4h)
+                                        </small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Modellazione Dati e JSON</strong></td>
+                                    <td class="text-center">10 ore</td>
+                                    <td class="text-end"><strong>€ 500,00</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="bg-light">
+                                        <small>
+                                            <i class="bi bi-dot"></i> Definizione schema dati (assistiti, evidenze, note, comunicazioni, verbali) (8h)<br>
+                                            <i class="bi bi-dot"></i> Creazione dataset di esempio realistici (9 file JSON) (8h)<br>
+                                            <i class="bi bi-dot"></i> Integrazione logica verbali con percentuali invalidità (4h)
+                                        </small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Documentazione Tecnica</strong></td>
+                                    <td class="text-center">12 ore</td>
+                                    <td class="text-end"><strong>€ 600,00</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="bg-light">
+                                        <small>
+                                            <i class="bi bi-dot"></i> Documentazione tecnica completa (documentazione.html) (8h)<br>
+                                            <i class="bi bi-dot"></i> Guida introduttiva con esempi JSON (introduzione.html) (6h)<br>
+                                            <i class="bi bi-dot"></i> Commenti inline nel codice JavaScript (2h)
+                                        </small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Project Management e Coordinamento</strong></td>
+                                    <td class="text-center">12 ore</td>
+                                    <td class="text-end"><strong>€ 600,00</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="bg-light">
+                                        <small>
+                                            <i class="bi bi-dot"></i> Meeting di avanzamento e allineamento (6h)<br>
+                                            <i class="bi bi-dot"></i> Gestione iterazioni e feedback (4h)<br>
+                                            <i class="bi bi-dot"></i> Presentazione finale POC (2h)
+                                        </small>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="table-secondary">
+                                <tr>
+                                    <th colspan="3" class="text-end">SUBTOTALE</th>
+                                    <th class="text-end">€ 7.700,00</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end">Spese generali e amministrative (5%)</td>
+                                    <td class="text-end">€ 385,00</td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <th colspan="3" class="text-end"><h5 class="mb-0">TOTALE POC (IVA esclusa)</h5></th>
+                                    <th class="text-end"><h5 class="mb-0">€ 8.085,00</h5></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end">IVA 22%</td>
+                                    <td class="text-end">€ 3.723,72</td>
+                                </tr>
+                                <tr class="table-success">
+                                    <th colspan="3" class="text-end"><h4 class="mb-0">TOTALE POC (IVA inclusa)</h4></th>
+                                    <th class="text-end"><h4 class="mb-0">€ 9.863,70</h4></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <h4 class="mt-4">Deliverable Inclusi nel POC</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <i class="bi bi-code-square"></i> Codice Sorgente
+                                </div>
+                                <div class="card-body">
+                                    <ul class="mb-0">
+                                        <li>7 pagine HTML complete</li>
+                                        <li>9 moduli JavaScript (ES6+)</li>
+                                        <li>2 file CSS personalizzati</li>
+                                        <li>9 file dati JSON di esempio</li>
+                                        <li>Assets grafici (logo, icone)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-success">
+                                <div class="card-header bg-success text-white">
+                                    <i class="bi bi-file-text"></i> Documentazione
+                                </div>
+                                <div class="card-body">
+                                    <ul class="mb-0">
+                                        <li>Documentazione tecnica completa</li>
+                                        <li>Guida introduttiva con esempi</li>
+                                        <li>Diagramma architettura sistema</li>
+                                        <li>Schema modello dati JSON</li>
+                                        <li>Manuale d'uso funzionalità</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info mt-4">
+                        <h5 class="alert-heading"><i class="bi bi-lightbulb"></i> Cosa NON è Incluso</h5>
+                        <p class="mb-0">
+                            <strong>Costi aggiuntivi non compresi nel POC:</strong><br>
+                            <i class="bi bi-x-circle text-danger"></i> Sviluppo backend (API REST, database, autenticazione)<br>
+                            <i class="bi bi-x-circle text-danger"></i> Integrazione con sistemi esterni (AS400, EPROCS, PEC)<br>
+                            <i class="bi bi-x-circle text-danger"></i> Deployment e hosting<br>
+                            <i class="bi bi-x-circle text-danger"></i> Manutenzione evolutiva e correttiva<br>
+                            <i class="bi bi-x-circle text-danger"></i> Formazione utenti e supporto post-rilascio<br>
+                        </p>
+                    </div>
+
+                    <h4 class="mt-4">Tempistiche</h4>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <i class="bi bi-calendar-event display-4 text-primary"></i>
+                                        <h5 class="mt-2">Durata Totale</h5>
+                                        <p class="h4 text-primary mb-0">6 settimane</p>
+                                        <small class="text-muted">(232 ore totali)</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <i class="bi bi-people display-4 text-success"></i>
+                                        <h5 class="mt-2">Team</h5>
+                                        <p class="h4 text-success mb-0">3-4 risorse</p>
+                                        <small class="text-muted">(Senior Dev, Designer, PM)</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <i class="bi bi-speedometer2 display-4 text-warning"></i>
+                                        <h5 class="mt-2">Effort</h5>
+                                        <p class="h4 text-warning mb-0">1,5 mesi/uomo</p>
+                                        <small class="text-muted">(part-time parallelo)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
