@@ -200,6 +200,7 @@ const DettaglioApp = {
      */
     loadTabRiepilogo() {
         if (this.tabsLoaded.riepilogo) return;
+        if (!this.assistito) return; // Guard: dati non ancora caricati
 
         // Riepilogo Prestazioni
         this.renderRiepilogoPrestazioni();
